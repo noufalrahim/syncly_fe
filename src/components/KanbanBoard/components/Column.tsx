@@ -6,8 +6,9 @@ import AddCard from './AddCard';
 import { Task } from '@/components/TaskList/types';
 import { Modal } from '@/components/Modal';
 import { TaskListForm } from '@/components/TaskList/components/TaskListForm';
+import { updateTask } from '../api/updateTasks';
 
-const Column = ({ title, cards, column, setCards, handleOnClick }: ColumnProps) => {
+const Column = ({ title, cards, column, setCards, handleOnClick, projectId }: ColumnProps) => {
   const [active, setActive] = useState(false);
 
   const handleDelete = (id: string | number) => {
@@ -16,11 +17,11 @@ const Column = ({ title, cards, column, setCards, handleOnClick }: ColumnProps) 
 
   const handleDragStart = (e: DragEvent, card: Task) => {
     if (e.dataTransfer) {
-      e.dataTransfer.setData('cardId', card.id.toString());
+      e.dataTransfer.setData('cardId', card.id!.toString());
     }
   };
 
-  const handleDragEnd = (e: DragEvent) => {
+  const handleDragEnd = async (e: DragEvent) => {
     const cardId = e.dataTransfer ? e.dataTransfer.getData('cardId') : '';
 
     setActive(false);
@@ -36,7 +37,7 @@ const Column = ({ title, cards, column, setCards, handleOnClick }: ColumnProps) 
 
       let cardToTransfer = copy.find((c) => c.id === cardId);
       if (!cardToTransfer) return;
-      cardToTransfer = { ...cardToTransfer, columnKey: column };
+      cardToTransfer = { ...cardToTransfer, columnKey: column, status: column };
 
       copy = copy.filter((c) => c.id !== cardId);
 
@@ -50,7 +51,9 @@ const Column = ({ title, cards, column, setCards, handleOnClick }: ColumnProps) 
 
         copy.splice(insertAtIndex, 0, cardToTransfer);
       }
-
+      
+      const patchResp = await updateTask(copy, projectId);
+      console.log(patchResp);
       setCards(copy);
     }
   };

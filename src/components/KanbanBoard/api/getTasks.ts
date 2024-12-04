@@ -1,3 +1,4 @@
+import { Task } from '@/components/TaskList/types';
 import { BASE_URL } from '@/constants';
 import axios from 'axios';
 
@@ -11,10 +12,10 @@ export const getTasks = async (id: number) => {
       const task = tasks[i];
       taskData.push(task);
     }
-    taskData = taskData.map((task: any) => {
+    taskData = taskData.map((task: Task) => {
       return {
         ...task,
-        id: task.id.toString(),
+        id: task.id!.toString(),
         column: task.columnKey,
         title: task.title,
       };

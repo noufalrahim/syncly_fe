@@ -8,7 +8,6 @@ export const getEvents = async (id: number) => {
     const response = await axios.get(`${BASE_URL}/projects?id=${id}`);
     const resp = response.data;
     const tasks: Task[] = resp[0].tasks;
-    console.log(tasks);
     const taskData: EventType[] = [];
     for (let i = 0; i < tasks.length; i++) {
       const taskItem = {
@@ -23,7 +22,6 @@ export const getEvents = async (id: number) => {
       taskData.push(taskItem);
     }
 
-    console.log(taskData);
     return taskData;
   } catch (error) {
     console.error(error);

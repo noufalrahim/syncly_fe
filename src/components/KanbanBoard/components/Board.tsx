@@ -40,7 +40,7 @@ const Board = () => {
     <>
       <div className="flex h-full w-full gap-3 overflow-scroll p-12">
         {columnHeaders.map((column) => {
-          return <Column key={column.id} title={column.title} column={column.key} cards={cards} setCards={setCards} handleOnClick={handleOnClick} />;
+          return <Column projectId={projectId} key={column.id} title={column.title} column={column.key} cards={cards} setCards={setCards} handleOnClick={handleOnClick} />;
         })}
       </div>
       <Modal isOpen={openModal} onClose={() => setOpenModal(false)} title="Task Details">

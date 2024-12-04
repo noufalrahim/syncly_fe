@@ -35,7 +35,6 @@ const Scheduler = () => {
   React.useEffect(() => {
     const fetchEvents = async () => {
       const events: EventType[] = await getEvents(projectData.selectedProjectId);
-      console.log(events);
       setEvents(events);
     };
 

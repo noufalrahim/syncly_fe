@@ -3,11 +3,21 @@ import { configureStore } from '@reduxjs/toolkit';
 export type AppState = {
   selectedProjectId: number;
   selectedProjectName: string;
+  authUser: {
+    username: string;
+    name: string;
+    image: string;
+  };
 };
 
 const initialState = {
   selectedProjectId: 0,
   selectedProjectName: '',
+  authUser: {
+    username: '',
+    name: '',
+    image: '',
+  },
 };
 
 function AppReducer(prevState = initialState, action: { type: string; payload: any }) {
@@ -18,10 +28,10 @@ function AppReducer(prevState = initialState, action: { type: string; payload: a
         selectedProjectId: action.payload.id,
         selectedProjectName: action.payload.name,
       };
-    case 'increment':
+    case 'auth/user':
       return {
         ...prevState,
-        selectedProjectId: prevState.selectedProjectId + 1,
+        authUser: action.payload,
       };
     default:
       return prevState;

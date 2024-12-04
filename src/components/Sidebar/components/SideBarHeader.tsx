@@ -15,7 +15,8 @@ const SideBarHeader: React.FC<SideBarHeaderProps> = ({ title, open }) => {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <SidebarMenuButton>
-                Select Organisation
+                Select Workspace 
+                {/* CHANGE ORGANISATION TO WORKSPACE */}
                 <ChevronDown className="ml-auto" />
               </SidebarMenuButton>
             </DropdownMenuTrigger>

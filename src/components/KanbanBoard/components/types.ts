@@ -10,12 +10,19 @@ import { Dispatch, SetStateAction } from 'react';
 
 export type ColumnType = 'backlog' | 'todo' | 'in-progress' | 'done';
 
+export type ColumnDataTypes = {
+  id: string;
+  title: string;
+  key: ColumnType;
+};
+
 export type ColumnProps = {
   title: string;
   cards: Task[];
   column: ColumnType;
   setCards: Dispatch<SetStateAction<Task[]>>;
   handleOnClick: (card: Task) => void;
+  projectId: number | string;
 };
 
 export type CardProps = Task & {

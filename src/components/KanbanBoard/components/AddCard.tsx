@@ -31,8 +31,6 @@ const AddCard = ({ column, setCards }: AddCardProps) => {
 
     const postResponse: any = await postTask(newCard, projectId);
 
-    console.log(postResponse);
-
     if (postResponse.status !== 200) return;
 
     setCards((pv) => [...pv, newCard]);

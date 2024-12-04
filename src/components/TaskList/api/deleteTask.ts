@@ -12,7 +12,6 @@ export const deleteTask = async (projectId: number, taskId: number) => {
     }
     const filteredTasks = tasksData.filter((task: any) => task.id !== taskId);
     resp[0].tasks = filteredTasks;
-    console.log(resp[0]);
     const deleteResponse = await axios.patch(`${BASE_URL}/projects/${projectId}`, resp[0]);
     return deleteResponse;
   } catch (error) {

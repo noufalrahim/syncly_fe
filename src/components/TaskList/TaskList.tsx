@@ -30,8 +30,7 @@ const TaskList: React.FC = () => {
   });
 
   const handleDelete = async (task: Task) => {
-    console.log(projectId, selectedTask?.id);
-    const deleteResponse = await deleteTask(projectId, parseInt(task.id.toString()));
+    const deleteResponse = await deleteTask(projectId, parseInt(task.id!.toString()));
     console.log(deleteResponse);
     fetchData();
   };

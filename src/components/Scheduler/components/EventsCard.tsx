@@ -24,7 +24,6 @@ const EventsCard: React.FC<EventsCardProps> = ({ title, assignee, status, id, ev
 
   const fetchAssignee = async () => {
     const response = await getUser(assignee);
-    console.log(response);
     setAssigneeData(response);
   };
 
@@ -33,7 +32,7 @@ const EventsCard: React.FC<EventsCardProps> = ({ title, assignee, status, id, ev
   }, []);
   return (
     <>
-      <div className="px-2">
+      <div className="px-2 my-1">
         <div
           onClick={() => {
             console.log('Event clicked', id, event);

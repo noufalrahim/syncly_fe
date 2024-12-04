@@ -29,7 +29,6 @@ const Card = ({ title, id, columnKey, handleDragStart, handleDelete, assignee, h
 
   const fetchAssignee = async () => {
     const response = await getUser(assignee);
-    console.log(response);
     setAssigneeData(response);
   };
 

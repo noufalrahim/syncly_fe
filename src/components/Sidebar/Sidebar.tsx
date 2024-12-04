@@ -4,7 +4,7 @@ import { IoHome } from 'react-icons/io5';
 import { MdInbox, MdTask } from 'react-icons/md';
 import { IoCalendarClear } from 'react-icons/io5';
 import { useSidebar } from '../ui/sidebar';
-import { BellIcon, BrainCircuitIcon, KanbanIcon, Notebook, PlusIcon, TableIcon } from 'lucide-react';
+import { BellIcon, BrainCircuitIcon, Calendar, KanbanIcon, Notebook, PlusIcon, TableIcon, TagIcon } from 'lucide-react';
 import SideBarHeader from './components/SideBarHeader';
 import SideBarFooter from './components/SideBarFooter';
 import { CollapsibleContents, ProjectForm } from './components';
@@ -12,6 +12,7 @@ import { ProjectType } from './components/types';
 import React from 'react';
 import { Modal } from '../Modal';
 import { getProjects } from './api/getProjects';
+import { FaSearch } from 'react-icons/fa';
 
 export default function AppSidebar() {
   const { open } = useSidebar();
@@ -19,11 +20,13 @@ export default function AppSidebar() {
   const [openModal, setOpenModal] = React.useState<boolean>(false);
   const [projectsData, setProjectsData] = React.useState<ProjectType[]>([]);
 
+  const today = new Date().getDate();
+
   const menuItems: MenuItemsData[] = [
     {
-      title: 'Home',
+      title: 'Search',
       url: '/',
-      icon: <IoHome size={20} />,
+      icon: <FaSearch size={20} />,
     },
     {
       title: 'My Tasks',
@@ -34,6 +37,23 @@ export default function AppSidebar() {
       title: 'Inbox',
       url: '/inbox',
       icon: <MdInbox size={20} />,
+    },
+    {
+      title: 'Today',
+      url: '/today',
+      icon: <div className='border-black text-2xs p-[2px] border-2 font-semibold rounded-md'>
+        {today.toString().length === 1 ? `0${today}` : today}
+      </div>
+    },
+    {
+      title: 'Upcoming',
+      url: '/upcoming',
+      icon: <Calendar size={20} />,
+    },
+    {
+      title: 'Filters & Tags',
+      url: '/filters',
+      icon: <TagIcon size={20} />,
     },
     {
       title: 'Notifications',
@@ -60,7 +80,7 @@ export default function AppSidebar() {
             <SidebarGroupLabel>Menu</SidebarGroupLabel>
             <SidebarGroupContent>
               {menuItems.map((item, index) => (
-                <SidebarMenuItem className="list-none rounded-md hover:bg-gray-600 hover:text-white" key={index}>
+                <SidebarMenuItem className="list-none rounded-md hover:bg-gray-200" key={index}>
                   <SidebarMenuButton variant={'default'}>
                     <a href={item.url} className="flex w-full flex-row items-center gap-5">
                       {item.icon}

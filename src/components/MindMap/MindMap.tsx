@@ -70,7 +70,6 @@ const MindMap = () => {
 
   const handleNodesChange = async (node: NodeTypes | any) => {
     const patchResp = await updateNodes(node, projectId, node[0].id);
-    console.log(patchResp);
     onNodesChange(node);
   };
 

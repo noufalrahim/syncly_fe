@@ -23,12 +23,8 @@ export const updateTask = async (data: any, projectId: number, taskId: number) =
       return task;
     });
 
-    console.log(newTasksData);
-
     resp[0].tasks = newTasksData;
-    console.log(resp[0]);
     const patchResponse = await axios.patch(`${BASE_URL}/projects/${projectId}`, resp[0]);
-    console.log(patchResponse);
     return patchResponse;
   } catch (error) {
     console.error(error);
