@@ -14,11 +14,11 @@ const SideBarHeader: React.FC<SideBarHeaderProps> = ({ title, open }) => {
         <SidebarMenuItem className="mx-2 rounded-sm hover:bg-gray-200">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <SidebarMenuButton>
-                Select Workspace 
+              {/* <SidebarMenuButton>
+                Select Workspace  */}
                 {/* CHANGE ORGANISATION TO WORKSPACE */}
-                <ChevronDown className="ml-auto" />
-              </SidebarMenuButton>
+                {/* <ChevronDown className="ml-auto" />
+              </SidebarMenuButton> */}
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-[--radix-popper-anchor-width] bg-white">
               <DropdownMenuItem className="hover:bg-gray-400">

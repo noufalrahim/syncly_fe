@@ -8,12 +8,12 @@ const Login = () => {
     }
     return (
         <header>
-            <SignedOut>
+            {/* <SignedOut>
                 <SignInButton />
             </SignedOut>
             <SignedIn>
                 <UserButton />
-            </SignedIn>
+            </SignedIn> */}
         </header>
     )
 };

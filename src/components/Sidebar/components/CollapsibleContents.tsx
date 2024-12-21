@@ -4,10 +4,11 @@ import { IoCalendarClear } from 'react-icons/io5';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, useSidebar } from '@/components/ui/sidebar';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { ChevronDown, KanbanIcon, TableIcon } from 'lucide-react';
+import { ChevronDown, FileCode, KanbanIcon, MessageCircleCode, TableIcon } from 'lucide-react';
 import { CollapsibleContentsProps } from './types';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from '@/redux/store';
+import { title } from 'process';
 
 const CollapsibleContents: React.FC<CollapsibleContentsProps> = ({ project, defaultOpen }) => {
   const { open } = useSidebar();
@@ -23,6 +24,7 @@ const CollapsibleContents: React.FC<CollapsibleContentsProps> = ({ project, defa
     { condition: project.showKanban, title: 'Kanban', url: '/kanban', icon: <KanbanIcon size={13} /> },
     // { condition: project.showMindMap, title: 'MindMap', url: '/mindmap', icon: <BrainCircuitIcon size={13} /> },
     { condition: project.showCalendar, title: 'Calendar', url: '/calendar', icon: <IoCalendarClear size={13} /> },
+    { condition: true, title: 'Chat Rooms', url: '/chatrooms', icon: <MessageCircleCode size={13} /> }
   ];
 
   return (
@@ -33,7 +35,8 @@ const CollapsibleContents: React.FC<CollapsibleContentsProps> = ({ project, defa
             <Tooltip>
               <TooltipTrigger className="w-full">
                 <CollapsibleTrigger className="flex w-full items-center justify-center rounded px-2 py-1 hover:bg-gray-200">
-                  {project.title.length > 15 ? `${project.title.substring(0, 15)}...` : project.title}
+                  <FileCode size={15} className="mr-2" />
+                  {open && (project.title.length > 15 ? `${project.title.substring(0, 15)}...` : project.title)}
                   <ChevronDown size={15} className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
                 </CollapsibleTrigger>
               </TooltipTrigger>

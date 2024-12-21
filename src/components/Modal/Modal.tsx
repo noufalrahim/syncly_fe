@@ -1,6 +1,5 @@
 import { ModalProps } from './types';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
 
 const Modal: React.FC<ModalProps> = ({ children, isOpen, onClose, title }) => {
   return (

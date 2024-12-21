@@ -1,13 +1,13 @@
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenuButton, SidebarMenuItem } from '../ui/sidebar';
 import { MenuItemsData } from './types';
-import { IoHome } from 'react-icons/io5';
+import { IoHome, IoPeople } from 'react-icons/io5';
 import { MdInbox, MdTask } from 'react-icons/md';
 import { IoCalendarClear } from 'react-icons/io5';
 import { useSidebar } from '../ui/sidebar';
-import { BellIcon, BrainCircuitIcon, Calendar, KanbanIcon, Notebook, PlusIcon, TableIcon, TagIcon } from 'lucide-react';
+import { BellIcon, BrainCircuitIcon, Calendar, KanbanIcon, MessageCircle, Notebook, PlusIcon, TableIcon, TagIcon } from 'lucide-react';
 import SideBarHeader from './components/SideBarHeader';
 import SideBarFooter from './components/SideBarFooter';
-import { CollapsibleContents, ProjectForm } from './components';
+import { CollapsibleContents, ProjectForm, SubSideBar } from './components';
 import { ProjectType } from './components/types';
 import React from 'react';
 import { Modal } from '../Modal';
@@ -19,6 +19,8 @@ export default function AppSidebar() {
   const [openProject, setOpenProject] = React.useState<string | null>('1');
   const [openModal, setOpenModal] = React.useState<boolean>(false);
   const [projectsData, setProjectsData] = React.useState<ProjectType[]>([]);
+  const subSideBarRoutes = ['messages'];
+  const [showSubSidebar, setShowSubSidebar] = React.useState<boolean>(false);
 
   const today = new Date().getDate();
 
@@ -29,14 +31,19 @@ export default function AppSidebar() {
       icon: <FaSearch size={20} />,
     },
     {
-      title: 'My Tasks',
-      url: '/tasks',
-      icon: <MdTask size={20} />,
-    },
-    {
       title: 'Inbox',
       url: '/inbox',
       icon: <MdInbox size={20} />,
+    },
+    {
+      title: 'My Networks',
+      url: '/my-network',
+      icon: <IoPeople size={20} />
+    },
+    {
+      title: 'Messages',
+      url: '/messages',
+      icon: <MessageCircle size={20} />
     },
     {
       title: 'Today',
@@ -60,6 +67,11 @@ export default function AppSidebar() {
       url: '/notifications',
       icon: <BellIcon size={20} />,
     },
+    {
+      title: 'My Tasks',
+      url: '/tasks',
+      icon: <MdTask size={20} />,
+    },
   ];
 
   React.useEffect(() => {
@@ -69,6 +81,18 @@ export default function AppSidebar() {
     };
 
     fetchProjects();
+  }, []);
+
+  React.useEffect(() => {
+    const handleRouteChange = () => {
+      if (subSideBarRoutes.includes(window.location.pathname.split('/')[1])) {
+        setShowSubSidebar(true);
+      } else {
+        setShowSubSidebar(false);
+      }
+    };
+
+    handleRouteChange();
   }, []);
 
   return (
@@ -105,6 +129,9 @@ export default function AppSidebar() {
         </SidebarContent>
         <SideBarFooter />
       </Sidebar>
+      {
+        showSubSidebar && <SubSideBar />
+      }
       <Modal isOpen={openModal} onClose={() => setOpenModal(false)} title="Create Project">
         <ProjectForm />
       </Modal>
