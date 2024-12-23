@@ -2,7 +2,7 @@ import { SidebarFooter, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../../ui/dropdown-menu';
 import { ChevronUp, User2 } from 'lucide-react';
 import { useUser } from '@clerk/clerk-react';
-import { SignInButton } from "@clerk/clerk-react";
+import { SignInButton } from '@clerk/clerk-react';
 import { useAuth } from '@clerk/clerk-react';
 import React from 'react';
 import { useDispatch } from 'react-redux';
@@ -42,7 +42,7 @@ const SideBarFooter = () => {
           image: user.imageUrl,
         },
       });
-      
+
       postUserData({
         username: user.username || '',
         fullName: user.fullName || '',
@@ -73,11 +73,7 @@ const SideBarFooter = () => {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <SidebarMenuButton>
-                {user.imageUrl ? (
-                  <img src={user.imageUrl} alt={user.firstName || ""} className="h-6 w-6 rounded-full" />
-                ) : (
-                  <User2 className="h-8 w-8 rounded-full" />
-                )}
+                {user.imageUrl ? <img src={user.imageUrl} alt={user.firstName || ''} className="h-6 w-6 rounded-full" /> : <User2 className="h-8 w-8 rounded-full" />}
                 {user.fullName || 'Anonymous'}
                 <ChevronUp className="ml-auto" />
               </SidebarMenuButton>

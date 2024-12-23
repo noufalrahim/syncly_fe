@@ -32,7 +32,7 @@ const EventsCard: React.FC<EventsCardProps> = ({ title, assignee, status, id, ev
   }, []);
   return (
     <>
-      <div className="px-2 my-1">
+      <div className="my-1 px-2">
         <div
           onClick={() => {
             console.log('Event clicked', id, event);

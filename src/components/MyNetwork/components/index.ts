@@ -1,1 +1,1 @@
-export {default as NetworkCard} from './NetworkCard';
+export { default as NetworkCard } from './NetworkCard';

@@ -13,7 +13,7 @@ function Router() {
   const { ROOT_PATH, PROJECT_OVERVIEW_PATH, SCHEDULER_PATH, TABLE_PATH, LOGIN_PATH, MY_NETWORK_PATH, MESSAGES_PATH, DASHBOARD_PATH } = useRoutePaths();
   return (
     <Routes>
-      <Route path={ROOT_PATH} element={<Landing /> } />
+      <Route path={ROOT_PATH} element={<Landing />} />
       <Route path={PROJECT_OVERVIEW_PATH} element={<KanbanBoard />} />
       <Route path={SCHEDULER_PATH} element={<Scheduler />} />
       <Route path={TABLE_PATH} element={<TaskList />} />

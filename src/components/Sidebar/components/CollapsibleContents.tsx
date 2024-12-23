@@ -24,7 +24,7 @@ const CollapsibleContents: React.FC<CollapsibleContentsProps> = ({ project, defa
     { condition: project.showKanban, title: 'Kanban', url: '/kanban', icon: <KanbanIcon size={13} /> },
     // { condition: project.showMindMap, title: 'MindMap', url: '/mindmap', icon: <BrainCircuitIcon size={13} /> },
     { condition: project.showCalendar, title: 'Calendar', url: '/calendar', icon: <IoCalendarClear size={13} /> },
-    { condition: true, title: 'Chat Rooms', url: '/chatrooms', icon: <MessageCircleCode size={13} /> }
+    { condition: true, title: 'Chat Rooms', url: '/chatrooms', icon: <MessageCircleCode size={13} /> },
   ];
 
   return (

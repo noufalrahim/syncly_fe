@@ -36,19 +36,17 @@ export default function AppSidebar() {
     {
       title: 'My Networks',
       url: '/my-network',
-      icon: <IoPeople size={20} />
+      icon: <IoPeople size={20} />,
     },
     {
       title: 'Messages',
       url: '/messages',
-      icon: <MessageCircle size={20} />
+      icon: <MessageCircle size={20} />,
     },
     {
       title: 'Today',
       url: '/today',
-      icon: <div className='border-black text-2xs p-[2px] border-2 font-semibold rounded-md'>
-        {today.toString().length === 1 ? `0${today}` : today}
-      </div>
+      icon: <div className="rounded-md border-2 border-black p-[2px] text-2xs font-semibold">{today.toString().length === 1 ? `0${today}` : today}</div>,
     },
     {
       title: 'Upcoming',

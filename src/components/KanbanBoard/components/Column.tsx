@@ -51,7 +51,7 @@ const Column = ({ title, cards, column, setCards, handleOnClick, projectId }: Co
 
         copy.splice(insertAtIndex, 0, cardToTransfer);
       }
-      
+
       const patchResp = await updateTask(copy, projectId);
       console.log(patchResp);
       setCards(copy);
