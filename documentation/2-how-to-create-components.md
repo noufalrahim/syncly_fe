@@ -19,7 +19,8 @@
     - note: under components inside a folder, there isn't a need to create a nested folder for each component. You can just create the component files directly under the components folder
 - In the `MyComponent.tsx` file, write the component code
     - tip: Use functional components with hooks
-    - syntax: ```tsx
+    - syntax:
+    - ```tsx
       import React from 'react'
       
       const MyComponent: React.FC = () => {
