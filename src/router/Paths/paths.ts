@@ -6,6 +6,7 @@ const TABLE_PATH = '/table';
 const MIND_MAP_PATH = '/mindmap';
 const MY_NETWORK_PATH = '/my-network';
 const MESSAGES_PATH = '/messages'
+const DASHBOARD_PATH = '/dashboard';
 
 const paths = {
   ROOT_PATH,
@@ -16,6 +17,7 @@ const paths = {
   MIND_MAP_PATH,
   MY_NETWORK_PATH,
   MESSAGES_PATH,
+  DASHBOARD_PATH
 } as const;
 
 export default paths;

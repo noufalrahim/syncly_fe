@@ -7,7 +7,7 @@ import { useSidebar } from '../ui/sidebar';
 import { BellIcon, BrainCircuitIcon, Calendar, KanbanIcon, MessageCircle, Notebook, PlusIcon, TableIcon, TagIcon } from 'lucide-react';
 import SideBarHeader from './components/SideBarHeader';
 import SideBarFooter from './components/SideBarFooter';
-import { CollapsibleContents, ProjectForm, SubSideBar } from './components';
+import { CollapsibleContents, ProjectForm } from './components';
 import { ProjectType } from './components/types';
 import React from 'react';
 import { Modal } from '../Modal';
@@ -19,8 +19,6 @@ export default function AppSidebar() {
   const [openProject, setOpenProject] = React.useState<string | null>('1');
   const [openModal, setOpenModal] = React.useState<boolean>(false);
   const [projectsData, setProjectsData] = React.useState<ProjectType[]>([]);
-  const subSideBarRoutes = ['messages'];
-  const [showSubSidebar, setShowSubSidebar] = React.useState<boolean>(false);
 
   const today = new Date().getDate();
 
@@ -83,22 +81,10 @@ export default function AppSidebar() {
     fetchProjects();
   }, []);
 
-  React.useEffect(() => {
-    const handleRouteChange = () => {
-      if (subSideBarRoutes.includes(window.location.pathname.split('/')[1])) {
-        setShowSubSidebar(true);
-      } else {
-        setShowSubSidebar(false);
-      }
-    };
-
-    handleRouteChange();
-  }, []);
-
   return (
     <>
       <Sidebar collapsible="icon" className="bg-white">
-        <SideBarHeader title={'Syncly'} open={open} />
+        <SideBarHeader title={'SustainLink'} open={open} />
         <SidebarContent className="flex gap-0">
           <SidebarGroup>
             <SidebarGroupLabel>Menu</SidebarGroupLabel>
@@ -129,9 +115,6 @@ export default function AppSidebar() {
         </SidebarContent>
         <SideBarFooter />
       </Sidebar>
-      {
-        showSubSidebar && <SubSideBar />
-      }
       <Modal isOpen={openModal} onClose={() => setOpenModal(false)} title="Create Project">
         <ProjectForm />
       </Modal>

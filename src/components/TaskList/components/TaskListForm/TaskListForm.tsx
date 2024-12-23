@@ -7,7 +7,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { format } from 'date-fns';
-import { CalendarIcon, ChevronDown } from 'lucide-react';
+import { CalendarIcon, ChevronDown, MessageCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -23,11 +23,14 @@ import { getProjects } from '@/components/Sidebar/api/getProjects';
 import { ProjectType } from '@/components/Sidebar/components/types';
 import { postTask } from '../../api/postTask';
 import { updateTask } from '../../api/updateTask';
+import { useModal } from '@/hooks/useModal';
+import { ChatScreenModal } from '@/components/ChatScreen/components';
 
 const TaskListForm: React.FC<TaskListFormProps> = ({ task, fetchTasks, onClose }) => {
   const [projects, setProjects] = React.useState<ProjectType[]>([]);
 
   const projectId = useSelector((state: AppState) => state.selectedProjectId);
+  const { isOpen, openModal, closeModal } = useModal();
 
   const assignees = [
     { id: '1', name: 'John Doe', value: 'johndoe', image: 'https://randomuser.me/api/portraits/men/33.jpg', inititals: 'JD' },
@@ -77,7 +80,14 @@ const TaskListForm: React.FC<TaskListFormProps> = ({ task, fetchTasks, onClose }
     onClose();
   }
 
+  const handleChatClick = (e: any) => {
+    e.preventDefault();
+    openModal();
+    console.log('Chat clicked');
+  };
+
   return (
+    <>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
@@ -180,6 +190,7 @@ const TaskListForm: React.FC<TaskListFormProps> = ({ task, fetchTasks, onClose }
             )}
           />
         </div>
+        <div className="flex w-full flex-row items-center justify-between gap-4">
         <FormField
           control={form.control}
           name="assignee"
@@ -224,6 +235,11 @@ const TaskListForm: React.FC<TaskListFormProps> = ({ task, fetchTasks, onClose }
             </FormItem>
           )}
         />
+        <Button onClick={handleChatClick}>
+          <MessageCircle size={16}/>
+          Chat
+        </Button>
+        </div>
         <div className="flex w-full flex-row items-center justify-between gap-4">
           <FormField
             control={form.control}
@@ -273,6 +289,10 @@ const TaskListForm: React.FC<TaskListFormProps> = ({ task, fetchTasks, onClose }
         <Button type="submit">{task === undefined || task === null ? 'Create Task' : 'Update Task'}</Button>
       </form>
     </Form>
+    <ChatScreenModal
+      isOpen={isOpen}
+      closeModal={closeModal} />
+    </>
   );
 };
 
