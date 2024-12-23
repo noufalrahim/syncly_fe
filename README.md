@@ -2,6 +2,12 @@
 
 This is a React.js application using vite.
 
+## Clone the Repository
+Always start by cloning the repository to your local machine (do not download the project files directly) using the following command:
+
+```bash
+git clone https://github.com/noufalrahim/syncly_fe.git
+```
 ## Setup Instructions
 
 ### 1. Install Dependencies
