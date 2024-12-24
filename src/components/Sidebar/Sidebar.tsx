@@ -28,11 +28,11 @@ export default function AppSidebar() {
       url: '/',
       icon: <FaSearch size={20} />,
     },
-    {
-      title: 'Inbox',
-      url: '/inbox',
-      icon: <MdInbox size={20} />,
-    },
+    // {
+    //   title: 'Inbox',
+    //   url: '/inbox',
+    //   icon: <MdInbox size={20} />,
+    // },
     {
       title: 'My Networks',
       url: '/my-network',
@@ -48,16 +48,16 @@ export default function AppSidebar() {
       url: '/today',
       icon: <div className="rounded-md border-2 border-black p-[2px] text-2xs font-semibold">{today.toString().length === 1 ? `0${today}` : today}</div>,
     },
-    {
-      title: 'Upcoming',
-      url: '/upcoming',
-      icon: <Calendar size={20} />,
-    },
-    {
-      title: 'Filters & Tags',
-      url: '/filters',
-      icon: <TagIcon size={20} />,
-    },
+    // {
+    //   title: 'Upcoming',
+    //   url: '/upcoming',
+    //   icon: <Calendar size={20} />,
+    // },
+    // {
+    //   title: 'Filters & Tags',
+    //   url: '/filters',
+    //   icon: <TagIcon size={20} />,
+    // },
     {
       title: 'Notifications',
       url: '/notifications',
@@ -68,6 +68,11 @@ export default function AppSidebar() {
       url: '/tasks',
       icon: <MdTask size={20} />,
     },
+    {
+      title: 'Projects',
+      url: '/projects',
+      icon: <BrainCircuitIcon size={20} />,
+    }
   ];
 
   React.useEffect(() => {
