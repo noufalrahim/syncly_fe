@@ -1,35 +1,48 @@
-import { Search } from '@/components/Search';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+/* eslint-disable react/react-in-jsx-scope */
+import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { MessageCircle } from 'lucide-react';
 
-const badges = ['React JS', 'Problem Solving', 'Frontend Development'];
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Button } from '@/components/ui/button';
+import { NetworkCardProps } from './types';
 
-const NetworkCard = () => {
+const badges = ['React JS', 'Problem Solving', 'Frontend Development', 'Backend Development'];
+
+const NetworkCard = ({network}: NetworkCardProps) => {
   return (
-    <div className="my-3 flex max-w-64 flex-col items-center justify-center gap-2 rounded-lg bg-gray-500 p-5 text-center">
-      <div className="">
-        <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback>
+    <Card>
+      <CardHeader>
+        <Avatar className="h-7 w-7">
+          <AvatarImage src="https://randomuser.me/api/portraits/men/79.jpg" />
         </Avatar>
-      </div>
-      <div>
-        <h1 className="text-white">Name</h1>
-        <p className="text-white">Description</p>
-      </div>
-      <div className="flex w-full cursor-pointer flex-row items-center justify-center gap-2 rounded-lg bg-white p-1 hover:bg-gray-100">
-        <MessageCircle size={24} color="black" />
-        <p className="text-black">Message</p>
-      </div>
-      <div className="w-full">
+        <CardTitle>{network.name}</CardTitle>
+        <CardDescription>About me</CardDescription>
+      </CardHeader>
+      <CardContent>
         {badges.map((badge, i) => (
           <Badge key={i} className="m-1">
             {badge}
           </Badge>
         ))}
-      </div>
-    </div>
+        <Badge className="m-1">
+          +3
+        </Badge>
+      </CardContent>
+      <CardFooter className="flex flex-row gap-2">
+        <Button className="w-full bg-black hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded">
+          <MessageCircle size={24} color="white" />
+          Message
+        </Button>
+      </CardFooter>
+    </Card>
   );
 };
 

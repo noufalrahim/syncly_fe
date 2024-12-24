@@ -1,26 +1,27 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenuButton, SidebarMenuItem } from '../ui/sidebar';
 import { MenuItemsData } from './types';
-import { IoHome, IoPeople } from 'react-icons/io5';
-import { MdInbox, MdTask } from 'react-icons/md';
-import { IoCalendarClear } from 'react-icons/io5';
+import { IoPeople } from 'react-icons/io5';
+import { MdTask } from 'react-icons/md';
 import { useSidebar } from '../ui/sidebar';
-import { BellIcon, BrainCircuitIcon, Calendar, KanbanIcon, MessageCircle, Notebook, PlusIcon, TableIcon, TagIcon } from 'lucide-react';
+import { BellIcon, BrainCircuitIcon,  MessageCircle, PlusIcon } from 'lucide-react';
 import SideBarHeader from './components/SideBarHeader';
 import SideBarFooter from './components/SideBarFooter';
 import { CollapsibleContents, ProjectForm } from './components';
 import { ProjectType } from './components/types';
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { Modal } from '../Modal';
 import { getProjects } from './api/getProjects';
 import { FaSearch } from 'react-icons/fa';
 
 export default function AppSidebar() {
   const { open } = useSidebar();
-  const [openProject, setOpenProject] = React.useState<string | null>('1');
-  const [openModal, setOpenModal] = React.useState<boolean>(false);
-  const [projectsData, setProjectsData] = React.useState<ProjectType[]>([]);
+  const [openProject, setOpenProject] = useState<string | null>('1');
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [projectsData, setProjectsData] = useState<ProjectType[]>([]);
 
   const today = new Date().getDate();
+  console.log(setOpenProject);
 
   const menuItems: MenuItemsData[] = [
     {
@@ -28,11 +29,11 @@ export default function AppSidebar() {
       url: '/',
       icon: <FaSearch size={20} />,
     },
-    {
-      title: 'Inbox',
-      url: '/inbox',
-      icon: <MdInbox size={20} />,
-    },
+    // {
+    //   title: 'Inbox',
+    //   url: '/inbox',
+    //   icon: <MdInbox size={20} />,
+    // },
     {
       title: 'My Networks',
       url: '/my-network',
@@ -48,16 +49,16 @@ export default function AppSidebar() {
       url: '/today',
       icon: <div className="rounded-md border-2 border-black p-[2px] text-2xs font-semibold">{today.toString().length === 1 ? `0${today}` : today}</div>,
     },
-    {
-      title: 'Upcoming',
-      url: '/upcoming',
-      icon: <Calendar size={20} />,
-    },
-    {
-      title: 'Filters & Tags',
-      url: '/filters',
-      icon: <TagIcon size={20} />,
-    },
+    // {
+    //   title: 'Upcoming',
+    //   url: '/upcoming',
+    //   icon: <Calendar size={20} />,
+    // },
+    // {
+    //   title: 'Filters & Tags',
+    //   url: '/filters',
+    //   icon: <TagIcon size={20} />,
+    // },
     {
       title: 'Notifications',
       url: '/notifications',
@@ -68,9 +69,14 @@ export default function AppSidebar() {
       url: '/tasks',
       icon: <MdTask size={20} />,
     },
+    {
+      title: 'Projects',
+      url: '/projects',
+      icon: <BrainCircuitIcon size={20} />,
+    }
   ];
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchProjects = async () => {
       const projects = await getProjects();
       setProjectsData(projects);

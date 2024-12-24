@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { EventsCardProps, TaskStatus } from './types';
 import { cn } from '@/lib/utils';
 import { useSelector } from 'react-redux';

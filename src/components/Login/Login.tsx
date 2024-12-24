@@ -1,7 +1,67 @@
+/* eslint-disable react/react-in-jsx-scope */
 import React from 'react';
-import { Navbar } from '../Navbar';
-
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs";
+import { Navbar } from "../Navbar";
+import { useState } from "react";
+import { postLogin } from "./api/Login";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { LoadingSpinner } from "../LoadingSpinner";
 const Login = () => {
+    const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+
+
+  const navigate = useNavigate();
+
+  const [loginForm, setLoginForm] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleInputChange = (e: { target: { id: string; value: string; }; }) => {
+    const { id, value } = e.target;
+    setLoginForm((prevState) => ({
+      ...prevState,
+      [id]: value,
+    }));
+  };
+
+  const handleLogin = async () => {
+    try {
+      setIsLoading(true);
+      const response = await postLogin(loginForm);
+      if (response.status === 204) {
+        console.log("Login failed");
+      }
+      else if (response.status === 200) {
+        dispatch({
+          type: 'auth/user',
+          payload: {
+            _id: response.data.data._id,
+            username: response.data.data.username,
+            name: response.data.data.name,
+            image: response.data.data.image,
+          },
+        });
+
+        navigate('/dashboard');
+      }
+      setIsLoading(false);
+    }
+    catch (error) {
+      console.log("Login failed", error);
+      setIsLoading(false);
+    }
+  };
+
   return (
     <>
       <Navbar className="bg-black" />
@@ -30,7 +90,6 @@ const Login = () => {
         </div>
       </div>
     </>
-  );
-};
+    )
 
 export default Login;

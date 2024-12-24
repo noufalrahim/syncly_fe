@@ -8,6 +8,7 @@ const MIND_MAP_PATH = '/mindmap';
 const MY_NETWORK_PATH = '/my-network';
 const MESSAGES_PATH = '/messages';
 const DASHBOARD_PATH = '/dashboard';
+const PROJECTS_PATH = '/projects';
 
 const paths = {
   ROOT_PATH,
@@ -20,6 +21,7 @@ const paths = {
   MY_NETWORK_PATH,
   MESSAGES_PATH,
   DASHBOARD_PATH,
+  PROJECTS_PATH,
 } as const;
 
 export default paths;

@@ -1,5 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { AppBarProps } from './types';
+import { Button } from '../ui/button';
 
 const AppBar: React.FC<AppBarProps> = ({ title, description, buttons }) => {
   return (
@@ -12,10 +13,10 @@ const AppBar: React.FC<AppBarProps> = ({ title, description, buttons }) => {
         {buttons &&
           buttons.length > 0 &&
           buttons.map((btn, index) => (
-            <button key={index} onClick={btn.onClick} className="flex flex-row items-center justify-between gap-2 rounded-md border border-black px-2 py-1 transition duration-100 hover:bg-black hover:text-white">
+            <Button key={index} onClick={btn.onClick} className="flex flex-row items-center justify-between gap-2 rounded-md px-2 py-1 hover:bg-gray-500 bg-black text-white">
               <span className="ml-2">{btn.title}</span>
               {btn.icon}
-            </button>
+            </Button>
           ))}
       </div>
     </div>

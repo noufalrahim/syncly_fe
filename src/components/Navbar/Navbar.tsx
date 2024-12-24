@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable react/react-in-jsx-scope */
+import { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
@@ -26,6 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
         <li className="p-4">
           <Link to="/signup">Sign Up</Link>
         </li>
+
       </ul>
       <div onClick={handleNav} className="block md:hidden">
         {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
@@ -41,6 +43,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
         <li className="p-4">
           <Link to="/signup">Sign Up</Link>
         </li>
+
       </ul>
     </div>
   );
