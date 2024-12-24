@@ -1,5 +1,6 @@
 const ROOT_PATH = '/';
 const LOGIN_PATH = '/login';
+const SIGNUP_PATH = '/signup/';
 const PROJECT_OVERVIEW_PATH = '/kanban';
 const SCHEDULER_PATH = '/calendar';
 const TABLE_PATH = '/table';
@@ -11,6 +12,7 @@ const DASHBOARD_PATH = '/dashboard';
 const paths = {
   ROOT_PATH,
   LOGIN_PATH,
+  SIGNUP_PATH,
   PROJECT_OVERVIEW_PATH,
   SCHEDULER_PATH,
   TABLE_PATH,

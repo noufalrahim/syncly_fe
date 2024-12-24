@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import { ClerkProvider } from '@clerk/clerk-react';
-import { Landing } from './components/Landing';
 import { Layout } from './components/Layout';
 import Router from './router/Router/Router';
 
@@ -18,7 +17,6 @@ function App() {
           <Layout>
             <Router />
           </Layout>
-          <Landing />
         </BrowserRouter>
       </ClerkProvider>
     </Provider>
