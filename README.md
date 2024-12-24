@@ -19,7 +19,9 @@ To get started, first install the necessary dependencies:
 ```bash
 npm install
 ```
+
 if any error occurs, run:
+
 ```bash
 npm install --legacy-peer-deps
 ```

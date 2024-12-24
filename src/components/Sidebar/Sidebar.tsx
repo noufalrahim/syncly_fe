@@ -4,7 +4,7 @@ import { MenuItemsData } from './types';
 import { IoPeople } from 'react-icons/io5';
 import { MdTask } from 'react-icons/md';
 import { useSidebar } from '../ui/sidebar';
-import { BellIcon, BrainCircuitIcon,  MessageCircle, PlusIcon } from 'lucide-react';
+import { BellIcon, BrainCircuitIcon, MessageCircle, PlusIcon } from 'lucide-react';
 import SideBarHeader from './components/SideBarHeader';
 import SideBarFooter from './components/SideBarFooter';
 import { CollapsibleContents, ProjectForm } from './components';
@@ -73,7 +73,7 @@ export default function AppSidebar() {
       title: 'Projects',
       url: '/projects',
       icon: <BrainCircuitIcon size={20} />,
-    }
+    },
   ];
 
   useEffect(() => {

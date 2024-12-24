@@ -1,10 +1,9 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { SidebarFooter, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '../../ui/sidebar';
-import { DropdownMenu} from '../../ui/dropdown-menu';
+import { DropdownMenu } from '../../ui/dropdown-menu';
 import { User2 } from 'lucide-react';
 // import { createUser, UserType } from '../api/createUser';
 const SideBarFooter = () => {
-
   const user = false;
 
   // const handleSignOut = async () => {
@@ -52,7 +51,7 @@ const SideBarFooter = () => {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton onClick={() => console.log('Sign in')}>
-              <a href='/login' className='flex items-center gap-2 w-full h-full p-2 hover:bg-gray-200 py-4 rounded-md'>
+              <a href="/login" className="flex h-full w-full items-center gap-2 rounded-md p-2 py-4 hover:bg-gray-200">
                 <User2 className="h-5 w-5 rounded-full" />
                 Sign in
               </a>
