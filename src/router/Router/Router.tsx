@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { useRoutePaths } from '@/hooks/useRoutePaths';
 import { Scheduler } from '@/components/Scheduler';
 import { TaskList } from '@/components/TaskList';
@@ -9,9 +9,17 @@ import { MyNetwork } from '@/components/MyNetwork';
 import { ChatScreen } from '@/components/ChatScreen';
 import { Landing } from '@/components/Landing';
 import { Layout } from '@/components/Layout';
+import { Projects } from '@/components/Projects';
+import { useSelector } from 'react-redux';
+import { AppState } from '@/redux/store';
 
 function Router() {
-  const { ROOT_PATH, PROJECT_OVERVIEW_PATH, SCHEDULER_PATH, TABLE_PATH, LOGIN_PATH, MY_NETWORK_PATH, MESSAGES_PATH, DASHBOARD_PATH } = useRoutePaths();
+  const { ROOT_PATH, PROJECT_OVERVIEW_PATH, SCHEDULER_PATH, TABLE_PATH, LOGIN_PATH, MY_NETWORK_PATH, MESSAGES_PATH, DASHBOARD_PATH, PROJECTS_PATH } = useRoutePaths();
+  const authUser = useSelector((state: AppState) => {
+    return state.authUser;
+  });
+
+  console.log('auth', authUser);
   return (
     <Routes>
       <Route path={ROOT_PATH} element={<Landing />} />
@@ -33,6 +41,7 @@ function Router() {
       <Route path={MY_NETWORK_PATH} element={<Layout><MyNetwork /></Layout>} />
       <Route path={LOGIN_PATH} element={<Login />} />
       <Route path={MESSAGES_PATH} element={<Layout><ChatScreen /></Layout>} />
+      <Route path={PROJECTS_PATH} element={<Layout><Projects /></Layout>} />
       {/* <Route path="*" element={<Navigate to={LOGIN_PATH} />} /> */}
     </Routes>
   );

@@ -1,25 +1,22 @@
 import { SidebarFooter, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '../../ui/sidebar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../../ui/dropdown-menu';
 import { ChevronUp, User2 } from 'lucide-react';
-import { useUser } from '@clerk/clerk-react';
-import { SignInButton } from '@clerk/clerk-react';
-import { useAuth } from '@clerk/clerk-react';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { createUser, UserType } from '../api/createUser';
 const SideBarFooter = () => {
-  const { user } = useUser();
-  const { signOut } = useAuth();
   const dispatch = useDispatch();
 
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-      console.log('Signed out successfully!');
-    } catch (error) {
-      console.error('Sign-out failed:', error instanceof Error ? error.message : error);
-    }
-  };
+  const user = false;
+
+  // const handleSignOut = async () => {
+  //   try {
+  //     await signOut();
+  //     console.log('Signed out successfully!');
+  //   } catch (error) {
+  //     console.error('Sign-out failed:', error instanceof Error ? error.message : error);
+  //   }
+  // };
 
   const postUserData = async (userData: UserType) => {
     const postResp = await createUser({
@@ -31,34 +28,36 @@ const SideBarFooter = () => {
     console.log('Post response:', postResp);
   };
 
-  React.useEffect(() => {
-    if (user) {
-      console.log('User:', user);
-      dispatch({
-        type: 'auth/user',
-        payload: {
-          username: user.username,
-          name: user.fullName,
-          image: user.imageUrl,
-        },
-      });
+  // React.useEffect(() => {
+  //   if (user) {
+  //     console.log('User:', user);
+  //     dispatch({
+  //       type: 'auth/user',
+  //       payload: {
+  //         username: user.username,
+  //         name: user.fullName,
+  //         image: user.imageUrl,
+  //       },
+  //     });
 
-      postUserData({
-        username: user.username || '',
-        fullName: user.fullName || '',
-        imageUrl: user.imageUrl,
-      });
-    }
-  }, [user]);
+  //     postUserData({
+  //       username: user.username || '',
+  //       fullName: user.fullName || '',
+  //       imageUrl: user.imageUrl,
+  //     });
+  //   }
+  // }, [user]);
 
   if (!user) {
     return (
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton>
-              <User2 className="h-8 w-8 rounded-full" />
-              <SignInButton />
+            <SidebarMenuButton onClick={() => console.log('Sign in')}>
+              <a href='/login' className='flex items-center gap-2 w-full h-full p-2 hover:bg-gray-200 py-4 rounded-md'>
+                <User2 className="h-5 w-5 rounded-full" />
+                Sign in
+              </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
@@ -71,7 +70,7 @@ const SideBarFooter = () => {
       <SidebarMenu>
         <SidebarMenuItem>
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
+            {/* <DropdownMenuTrigger asChild>
               <SidebarMenuButton>
                 {user.imageUrl ? <img src={user.imageUrl} alt={user.firstName || ''} className="h-6 w-6 rounded-full" /> : <User2 className="h-8 w-8 rounded-full" />}
                 {user.fullName || 'Anonymous'}
@@ -85,7 +84,7 @@ const SideBarFooter = () => {
               <DropdownMenuItem onClick={handleSignOut}>
                 <span>Sign out</span>
               </DropdownMenuItem>
-            </DropdownMenuContent>
+            </DropdownMenuContent> */}
           </DropdownMenu>
         </SidebarMenuItem>
       </SidebarMenu>
