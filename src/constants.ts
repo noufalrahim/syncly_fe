@@ -1,6 +1,6 @@
 export let BASE_URL = '';
-const ENVIRONMENT_DEVELOPMENT: 'development' = 'development';
-const ENVIRONMENT_PRODUCTION: 'production' = 'production';
+const ENVIRONMENT_DEVELOPMENT = 'development' as const;
+const ENVIRONMENT_PRODUCTION = 'production' as const;
 const environment: string = ENVIRONMENT_PRODUCTION;
 
 if (environment === ENVIRONMENT_DEVELOPMENT) {

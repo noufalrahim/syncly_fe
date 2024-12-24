@@ -1,3 +1,4 @@
+import React from 'react';
 import { ReactNode, Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 

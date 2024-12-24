@@ -10,6 +10,7 @@ import { TaskListForm } from '@/components/TaskList/components/TaskListForm';
 
 const Board = () => {
   const [cards, setCards] = useState<Task[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [columnHeaders, setColumnHeaders] = useState<any[]>([]);
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [selectedCard, setSelectedCard] = useState<Task | null>(null);

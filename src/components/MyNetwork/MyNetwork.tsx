@@ -4,8 +4,6 @@ import { NetworkCard } from './components';
 import { Modal } from '../Modal';
 import { useModal } from '@/hooks/useModal';
 import { Search } from '../Search';
-import { useSelector } from 'react-redux';
-import { AppState } from '@/redux/store';
 import React, { useState } from 'react';
 import { getNetworks } from './api/getNetworks';
 

@@ -1,9 +1,10 @@
+import React from 'react';
 import 'react-chat-elements/dist/main.css';
 import { MessageBox } from 'react-chat-elements';
 import { ChatListComponent } from './components';
 import { Input } from 'react-chat-elements';
 import { Button } from '../ui/button';
-import { Paperclip, PinIcon } from 'lucide-react';
+import { Paperclip } from 'lucide-react';
 
 const ChatScreen = () => {
   return (

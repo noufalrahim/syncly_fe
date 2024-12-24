@@ -1,3 +1,4 @@
+import React from 'react';
 import { Dispatch, SetStateAction, useState, DragEvent } from 'react';
 import { CardType } from './types';
 import { FaFire } from 'react-icons/fa';

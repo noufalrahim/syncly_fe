@@ -1,3 +1,4 @@
+import React from 'react';
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -33,7 +34,7 @@ const Login = () => {
     password: "",
   });
 
-  const handleInputChange = (e: { target: { id: any; value: any; }; }) => {
+  const handleInputChange = (e: { target: { id: string; value: string; }; }) => {
     const { id, value } = e.target;
     setLoginForm((prevState) => ({
       ...prevState,

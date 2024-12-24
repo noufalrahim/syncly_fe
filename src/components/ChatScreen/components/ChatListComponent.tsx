@@ -1,3 +1,4 @@
+import React from 'react';
 import { ChatList } from 'react-chat-elements';
 
 const ChatListComponent = () => {

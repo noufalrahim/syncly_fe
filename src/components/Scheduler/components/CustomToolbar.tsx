@@ -1,8 +1,10 @@
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { format } from 'date-fns';
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CustomToolbar = ({ date, onNavigate }: any) => {
   const monthList = [
     {

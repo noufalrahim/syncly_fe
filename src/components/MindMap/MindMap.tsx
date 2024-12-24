@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { ReactFlow, MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';
@@ -10,7 +10,6 @@ import { NodeTypes } from './types';
 import { useSelector } from 'react-redux';
 import { AppState } from '@/redux/store';
 import { getNodes } from './api/getNodes';
-import { updateNodes } from './api/updateNodes';
 
 const edgeTypes = {
   dashed: ConnectLine,
@@ -20,7 +19,7 @@ const nodeTypes = {
   node: Node,
 };
 
-const initialNodes = [{ id: '1', type: 'node', position: { x: 0, y: 0 }, data: { label: '1', color: 'red' } }];
+// const initialNodes = [{ id: '1', type: 'node', position: { x: 0, y: 0 }, data: { label: '1', color: 'red' } }];
 
 const initialEdges = [{ id: 'e1-2', source: '1', target: '2', type: 'dashed' }];
 
@@ -30,8 +29,9 @@ const MindMap = () => {
 
   const projectId = useSelector((state: AppState) => state.selectedProjectId);
 
-  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+  // const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onConnect = useCallback((params: any) => setEdges((eds) => addEdge({ ...params, type: 'dashed' }, eds)), [setEdges]);
 
   useEffect(() => {
@@ -68,8 +68,9 @@ const MindMap = () => {
   //   return () => window.removeEventListener('resize', handleResize);
   // }, [setNodes]);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleNodesChange = async (node: NodeTypes | any) => {
-    const patchResp = await updateNodes(node, projectId, node[0].id);
+    // const patchResp = await updateNodes(node, projectId, node[0].id);
     onNodesChange(node);
   };
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useRoutePaths } from '@/hooks/useRoutePaths';
 import { Scheduler } from '@/components/Scheduler';

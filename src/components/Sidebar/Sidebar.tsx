@@ -1,10 +1,9 @@
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenuButton, SidebarMenuItem } from '../ui/sidebar';
 import { MenuItemsData } from './types';
-import { IoHome, IoPeople } from 'react-icons/io5';
-import { MdInbox, MdTask } from 'react-icons/md';
-import { IoCalendarClear } from 'react-icons/io5';
+import { IoPeople } from 'react-icons/io5';
+import { MdTask } from 'react-icons/md';
 import { useSidebar } from '../ui/sidebar';
-import { BellIcon, BrainCircuitIcon, Calendar, KanbanIcon, MessageCircle, Notebook, PlusIcon, TableIcon, TagIcon } from 'lucide-react';
+import { BellIcon, BrainCircuitIcon,  MessageCircle, PlusIcon } from 'lucide-react';
 import SideBarHeader from './components/SideBarHeader';
 import SideBarFooter from './components/SideBarFooter';
 import { CollapsibleContents, ProjectForm } from './components';
@@ -21,6 +20,7 @@ export default function AppSidebar() {
   const [projectsData, setProjectsData] = React.useState<ProjectType[]>([]);
 
   const today = new Date().getDate();
+  console.log(setOpenProject);
 
   const menuItems: MenuItemsData[] = [
     {

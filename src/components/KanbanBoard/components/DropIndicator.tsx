@@ -1,3 +1,4 @@
+import React from 'react';
 import { DropIndicatorProps } from './types';
 
 const DropIndicator = ({ beforeId, column }: DropIndicatorProps) => {

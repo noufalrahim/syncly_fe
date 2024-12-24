@@ -4,13 +4,10 @@ import { format, parse, startOfWeek, getDay } from 'date-fns';
 import { enUS } from 'date-fns/locale';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { CustomToolbar, EventsCard } from './components';
-import { TaskStatus } from './components/types';
 import { AppBar } from '../AppBar';
-import { PlusIcon } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import { AppState } from '@/redux/store';
 import { getEvents } from './api/getEvents';
-import { Task } from '../TaskList/types';
 import { EventType } from './types';
 
 const locales = {

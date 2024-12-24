@@ -80,6 +80,7 @@ const TaskListForm: React.FC<TaskListFormProps> = ({ task, fetchTasks, onClose }
     onClose();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleChatClick = (e: any) => {
     e.preventDefault();
     openModal();

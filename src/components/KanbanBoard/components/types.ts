@@ -26,7 +26,7 @@ export type ColumnProps = {
 };
 
 export type CardProps = Task & {
-  handleDragStart: Function;
+  handleDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
   handleDelete: (id: string | number) => void;
   handleOnClick: () => void;
 };

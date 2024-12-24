@@ -1,11 +1,10 @@
+import React from 'react';
 import { useState, DragEvent } from 'react';
 import { ColumnProps } from './types';
 import Card from './Card';
 import DropIndicator from './DropIndicator';
 import AddCard from './AddCard';
 import { Task } from '@/components/TaskList/types';
-import { Modal } from '@/components/Modal';
-import { TaskListForm } from '@/components/TaskList/components/TaskListForm';
 import { updateTask } from '../api/updateTasks';
 
 const Column = ({ title, cards, column, setCards, handleOnClick, projectId }: ColumnProps) => {
