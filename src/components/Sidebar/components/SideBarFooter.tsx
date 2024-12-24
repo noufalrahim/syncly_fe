@@ -1,11 +1,9 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { SidebarFooter, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '../../ui/sidebar';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../../ui/dropdown-menu';
-import { ChevronUp, User2 } from 'lucide-react';
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { createUser, UserType } from '../api/createUser';
+import { DropdownMenu} from '../../ui/dropdown-menu';
+import { User2 } from 'lucide-react';
+// import { createUser, UserType } from '../api/createUser';
 const SideBarFooter = () => {
-  const dispatch = useDispatch();
 
   const user = false;
 
@@ -18,15 +16,15 @@ const SideBarFooter = () => {
   //   }
   // };
 
-  const postUserData = async (userData: UserType) => {
-    const postResp = await createUser({
-      username: userData.username,
-      fullName: userData.fullName,
-      imageUrl: userData.imageUrl,
-    });
+  // const postUserData = async (userData: UserType) => {
+  //   const postResp = await createUser({
+  //     username: userData.username,
+  //     fullName: userData.fullName,
+  //     imageUrl: userData.imageUrl,
+  //   });
 
-    console.log('Post response:', postResp);
-  };
+  //   console.log('Post response:', postResp);
+  // };
 
   // React.useEffect(() => {
   //   if (user) {

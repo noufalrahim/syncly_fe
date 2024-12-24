@@ -1,8 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import { SideBarHeaderProps } from './types';
-import { SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarTrigger } from '../../../components/ui/sidebar';
+import { SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarTrigger } from '../../../components/ui/sidebar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../../ui/dropdown-menu';
-import { ChevronDown } from 'lucide-react';
 const SideBarHeader: React.FC<SideBarHeaderProps> = ({ title, open }) => {
   return (
     <>

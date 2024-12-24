@@ -1,5 +1,4 @@
-import React from 'react';
-
+/* eslint-disable react/react-in-jsx-scope */
 const Newsletter = () => {
   return (
     <div className="w-full px-4 py-16 text-white">

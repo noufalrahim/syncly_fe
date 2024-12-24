@@ -1,12 +1,12 @@
 import { Task } from '@/components/TaskList/types';
 import { Dispatch, SetStateAction } from 'react';
 
-// export type CardType = {
-//   id: string;
-//   title: string;
-//   description?: string;
-//   column: string;
-// };
+export type CardType = {
+  id: string;
+  title: string;
+  description?: string;
+  column: string;
+};
 
 export type ColumnType = 'backlog' | 'todo' | 'in-progress' | 'done';
 
@@ -26,6 +26,7 @@ export type ColumnProps = {
 };
 
 export type CardProps = Task & {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   handleDragStart: Function;
   handleDelete: (id: string | number) => void;
   handleOnClick: () => void;

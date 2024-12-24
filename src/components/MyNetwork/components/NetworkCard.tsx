@@ -1,5 +1,5 @@
-import { Search } from '@/components/Search';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+/* eslint-disable react/react-in-jsx-scope */
+import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { MessageCircle } from 'lucide-react';
 

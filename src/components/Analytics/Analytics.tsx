@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/react-in-jsx-scope */
 import Laptop from '../../../public/laptop.jpg';
 
 const Analytics = () => {
