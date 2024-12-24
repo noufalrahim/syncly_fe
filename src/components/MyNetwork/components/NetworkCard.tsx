@@ -3,20 +3,13 @@ import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { MessageCircle } from 'lucide-react';
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { NetworkCardProps } from './types';
 
 const badges = ['React JS', 'Problem Solving', 'Frontend Development', 'Backend Development'];
 
-const NetworkCard = ({network}: NetworkCardProps) => {
+const NetworkCard = ({ network }: NetworkCardProps) => {
   return (
     <Card>
       <CardHeader>
@@ -32,12 +25,10 @@ const NetworkCard = ({network}: NetworkCardProps) => {
             {badge}
           </Badge>
         ))}
-        <Badge className="m-1">
-          +3
-        </Badge>
+        <Badge className="m-1">+3</Badge>
       </CardContent>
       <CardFooter className="flex flex-row gap-2">
-        <Button className="w-full bg-black hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded">
+        <Button className="w-full rounded bg-black px-4 py-2 font-semibold text-white hover:bg-gray-700">
           <MessageCircle size={24} color="white" />
           Message
         </Button>

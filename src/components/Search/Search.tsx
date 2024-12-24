@@ -1,4 +1,3 @@
-
 /* eslint-disable react/react-in-jsx-scope */
 import { Calculator, Calendar, CreditCard, Settings, Smile, User } from 'lucide-react';
 

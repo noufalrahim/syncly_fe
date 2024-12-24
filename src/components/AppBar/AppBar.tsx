@@ -13,7 +13,7 @@ const AppBar: React.FC<AppBarProps> = ({ title, description, buttons }) => {
         {buttons &&
           buttons.length > 0 &&
           buttons.map((btn, index) => (
-            <Button key={index} onClick={btn.onClick} className="flex flex-row items-center justify-between gap-2 rounded-md px-2 py-1 hover:bg-gray-500 bg-black text-white">
+            <Button key={index} onClick={btn.onClick} className="flex flex-row items-center justify-between gap-2 rounded-md bg-black px-2 py-1 text-white hover:bg-gray-500">
               <span className="ml-2">{btn.title}</span>
               {btn.icon}
             </Button>

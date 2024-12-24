@@ -9,12 +9,10 @@ if (environment === ENVIRONMENT_DEVELOPMENT) {
   BASE_URL = 'https://sustainlink-server.vercel.app/api';
 }
 
-
 export const oraganisation = {
   id: '123',
   name: 'Oragantion 1',
   disabled: true,
 };
-
 
 export const loggedInUser = {};
