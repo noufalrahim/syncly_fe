@@ -1,6 +1,5 @@
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import './App.css';
-import { Layout } from './components/Layout';
 import { BrowserRouter } from 'react-router-dom';
 import Router from './router/Router/Router';
 import { Provider } from 'react-redux';
@@ -14,9 +13,7 @@ function App() {
     <Provider store={store}>
       <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
         <BrowserRouter>
-          <Layout>
-            <Router />
-          </Layout>
+          <Router />
         </BrowserRouter>
       </ClerkProvider>
     </Provider>
