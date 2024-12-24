@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/react-in-jsx-scope */
 import Single from '../../../public/single.png';
 import Double from '../../../public/double.png';
 import Triple from '../../../public/triple.png';

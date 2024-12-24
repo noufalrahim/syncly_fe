@@ -1,10 +1,11 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { FilterIcon, SearchIcon } from 'lucide-react';
 import { AppBar } from '../AppBar';
 import { NetworkCard } from './components';
 import { Modal } from '../Modal';
 import { useModal } from '@/hooks/useModal';
 import { Search } from '../Search';
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getNetworks } from './api/getNetworks';
 
 const MyNetwork = () => {
@@ -13,7 +14,7 @@ const MyNetwork = () => {
 
   const authUser = JSON.parse(localStorage.getItem('authUser') || '{}');
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchNetworks = async () => {
       const response = await getNetworks(authUser._id);
       console.log(response.data);

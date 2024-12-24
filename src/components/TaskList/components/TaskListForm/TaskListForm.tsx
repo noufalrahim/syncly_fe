@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
-import React from 'react';
+import * as React from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Check } from 'lucide-react';
 import { TaskListFormProps } from './types';
@@ -72,7 +72,7 @@ const TaskListForm: React.FC<TaskListFormProps> = ({ task, fetchTasks, onClose }
       const resp = await postTask(values, projectId);
       console.log(resp);
     } else {
-      const taskId = parseInt(task.id.toString());
+      const taskId = task?.id ? parseInt(task.id.toString()) : 0;
       const resp = await updateTask(values, projectId, taskId);
       console.log(resp);
     }

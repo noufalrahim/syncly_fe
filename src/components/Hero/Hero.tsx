@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/react-in-jsx-scope */
 import { useNavigate } from "react-router-dom";
 
 const Hero = () => {

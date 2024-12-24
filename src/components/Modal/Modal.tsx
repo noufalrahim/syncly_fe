@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { ModalProps } from './types';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 

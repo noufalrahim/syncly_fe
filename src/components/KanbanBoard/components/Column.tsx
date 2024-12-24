@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/react-in-jsx-scope */
 import { useState, DragEvent } from 'react';
 import { ColumnProps } from './types';
 import Card from './Card';

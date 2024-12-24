@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable react/react-in-jsx-scope */
+import { useEffect, useState } from 'react';
 import Column from './Column';
 import { getColumnHeaders } from '../api/getColumnHeaders';
 import { getTasks } from '../api/getTasks';
@@ -32,7 +33,7 @@ const Board = () => {
     setCards(cards);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchColumnHeaders();
     fetchCards();
   }, [projectId]);

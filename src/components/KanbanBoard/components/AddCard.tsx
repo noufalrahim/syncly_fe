@@ -1,4 +1,5 @@
-import React from 'react';
+
+/* eslint-disable react/react-in-jsx-scope */
 import { FormEvent, useState } from 'react';
 import { AddCardProps } from './types';
 import { motion } from 'framer-motion';

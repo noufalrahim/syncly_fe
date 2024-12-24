@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect } from 'react';
+/* eslint-disable react/react-in-jsx-scope */
+import { useCallback, useEffect } from 'react';
 import { ReactFlow, MiniMap, Controls, Background, useNodesState, useEdgesState, addEdge, BackgroundVariant } from '@xyflow/react';
 
 import '@xyflow/react/dist/style.css';

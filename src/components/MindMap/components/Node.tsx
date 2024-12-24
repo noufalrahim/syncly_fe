@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/react-in-jsx-scope */
 import { Handle, Position } from '@xyflow/react';
 import { cn } from '@/lib/utils';
 

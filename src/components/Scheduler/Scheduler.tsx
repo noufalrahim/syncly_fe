@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable react/react-in-jsx-scope */
+import { useState, useEffect } from 'react';
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
 import { format, parse, startOfWeek, getDay } from 'date-fns';
 import { enUS } from 'date-fns/locale';
@@ -23,13 +24,13 @@ const localizer = dateFnsLocalizer({
 });
 
 const Scheduler = () => {
-  const [value, setValue] = React.useState(new Date());
+  const [value, setValue] = useState(new Date());
 
-  const [events, setEvents] = React.useState<EventType[]>([]);
+  const [events, setEvents] = useState<EventType[]>([]);
 
   const projectData = useSelector((state: AppState) => state);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchEvents = async () => {
       const events: EventType[] = await getEvents(projectData.selectedProjectId);
       setEvents(events);

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import AppSidebar from '../Sidebar/Sidebar';
 import { LayoutProps } from './types';
 import { SidebarProvider } from '../ui/sidebar';

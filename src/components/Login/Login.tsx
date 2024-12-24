@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/react-in-jsx-scope */
 import { Button } from "@/components/ui/button";
 import {
   Card,

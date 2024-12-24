@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react/react-in-jsx-scope */
+import { useEffect, useState } from "react";
 import { AppBar } from "../AppBar";
 import { ProjectsCard } from "./components/ProjectsCard";
 import { getProjects } from "./api/getProjects";
@@ -6,7 +7,7 @@ import { getProjects } from "./api/getProjects";
 const Projects = () => {
     const [projectsData, setProjectsData] = useState([]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         const fetchData = async () => {
             try {
                 const resp = await getProjects();

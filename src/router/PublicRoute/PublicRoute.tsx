@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/react-in-jsx-scope */
 import { ReactNode, Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 

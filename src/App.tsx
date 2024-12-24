@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/react-in-jsx-scope */
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';

@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/react-in-jsx-scope */
 import { Analytics } from '../Analytics';
 import { Cards } from '../Cards';
 import { Footer } from '../Footer';

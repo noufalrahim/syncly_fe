@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/react-in-jsx-scope */
 import { SidebarFooter, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '../../ui/sidebar';
 import { DropdownMenu} from '../../ui/dropdown-menu';
 import { User2 } from 'lucide-react';

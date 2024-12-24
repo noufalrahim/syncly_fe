@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/react-in-jsx-scope */
 import { Dispatch, SetStateAction, useState, DragEvent } from 'react';
 import { CardType } from './types';
 import { FaFire } from 'react-icons/fa';

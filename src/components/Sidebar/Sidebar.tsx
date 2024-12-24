@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenuButton, SidebarMenuItem } from '../ui/sidebar';
 import { MenuItemsData } from './types';
 import { IoPeople } from 'react-icons/io5';
@@ -8,16 +9,16 @@ import SideBarHeader from './components/SideBarHeader';
 import SideBarFooter from './components/SideBarFooter';
 import { CollapsibleContents, ProjectForm } from './components';
 import { ProjectType } from './components/types';
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { Modal } from '../Modal';
 import { getProjects } from './api/getProjects';
 import { FaSearch } from 'react-icons/fa';
 
 export default function AppSidebar() {
   const { open } = useSidebar();
-  const [openProject, setOpenProject] = React.useState<string | null>('1');
-  const [openModal, setOpenModal] = React.useState<boolean>(false);
-  const [projectsData, setProjectsData] = React.useState<ProjectType[]>([]);
+  const [openProject, setOpenProject] = useState<string | null>('1');
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  const [projectsData, setProjectsData] = useState<ProjectType[]>([]);
 
   const today = new Date().getDate();
   console.log(setOpenProject);
@@ -75,7 +76,7 @@ export default function AppSidebar() {
     }
   ];
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchProjects = async () => {
       const projects = await getProjects();
       setProjectsData(projects);

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { SideBarHeaderProps } from './types';
 import { SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarTrigger } from '../../../components/ui/sidebar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../../ui/dropdown-menu';
