@@ -33,6 +33,7 @@ export default {
         appBackground: 'white',
         appBackgroundDark: '#141414',
         mutedDark: 'gray',
+        appPrimary: '#00df9a',
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',

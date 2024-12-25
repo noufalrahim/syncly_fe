@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className="mx-auto grid max-w-[1240px] gap-8 px-4 py-16 text-gray-300 lg:grid-cols-3">
       <div>
-        <h1 className="w-full text-3xl font-bold text-[#00df9a]">REACT.</h1>
+        <h1 className="w-full text-3xl font-bold text-[#00df9a]">SustainLink</h1>
         <p className="py-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id odit ullam iste repellat consequatur libero reiciendis, blanditiis accusantium.</p>
         <div className="my-6 flex justify-between md:w-[75%]">
           <FaFacebookSquare size={30} />
