@@ -9,6 +9,7 @@ import { ChatScreen } from '@/components/ChatScreen';
 import { Landing } from '@/components/Landing';
 import Login from '../../components/Login/Login';
 import Signup from '../../components/Signup/Signup';
+import ProjectDescription from '../../components/ProjectDescription/ProjectDescription';
 
 function Router() {
   const { ROOT_PATH, PROJECT_OVERVIEW_PATH, SCHEDULER_PATH, TABLE_PATH, LOGIN_PATH, SIGNUP_PATH, MY_NETWORK_PATH, MESSAGES_PATH, DASHBOARD_PATH } = useRoutePaths();
@@ -25,6 +26,7 @@ function Router() {
       <Route path={SIGNUP_PATH} element={<Signup />} /> {/* Add this */}
       <Route path={MESSAGES_PATH} element={<ChatScreen />} />
       <Route path="*" element={<Navigate to={ROOT_PATH} />} />
+      <Route path="/project-description" element={<ProjectDescription />} />
     </Routes>
   );
 }
