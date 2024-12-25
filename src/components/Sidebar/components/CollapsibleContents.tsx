@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { IoCalendarClear } from 'react-icons/io5';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
@@ -6,17 +6,10 @@ import { SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButto
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { ChevronDown, FileCode, KanbanIcon, MessageCircleCode, TableIcon } from 'lucide-react';
 import { CollapsibleContentsProps } from './types';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppState } from '@/redux/store';
-import { title } from 'process';
+import { useDispatch } from 'react-redux';
 
 const CollapsibleContents: React.FC<CollapsibleContentsProps> = ({ project, defaultOpen }) => {
   const { open } = useSidebar();
-
-  const projectId = useSelector((state: AppState) => {
-    return state.selectedProjectId;
-  });
-
   const dispatch = useDispatch();
 
   const menuItems = [

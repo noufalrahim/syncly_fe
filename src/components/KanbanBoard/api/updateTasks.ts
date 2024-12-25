@@ -1,6 +1,7 @@
 import { BASE_URL } from '@/constants';
 import axios from 'axios';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const updateTask = async (data: any, projectId: number | string) => {
   try {
     const response = await axios.get(`${BASE_URL}/projects?id=${projectId}`);

@@ -1,7 +1,7 @@
-import { getColumnHeaders } from '@/components/KanbanBoard/api/getColumnHeaders';
-import { BASE_URL, loggedInUser } from '@/constants';
+import { BASE_URL } from '@/constants';
 import axios from 'axios';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const postTask = async (data: any, projectId: number) => {
   try {
     const selectedColumnKey = data.status;
@@ -15,7 +15,7 @@ export const postTask = async (data: any, projectId: number) => {
       id: tasksData.length + 1,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      createdBy: loggedInUser.username,
+      createdBy: '',
     };
     tasksData.push(task);
     resp[0].tasks = tasksData;

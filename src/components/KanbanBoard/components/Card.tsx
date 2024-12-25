@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { motion } from 'framer-motion';
 import DropIndicator from './DropIndicator';
 import { AssigneeType, CardProps } from './types';
@@ -5,7 +6,7 @@ import { TrashIcon } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import { AppState } from '@/redux/store';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { getUser } from '../api/getUser';
 import { AvatarFallbackFunction } from '@/lib/AvatarFallback';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -25,14 +26,14 @@ const Card = ({ title, id, columnKey, handleDragStart, handleDelete, assignee, h
   const color = statusColorMap[status as TaskStatus] || 'border-l-gray-500';
 
   const projectName = useSelector((state: AppState) => state.selectedProjectName);
-  const [assigneeData, setAssigneeData] = React.useState<AssigneeType>();
+  const [assigneeData, setAssigneeData] = useState<AssigneeType>();
 
   const fetchAssignee = async () => {
     const response = await getUser(assignee);
     setAssigneeData(response);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchAssignee();
   }, []);
 

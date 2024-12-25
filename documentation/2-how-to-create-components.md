@@ -19,6 +19,7 @@
   - `components/types.ts`: The typescript types for the sub-component
   - note: under components inside a folder, there isn't a need to create a nested folder for each component. You can just create the component files directly under the components folder
 - In the `MyComponent.tsx` file, write the component code
+
   - tip: Use functional components with hooks
   - syntax:
   - ```tsx
@@ -30,6 +31,7 @@
 
     export default MyComponent;
     ```
+
 - use tailwindcss for styling
   - tip: Use utility classes for styling
   - example: `<div className="bg-gray-100 text-gray-800 p-4">My Component</div>`
