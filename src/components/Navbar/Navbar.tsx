@@ -15,7 +15,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
 
   return (
     <div className={`mx-auto flex h-24 max-w-[1240px] items-center justify-between px-4 text-white ${className}`}>
-      <h1 className="w-full text-3xl font-bold text-[#00df9a]">SDG CONNECT</h1>
+      <h1 className="w-full text-3xl font-bold text-[#00df9a]">SustainLink</h1>
       <ul className="hidden md:flex">
         <li className="p-4">
           <Link to="/">Home</Link>
