@@ -12,7 +12,6 @@ import { Landing } from '@/components/Landing';
 import Login from '../../components/Login/Login';
 import Signup from '../../components/Signup/Signup';
 import { Layout } from '@/components/Layout';
-// import { LoadingScreen } from '@/components/LoadingScreen';
 import Dashboard from '@/components/Sidebar/components/Dashboard/Dashboard';
 import { Projects } from '@/components/Projects';
 
@@ -22,39 +21,21 @@ function Router() {
   return (
     <Routes>
       <Route path={ROOT_PATH} element={<Landing />} />
-      <Route
-        path={DASHBOARD_PATH}
-        element={
-          <Layout>
-            <Dashboard />
-          </Layout>
-        }
-      />
-      {/* There is a root for landing loading screen. After doing backend, create another route path and add because i am doing dashboard  */}
-      <Route
-        path={PROJECT_OVERVIEW_PATH}
-        element={
-          <Layout>
-            <KanbanBoard />
-          </Layout>
-        }
-      />
-      <Route
-        path={SCHEDULER_PATH}
-        element={
-          <Layout>
-            <Scheduler />
-          </Layout>
-        }
-      />
-      <Route
-        path={TABLE_PATH}
-        element={
-          <Layout>
-            <TaskList />
-          </Layout>
-        }
-      />
+      <Route path={DASHBOARD_PATH} element={<Layout><Dashboard/></Layout>} />
+{/* There is a root for landing loading screen. After doing backend, create another route path and add because i am doing dashboard  */}
+      <Route path={PROJECT_OVERVIEW_PATH} element={
+        <Layout>
+          <KanbanBoard />
+        </Layout>
+      } />
+      <Route path={SCHEDULER_PATH} element={
+        <Layout>
+          <Scheduler />
+        </Layout>} />
+      <Route path={TABLE_PATH} element={
+        <Layout>
+        <TaskList />
+        </Layout>} />
       <Route
         path={DASHBOARD_PATH}
         element={
