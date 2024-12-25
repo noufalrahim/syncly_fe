@@ -8,7 +8,6 @@ import { LoadingSpinner } from '../LoadingSpinner';
 import { Input } from '@/components/ui/input';
 import { Button } from '../ui/button';
 
-
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -66,15 +65,15 @@ const Login = () => {
               <label htmlFor="username" className="text-secondary-dark block text-sm font-medium">
                 Username
               </label>
-              <Input id='username' type='text' placeholder='Enter your username' value={loginForm.username} onChange={handleInputChange} />
+              <Input id="username" type="text" placeholder="Enter your username" value={loginForm.username} onChange={handleInputChange} />
             </div>
             <div className="mb-4">
               <label htmlFor="password" className="text-secondary-dark block text-sm font-medium">
                 Password
               </label>
-              <Input id='password' type='password' placeholder='Enter your password' value={loginForm.password} onChange={handleInputChange} />
+              <Input id="password" type="password" placeholder="Enter your password" value={loginForm.password} onChange={handleInputChange} />
             </div>
-            <Button type='submit' className='flex w-full items-center justify-center rounded-lg bg-[#00df9a] py-2 text-center text-white hover:bg-[#00bf85] focus:outline-none'>
+            <Button type="submit" className="flex w-full items-center justify-center rounded-lg bg-[#00df9a] py-2 text-center text-white hover:bg-[#00bf85] focus:outline-none">
               {isLoading ? <LoadingSpinner /> : 'Login'}
             </Button>
           </form>
