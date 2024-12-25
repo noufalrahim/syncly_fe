@@ -12,7 +12,8 @@ import { ProjectType } from './components/types';
 import React from 'react';
 import { Modal } from '../Modal';
 import { getProjects } from './api/getProjects';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch,FaTachometerAlt } from 'react-icons/fa';
+
 
 export default function AppSidebar() {
   const { open } = useSidebar();
@@ -27,6 +28,11 @@ export default function AppSidebar() {
       title: 'Search',
       url: '/',
       icon: <FaSearch size={20} />,
+    },
+    {
+      title:'Dashboard',
+      url:'/dashboard',
+      icon:<FaTachometerAlt size={20} />,
     },
     // {
     //   title: 'Inbox',

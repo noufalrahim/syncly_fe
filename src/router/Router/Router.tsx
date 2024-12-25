@@ -9,13 +9,16 @@ import { MyNetwork } from '@/components/MyNetwork';
 import { ChatScreen } from '@/components/ChatScreen';
 import { Landing } from '@/components/Landing';
 import { Layout } from '@/components/Layout';
+import { LoadingScreen } from '@/components/LoadingScreen';
+import Dashboard from '@/components/Sidebar/components/Dashboard/Dashboard';
 
 function Router() {
   const { ROOT_PATH, PROJECT_OVERVIEW_PATH, SCHEDULER_PATH, TABLE_PATH, LOGIN_PATH, MY_NETWORK_PATH, MESSAGES_PATH, DASHBOARD_PATH } = useRoutePaths();
   return (
     <Routes>
       <Route path={ROOT_PATH} element={<Landing />} />
-      <Route path={DASHBOARD_PATH} element={<Layout><h1>Dashboard</h1></Layout>} />
+      <Route path={DASHBOARD_PATH} element={<Layout><Dashboard/></Layout>} />
+{/* There is a root for landing loading screen. After doing backend, create another route path and add because i am doing dashboard  */}
       <Route path={PROJECT_OVERVIEW_PATH} element={
         <Layout>
           <KanbanBoard />
