@@ -17,10 +17,10 @@
   font-size: 8rem; /* Large font size */
   font-weight: bold;
   font-family: 'Press Start 2P', cursive; /* Change font to Press Start 2P */
-  color: #00DF9A; /* Teal green */
-  text-shadow: 
-    0 0 2px #00DF9A, 
-    0 0 4px #00DF9A; /* Reduced glow effect */
+  color: #00df9a; /* Teal green */
+  text-shadow:
+    0 0 2px #00df9a,
+    0 0 4px #00df9a; /* Reduced glow effect */
   position: relative;
   z-index: 10; /* Ensure "S" is in front of the circles */
 }
@@ -29,13 +29,13 @@
 .circle {
   position: absolute;
   border-radius: 48%;
-  border: 1px solid #00DF9A; /* Teal green */
+  border: 1px solid #00df9a; /* Teal green */
   opacity: 0.7;
   animation: pulse 1.5s ease-in-out infinite;
   z-index: 1; /* Circles behind the "S" */
-  box-shadow: 
-    0 0 3px #00DF9A, 
-    0 0 6px #00DF9A; /* Slightly reduced glow effect for the circles */
+  box-shadow:
+    0 0 3px #00df9a,
+    0 0 6px #00df9a; /* Slightly reduced glow effect for the circles */
 }
 
 .circle-1 {
@@ -61,7 +61,8 @@
 
 /* Circle pulsating animation */
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 0.5;
   }
@@ -77,7 +78,9 @@
     font-size: 4rem; /* Adjust font size */
   }
 
-  .circle-1, .circle-2, .circle-3 {
+  .circle-1,
+  .circle-2,
+  .circle-3 {
     width: 150px; /* Adjust width for smaller screens */
     height: 150px;
   }

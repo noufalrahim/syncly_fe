@@ -3,13 +3,15 @@ import { useEffect, useState } from 'react';
 import { AppBar } from '../AppBar';
 import { ProjectsCard } from './components/ProjectsCard';
 import { getProjects } from './api/getProjects';
+import { LoadingSpinner } from '../LoadingSpinner';
 
 const Projects = () => {
   const [projectsData, setProjectsData] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         const resp = await getProjects();
         if (resp.data) {
           console.log('Projects data', resp);
@@ -17,6 +19,8 @@ const Projects = () => {
         }
       } catch (error) {
         console.log('Error fetching projects', error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -25,11 +29,17 @@ const Projects = () => {
   return (
     <div className="mx-5">
       <AppBar title="Projects" description="View all projects here" />
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {projectsData.map((project, index) => (
-          <ProjectsCard key={index} project={project} />
-        ))}
-      </div>
+      {loading ? (
+        <div className="flex h-[calc(100vh-4rem)] items-center justify-center">
+          <LoadingSpinner />
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {projectsData.map((project, index) => (
+            <ProjectsCard key={index} project={project} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

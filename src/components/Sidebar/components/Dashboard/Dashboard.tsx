@@ -1,14 +1,12 @@
 // In Dashboard.tsx
 import TopBar from './TopBar';
-import Grid from './Grid'
+import Grid from './Grid';
 
 export default function Dashboard() {
   return (
-    <div className='bg-white rounded-lg pb-4 shadow h-[200vh]'>
+    <div className="h-[200vh] rounded-lg bg-white pb-4 shadow">
       <TopBar />
       <Grid />
-    
-    
     </div>
   );
 }

@@ -1,6 +1,6 @@
-"use client";
-import { FiUser } from "react-icons/fi";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+'use client';
+import { FiUser } from 'react-icons/fi';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 // Helper function to generate previous 5 weeks
 const getLastFiveWeeks = () => {
@@ -14,9 +14,9 @@ const getLastFiveWeeks = () => {
     weekEnd.setDate(weekStart.getDate() + 6);
 
     const weekLabel = `${weekStart.toLocaleDateString(undefined, {
-      month: "short",
-      day: "numeric",
-    })} - ${weekEnd.toLocaleDateString(undefined, { month: "short", day: "numeric" })}`;
+      month: 'short',
+      day: 'numeric',
+    })} - ${weekEnd.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}`;
 
     weeks.unshift(weekLabel); // Add the label to the beginning of the array
   }
@@ -41,9 +41,7 @@ const ActivityGraph: React.FC = () => {
         <h3 className="flex items-center gap-1.5 font-medium">
           <FiUser /> Volunteer Matching Trends
         </h3>
-        <p className="text-sm text-gray-500">
-          Track the number of successful matches and applications received over the past weeks.
-        </p>
+        <p className="text-sm text-gray-500">Track the number of successful matches and applications received over the past weeks.</p>
       </div>
       {/* Chart Section */}
       <div className="p-4">
@@ -54,19 +52,19 @@ const ActivityGraph: React.FC = () => {
             <XAxis
               dataKey="week"
               label={{
-                value: "Weeks",
-                position: "insideBottom",
+                value: 'Weeks',
+                position: 'insideBottom',
                 offset: -5,
-                style: { fontWeight: "bold", textAnchor: "middle" },
+                style: { fontWeight: 'bold', textAnchor: 'middle' },
               }}
             />
             {/* Y-Axis */}
             <YAxis
               label={{
-                value: "Count",
+                value: 'Count',
                 angle: -90,
-                position: "insideLeft",
-                style: { fontWeight: "bold", textAnchor: "middle" },
+                position: 'insideLeft',
+                style: { fontWeight: 'bold', textAnchor: 'middle' },
               }}
             />
             <Tooltip />

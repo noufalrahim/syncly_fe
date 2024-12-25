@@ -1,17 +1,8 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect } from 'react';
-import {
-  Radar,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from 'recharts';
-import { FiUser } from "react-icons/fi";
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { FiUser } from 'react-icons/fi';
 
 // Simulated feedback data fetching
 const fetchFeedbackScores = async () => {
@@ -52,33 +43,16 @@ const UsageRadar: React.FC = () => {
         <h3 className="flex items-center gap-1.5 font-medium">
           <FiUser /> Volunteer Feedback Analysis
         </h3>
-        <p className="text-sm text-gray-500">
-          Explore the average feedback scores for various skills based on recent feedback data.
-        </p>
+        <p className="text-sm text-gray-500">Explore the average feedback scores for various skills based on recent feedback data.</p>
       </div>
       {/* Chart Section */}
       <div className="p-4">
         <ResponsiveContainer width="100%" height={300}>
           <RadarChart cx="50%" cy="50%" outerRadius="70%" data={chartData}>
             <PolarGrid stroke="#ccc" strokeDasharray="3 3" />
-            <PolarAngleAxis
-              dataKey="skill"
-              tick={{ fill: '#555', fontSize: 12 }}
-            />
-            <PolarRadiusAxis
-              angle={30}
-              domain={[0, 10]}
-              tick={{ fill: '#777', fontSize: 10 }}
-              axisLine={{ stroke: '#aaa' }}
-            />
-            <Radar
-              name="Feedback Scores"
-              dataKey="score"
-              stroke="#ff7300"
-              fill="url(#feedbackGradient)"
-              fillOpacity={0.7}
-              animationDuration={1000}
-            />
+            <PolarAngleAxis dataKey="skill" tick={{ fill: '#555', fontSize: 12 }} />
+            <PolarRadiusAxis angle={30} domain={[0, 10]} tick={{ fill: '#777', fontSize: 10 }} axisLine={{ stroke: '#aaa' }} />
+            <Radar name="Feedback Scores" dataKey="score" stroke="#ff7300" fill="url(#feedbackGradient)" fillOpacity={0.7} animationDuration={1000} />
             <Tooltip
               contentStyle={{
                 backgroundColor: '#f9f9f9',

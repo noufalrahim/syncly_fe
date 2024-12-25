@@ -11,14 +11,14 @@ type CardProps = {
 
 // Individual Card Component
 const Card: React.FC<CardProps> = ({ title, value, pillText, trend, period }) => (
-  <div className="p-4 bg-black text-white rounded shadow flex-1 min-w-[220px]"> {/* Reduced min-width to 220px */}
-    <div className="flex justify-between items-center mb-2">
+  <div className="min-w-[220px] flex-1 rounded bg-black p-4 text-white shadow">
+    {' '}
+    {/* Reduced min-width to 220px */}
+    <div className="mb-2 flex items-center justify-between">
       <h3 className="text-lg font-semibold text-gray-200">{title}</h3>
-      <span className={`px-2 py-1 text-xs font-medium rounded ${trend === 'up' ? 'bg-green-700 text-green-200' : 'bg-red-700 text-red-200'}`}>
-        {pillText}
-      </span>
+      <span className={`rounded px-2 py-1 text-xs font-medium ${trend === 'up' ? 'bg-green-700 text-green-200' : 'bg-red-700 text-red-200'}`}>{pillText}</span>
     </div>
-    <div className="text-3xl font-bold mb-1 text-gray-100">{value}</div>
+    <div className="mb-1 text-3xl font-bold text-gray-100">{value}</div>
     <div className="text-sm text-gray-400">{period}</div>
   </div>
 );
