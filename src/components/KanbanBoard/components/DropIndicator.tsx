@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { DropIndicatorProps } from './types';
 
 const DropIndicator = ({ beforeId, column }: DropIndicatorProps) => {

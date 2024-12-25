@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { Calculator, Calendar, CreditCard, Settings, Smile, User } from 'lucide-react';
 
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut } from '@/components/ui/command';
@@ -8,7 +9,7 @@ const Search = () => {
   const [searchVal, setSearchVal] = useState('');
   return (
     <Command className="rounded-lg border shadow-md md:min-w-[450px]">
-      <CommandInput autoFocus={false} placeholder="Type a command or search..." value={searchVal} onFocus={() => setShow(true)} onBlur={() => setShow(false)} onChangeCapture={(e) => setSearchVal(e.target.value)} />
+      <CommandInput autoFocus={false} placeholder="Type a command or search..." value={searchVal} onFocus={() => setShow(true)} onBlur={() => setShow(false)} onChangeCapture={(e) => setSearchVal((e.target as HTMLInputElement).value)} />
       {show && (
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>

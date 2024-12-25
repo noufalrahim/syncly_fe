@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { FormEvent, useState } from 'react';
 import { AddCardProps } from './types';
 import { motion } from 'framer-motion';
@@ -19,7 +20,7 @@ const AddCard = ({ column, setCards }: AddCardProps) => {
 
     if (!text.trim().length) return;
 
-    let newCard: Task = {
+    const newCard: Task = {
       columnKey: column,
       title: text.trim(),
       status: column,
@@ -29,6 +30,7 @@ const AddCard = ({ column, setCards }: AddCardProps) => {
       id: '',
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const postResponse: any = await postTask(newCard, projectId);
 
     if (postResponse.status !== 200) return;
