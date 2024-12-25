@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-
 export type AppState = {
   selectedProjectId: number;
   selectedProjectName: string;
   authUser: {
+    _id: string;
     username: string;
     name: string;
     image: string;
@@ -20,6 +20,7 @@ const initialState = {
   },
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function AppReducer(prevState = initialState, action: { type: string; payload: any }) {
   switch (action.type) {
     case 'project/selected':
@@ -29,6 +30,7 @@ function AppReducer(prevState = initialState, action: { type: string; payload: a
         selectedProjectName: action.payload.name,
       };
     case 'auth/user':
+      localStorage.setItem('authUser', JSON.stringify(action.payload));
       return {
         ...prevState,
         authUser: action.payload,
