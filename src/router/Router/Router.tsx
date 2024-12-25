@@ -11,6 +11,7 @@ import { ChatScreen } from '@/components/ChatScreen';
 import { Landing } from '@/components/Landing';
 import Login from '../../components/Login/Login';
 import Signup from '../../components/Signup/Signup';
+import ProjectDescription from '../../components/ProjectDescription/ProjectDescription';
 import { Layout } from '@/components/Layout';
 import Dashboard from '@/components/Sidebar/components/Dashboard/Dashboard';
 import { Projects } from '@/components/Projects';
@@ -80,6 +81,7 @@ function Router() {
       <Route path={LOGIN_PATH} element={<Login />} />
       <Route path={SIGNUP_PATH} element={<Signup />} /> {/* Add this */}
       <Route path={MESSAGES_PATH} element={<ChatScreen />} />
+      <Route path="/project-description" element={<ProjectDescription />} />
       <Route
         path={PROJECTS_PATH}
         element={
