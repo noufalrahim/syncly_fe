@@ -11,41 +11,27 @@ import { ChatScreen } from '@/components/ChatScreen';
 import { Landing } from '@/components/Landing';
 import Login from '../../components/Login/Login';
 import Signup from '../../components/Signup/Signup';
+import { ProjectDescription} from '../../components/ProjectDescription';
 import { Layout } from '@/components/Layout';
 import Dashboard from '@/components/Sidebar/components/Dashboard/Dashboard';
 import { Projects } from '@/components/Projects';
 
 function Router() {
-  const { ROOT_PATH, PROJECT_OVERVIEW_PATH, SCHEDULER_PATH, TABLE_PATH, LOGIN_PATH, SIGNUP_PATH, MY_NETWORK_PATH, MESSAGES_PATH, DASHBOARD_PATH, PROJECTS_PATH } = useRoutePaths();
+  const { ROOT_PATH, PROJECT_OVERVIEW_PATH, SCHEDULER_PATH, TABLE_PATH, LOGIN_PATH, SIGNUP_PATH, MY_NETWORK_PATH, MESSAGES_PATH, DASHBOARD_PATH, PROJECTS_PATH, KANBAN_PATH } = useRoutePaths();
 
   return (
     <Routes>
       <Route path={ROOT_PATH} element={<Landing />} />
-      <Route path={DASHBOARD_PATH} element={<Layout><Dashboard/></Layout>} />
-{/* There is a root for landing loading screen. After doing backend, create another route path and add because i am doing dashboard  */}
-      <Route path={PROJECT_OVERVIEW_PATH} element={
-        <Layout>
-          <KanbanBoard />
-        </Layout>
-      } />
-      <Route path={SCHEDULER_PATH} element={
-        <Layout>
-          <Scheduler />
-        </Layout>} />
-      <Route path={TABLE_PATH} element={
-        <Layout>
-        <TaskList />
-        </Layout>} />
       <Route
         path={DASHBOARD_PATH}
         element={
           <Layout>
-            <h1>Dashboard</h1>
+            <Dashboard />
           </Layout>
         }
       />
       <Route
-        path={PROJECT_OVERVIEW_PATH}
+        path={KANBAN_PATH}
         element={
           <Layout>
             <KanbanBoard />
@@ -80,6 +66,11 @@ function Router() {
       <Route path={LOGIN_PATH} element={<Login />} />
       <Route path={SIGNUP_PATH} element={<Signup />} /> {/* Add this */}
       <Route path={MESSAGES_PATH} element={<ChatScreen />} />
+      <Route path={PROJECT_OVERVIEW_PATH} element={
+        <Layout>
+          <ProjectDescription />
+        </Layout>
+      } />
       <Route
         path={PROJECTS_PATH}
         element={
