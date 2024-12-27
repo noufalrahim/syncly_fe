@@ -25,7 +25,7 @@ const paths = {
   MESSAGES_PATH,
   DASHBOARD_PATH,
   PROJECTS_PATH,
-  USER_OVERVIEW_PATH
+  USER_OVERVIEW_PATH,
 } as const;
 
 export default paths;

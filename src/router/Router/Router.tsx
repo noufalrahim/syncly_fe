@@ -72,10 +72,14 @@ function Router() {
       <Route path={MESSAGES_PATH} element={<ChatScreen />} />
       <Route path={SIGNUP_PATH} element={<Signup />} />
       <Route path="/project-description" element={<ProjectDescription />} />
-      <Route path={USER_OVERVIEW_PATH} element={
-        <Layout>
-          <UserProfile />
-        </Layout>} />
+      <Route
+        path={USER_OVERVIEW_PATH}
+        element={
+          <Layout>
+            <UserProfile />
+          </Layout>
+        }
+      />
       <Route
         path={MESSAGES_PATH}
         element={

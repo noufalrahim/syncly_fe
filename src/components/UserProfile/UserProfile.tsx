@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import{ useState } from 'react';
+import { useState } from 'react';
 import { AppBar } from '../AppBar';
 
 const UserProfile = () => {
@@ -20,10 +20,7 @@ const UserProfile = () => {
   return (
     <div className="min-h-screen bg-white px-8">
       {/* Header Section */}
-     <AppBar
-        title="User Profile"
-        description="View more details about the user."
-        />
+      <AppBar title="User Profile" description="View more details about the user." />
 
       {/* Tabs Section */}
       <div>
