@@ -10,6 +10,7 @@ const MY_NETWORK_PATH = '/my-network';
 const MESSAGES_PATH = '/messages';
 const DASHBOARD_PATH = '/dashboard';
 const PROJECTS_PATH = '/projects';
+const USER_OVERVIEW_PATH = '/users/:userid';
 
 const paths = {
   ROOT_PATH,
@@ -24,6 +25,7 @@ const paths = {
   MESSAGES_PATH,
   DASHBOARD_PATH,
   PROJECTS_PATH,
+  USER_OVERVIEW_PATH
 } as const;
 
 export default paths;
