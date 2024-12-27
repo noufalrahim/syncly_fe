@@ -28,6 +28,40 @@ const ProjectDescription = () => {
     { title: 'Volunteer Guidelines', img: 'https://via.placeholder.com/150' },
   ];
 
+
+  const meetings = [
+    {
+      title: 'Project Kickoff Meeting',
+      organizedBy: 'Green Earth Organization',
+      time: '10:00 AM',
+      date: 'March 1, 2024',
+    },
+    {
+      title: 'Volunteer Training Session',
+      organizedBy: 'Green Earth Training Team',
+      time: '2:00 PM',
+      date: 'March 5, 2024',
+    },
+    {
+      title: 'Community Awareness Discussion',
+      organizedBy: 'Local Leaders',
+      time: '11:00 AM',
+      date: 'March 10, 2024',
+    },
+    {
+      title: 'Progress Review Meeting',
+      organizedBy: 'Project Manager',
+      time: '3:00 PM',
+      date: 'March 15, 2024',
+    },
+    {
+      title: 'Final Wrap-Up Meeting',
+      organizedBy: 'Green Earth Organization',
+      time: '4:00 PM',
+      date: 'March 20, 2024',
+    },
+  ];
+
   const totalReceived = 5000;
   const totalRequested = 10000;
 
@@ -60,9 +94,7 @@ const ProjectDescription = () => {
         </div>
       </div>
 
-      {/* Tabs Section */}
       <div>
-        {/* Tabs Navigation */}
         <div className="flex border-b border-gray-300">
           <button className={`px-6 py-2 text-lg font-medium ${activeTab === 'overview' ? 'border-b-4 border-green-500 text-green-600' : 'text-gray-600'}`} onClick={() => setActiveTab('overview')}>
             Overview
@@ -73,9 +105,11 @@ const ProjectDescription = () => {
           <button className={`px-6 py-2 text-lg font-medium ${activeTab === 'requests' ? 'border-b-4 border-green-500 text-green-600' : 'text-gray-600'}`} onClick={() => setActiveTab('requests')}>
             Requests
           </button>
-          {/* New Resources Tab */}
           <button className={`px-6 py-2 text-lg font-medium ${activeTab === 'resources' ? 'border-b-4 border-green-500 text-green-600' : 'text-gray-600'}`} onClick={() => setActiveTab('resources')}>
             Resources
+          </button>
+          <button className={`px-6 py-2 text-lg font-medium ${activeTab === 'meetings' ? 'border-b-4 border-green-500 text-green-600' : 'text-gray-600'}`} onClick={() => setActiveTab('meetings')}>
+            Meetings
           </button>
         </div>
 
@@ -204,7 +238,7 @@ const ProjectDescription = () => {
                 {/* Wrap button in a div with flex and justify-between */}
                 <div className="flex items-center justify-between">
                   <h2 className="text-2xl font-semibold text-gray-800">Videos</h2>
-                  <button className="rounded-md bg-blue-500 px-4 py-2 text-white shadow-md hover:bg-blue-600">Create</button>
+                  <button className="rounded-md bg-green-500 px-4 py-2 text-white shadow-md hover:bg-green-600">Create</button>
                 </div>
                 <div className="space-y-4">
                   <iframe
@@ -223,14 +257,50 @@ const ProjectDescription = () => {
               {/* Documents Section */}
               <div className="mb-6 flex items-center justify-between">
                 <h2 className="text-2xl font-semibold text-gray-800">Documents</h2>
-                <button className="rounded-md bg-blue-500 px-4 py-2 text-white shadow-md hover:bg-blue-600">Upload</button>
+                <button className="rounded-md bg-green-500 px-4 py-2 text-white shadow-md hover:bg-green-600">Upload</button>
               </div>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {documents.map((doc, index) => (
                   <div key={index} className="rounded-md border border-gray-200 bg-white p-4 shadow-md">
                     <img src={doc.img} alt={doc.title} className="mb-4 h-24 w-full object-cover" />
                     <h3 className="text-lg font-semibold text-gray-800">{doc.title}</h3>
-                    <button className="mt-2 rounded-md bg-blue-500 px-4 py-2 text-sm text-white hover:bg-blue-600">View</button>
+                    <button className="mt-2 rounded-md bg-green-500 px-4 py-2 text-sm text-white hover:bg-green-600">View</button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Meetings Tab Content */}
+          {activeTab === 'meetings' && (
+            <div>
+              <h2 className="mb-4 text-2xl font-semibold text-gray-800">Upcoming Meetings</h2>
+
+              {/* Create Meeting Button */}
+              <button
+                className="mb-4 rounded-md bg-green-500 px-4 py-2 text-sm text-white shadow-md hover:bg-green-600"
+                onClick={() => {
+                  // Add functionality to open a modal or redirect to a "Create Meeting" page
+                  console.log('Create Meeting button clicked');
+                }}
+              >
+                Create Meeting
+              </button>
+
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {meetings.map((meeting, index) => (
+                  <div key={index} className="rounded-md border border-gray-200 bg-white p-4 shadow-md">
+                    <h3 className="text-lg font-semibold text-gray-800">{meeting.title}</h3>
+                    <p className="mt-2 text-sm text-gray-600">
+                      <strong>Organized By:</strong> {meeting.organizedBy}
+                    </p>
+                    <p className="mt-2 text-sm text-gray-600">
+                      <strong>Time:</strong> {meeting.time}
+                    </p>
+                    <p className="mt-2 text-sm text-gray-600">
+                      <strong>Date:</strong> {meeting.date}
+                    </p>
+                    <button className="mt-4 rounded-md bg-green-500 px-4 py-2 text-sm text-white shadow-md hover:bg-green-600">Notify</button>
                   </div>
                 ))}
               </div>

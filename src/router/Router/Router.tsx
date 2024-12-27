@@ -17,6 +17,7 @@ import { Layout } from '@/components/Layout';
 import Dashboard from '@/components/Sidebar/components/Dashboard/Dashboard';
 import { Projects } from '@/components/Projects';
 import { TodayList } from '@/components/Today';
+import { Notifications } from '@/components/Notifications';
 import Chating from '@/components/Chat';
 
 function Router() {
@@ -104,6 +105,14 @@ function Router() {
         element={
           <Layout>
             <TodayList />
+          </Layout>
+        }
+      />
+      <Route
+        path="/notifications"
+        element={
+          <Layout>
+            <Notifications />
           </Layout>
         }
       />
