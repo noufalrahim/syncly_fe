@@ -1,24 +1,18 @@
-export const BASE_URL = 'http://localhost:5000';
+export let BASE_URL = '';
+const ENVIRONMENT_DEVELOPMENT = 'development' as const;
+const ENVIRONMENT_PRODUCTION = 'production' as const;
+const environment: string = ENVIRONMENT_DEVELOPMENT;
+
+if (environment === ENVIRONMENT_DEVELOPMENT) {
+  BASE_URL = 'http://localhost:5000/api';
+} else if (environment === ENVIRONMENT_PRODUCTION) {
+  BASE_URL = 'https://sustainlink-server.vercel.app/api';
+}
+
 export const oraganisation = {
   id: '123',
   name: 'Oragantion 1',
   disabled: true,
 };
-const users = [
-  {
-    id: 123,
-    username: 'janedoe',
-    name: 'Jane Doe',
-    image: 'https://randomuser.me/api/portraits/women/59.jpg',
-    initials: 'JD',
-  },
-  {
-    id: 855,
-    username: 'johndoe',
-    name: 'John Doe',
-    image: 'https://randomuser.me/api/portraits/men/33.jpg',
-    initials: 'JD',
-  },
-];
 
-export const loggedInUser = users[1];
+export const loggedInUser = {};

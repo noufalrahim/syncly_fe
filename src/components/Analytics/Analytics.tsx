@@ -1,9 +1,11 @@
-import React from 'react';
+/* eslint-disable react/react-in-jsx-scope */
+import Laptop from '../../../public/laptop.jpg';
 
 const Analytics = () => {
   return (
     <div className="w-full bg-white px-4 py-16">
       <div className="mx-auto grid max-w-[1240px] md:grid-cols-2">
+        <img className="mx-auto my-4 w-[500px]" src={Laptop} alt="/" />
         <div className="flex flex-col justify-center">
           <p className="font-bold text-[#00df9a]">REAL-TIME IMPACT TRACKING</p>
           <h1 className="py-2 text-2xl font-bold sm:text-3xl md:text-4xl">Track Progress, Milestones, and Metrics</h1>

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/react-in-jsx-scope */
+import { useState } from 'react';
 
 const ProjectDescription = () => {
   const [activeTab, setActiveTab] = useState('overview');
 
-  // Mock data for requests
   const requests = [
     {
       name: 'John Doe',
@@ -30,15 +31,15 @@ const ProjectDescription = () => {
   const totalReceived = 5000;
   const totalRequested = 10000;
 
-  const handleApprove = (user) => {
+  const handleApprove = (user: any) => {
     alert(`Approved ${user.name}`);
   };
 
-  const handleDecline = (user) => {
+  const handleDecline = (user: any) => {
     alert(`Declined ${user.name}`);
   };
 
-  const handleView = (user) => {
+  const handleView = (user: any) => {
     alert(`Viewing details for ${user.name}`);
   };
 
@@ -90,7 +91,7 @@ const ProjectDescription = () => {
                   This project focuses on providing clean water access to underprivileged communities in rural areas. Volunteers will work on-site to build wells, install water purification systems, and conduct community awareness sessions.
                   <br />
                   <br />
-                  Our goal is to create lasting change in the lives of those who are often overlooked, with a focus on sustainability and long-term impact. Volunteers will gain hands-on experience and contribute to the fulfillment of the United Nations' SDGs.
+                  Our goal is to create lasting change in the lives of those who are often overlooked, with a focus on sustainability and long-term impact. Volunteers will gain hands-on experience and contribute to the fulfillment of the United Nations&apos; SDGs.
                 </p>
               </div>
 
@@ -148,11 +149,11 @@ const ProjectDescription = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800">What is the application process?</h3>
-                  <p className="text-gray-600">Simply click on the "Apply Now" button, fill out the form, and submit your application. Our team will review it and contact you for further steps.</p>
+                  <p className="text-gray-600">Simply click on the &quot;Apply Now&quot; button, fill out the form, and submit your application. Our team will review it and contact you for further steps.</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800">Can I volunteer if I have no prior experience?</h3>
-                  <p className="text-gray-600">Yes! No prior experience is required. We'll provide training to help you get prepared for the project.</p>
+                  <p className="text-gray-600">Yes! No prior experience is required. We&apos;ll provide training to help you get prepared for the project.</p>
                 </div>
               </div>
             </div>
