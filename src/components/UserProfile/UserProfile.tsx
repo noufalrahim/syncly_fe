@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { AppBar } from '../AppBar';
 
 const UserProfile = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -16,11 +17,12 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen bg-white px-8">
       {/* Header Section */}
-      <div className="mb-8 flex items-center justify-between">
-        <h1 className="text-4xl font-bold text-gray-800">User Profile</h1>
-      </div>
+     <AppBar
+        title="User Profile"
+        description="View more details about the user."
+        />
 
       {/* Tabs Section */}
       <div>

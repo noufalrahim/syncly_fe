@@ -19,7 +19,7 @@ import { Projects } from '@/components/Projects';
 import Chating from '@/components/Chat';
 
 function Router() {
-  const { ROOT_PATH, PROJECT_OVERVIEW_PATH, SCHEDULER_PATH, TABLE_PATH, LOGIN_PATH, SIGNUP_PATH, MY_NETWORK_PATH, MESSAGES_PATH, DASHBOARD_PATH, PROJECTS_PATH, KANBAN_PATH } = useRoutePaths();
+  const { ROOT_PATH, PROJECT_OVERVIEW_PATH, SCHEDULER_PATH, TABLE_PATH, LOGIN_PATH, SIGNUP_PATH, MY_NETWORK_PATH, MESSAGES_PATH, DASHBOARD_PATH, PROJECTS_PATH, KANBAN_PATH, USER_OVERVIEW_PATH } = useRoutePaths();
 
   return (
     <Routes>
@@ -67,9 +67,11 @@ function Router() {
       />
       <Route path={LOGIN_PATH} element={<Login />} />
       <Route path={SIGNUP_PATH} element={<Signup />} />
-      <Route path="*" element={<Navigate to={ROOT_PATH} />} />
       <Route path="/project-description" element={<ProjectDescription />} />
-      <Route path="/users/:userid" element={<UserProfile />} />
+      <Route path={USER_OVERVIEW_PATH} element={
+        <Layout>
+          <UserProfile />
+        </Layout>} />
       <Route
         path={MESSAGES_PATH}
         element={
