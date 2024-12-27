@@ -55,6 +55,7 @@
     "recharts": "^2.15.0",
     "redux": "^5.0.1",
     "smart-webcomponents-react": "^20.0.1",
+    "socket.io-client": "^4.8.1",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"
