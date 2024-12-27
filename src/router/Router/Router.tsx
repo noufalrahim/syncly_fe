@@ -16,6 +16,7 @@ import { Layout } from '@/components/Layout';
 import Dashboard from '@/components/Sidebar/components/Dashboard/Dashboard';
 import { Projects } from '@/components/Projects';
 import { TodayList } from '@/components/Today';
+import { Notifications } from '@/components/Notifications';
 
 function Router() {
   const { ROOT_PATH, PROJECT_OVERVIEW_PATH, SCHEDULER_PATH, TABLE_PATH, LOGIN_PATH, SIGNUP_PATH, MY_NETWORK_PATH, MESSAGES_PATH, DASHBOARD_PATH, PROJECTS_PATH, KANBAN_PATH } = useRoutePaths();
@@ -88,6 +89,14 @@ function Router() {
         element={
           <Layout>
             <TodayList />
+          </Layout>
+        }
+      />
+      <Route
+        path="/notifications"
+        element={
+          <Layout>
+            <Notifications />
           </Layout>
         }
       />
