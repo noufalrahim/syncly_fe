@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+/* eslint-disable react/react-in-jsx-scope */
+
+import { useState } from 'react';
 import { FaEnvelope, FaCalendarAlt, FaBell, FaTasks, FaUserFriends, FaKey, FaComment, FaExclamationCircle, FaHandshake } from 'react-icons/fa';
+import { AppBar } from '../AppBar';
 
 const Notifications = () => {
   // Hardcoded notifications with isNew property
@@ -22,10 +25,14 @@ const Notifications = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen bg-white px-8">
       {/* Header Section */}
+
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-gray-800">Notifications</h1>
+        <AppBar
+          title='Notifications'
+          description='Stay updated with the latest notifications.'
+        />
         <button className="rounded-md bg-green-500 px-4 py-2 text-sm font-semibold text-white hover:bg-green-600" onClick={markAllAsRead}>
           Mark all as read
         </button>
