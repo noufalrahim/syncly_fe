@@ -29,10 +29,7 @@ const Notifications = () => {
       {/* Header Section */}
 
       <div className="mb-6 flex items-center justify-between">
-        <AppBar
-          title='Notifications'
-          description='Stay updated with the latest notifications.'
-        />
+        <AppBar title="Notifications" description="Stay updated with the latest notifications." />
         <button className="rounded-md bg-green-500 px-4 py-2 text-sm font-semibold text-white hover:bg-green-600" onClick={markAllAsRead}>
           Mark all as read
         </button>

@@ -28,7 +28,6 @@ const ProjectDescription = () => {
     { title: 'Volunteer Guidelines', img: 'https://via.placeholder.com/150' },
   ];
 
-
   const meetings = [
     {
       title: 'Project Kickoff Meeting',
