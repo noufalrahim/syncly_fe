@@ -22,6 +22,11 @@ import ViewTransactions from '@/components/Campaigns/ViewTransactions';
 import TransactionDetails from '@/components/Campaigns/TransactionDetails';
 import DonateNow from '@/components/Campaigns/DonateNow';
 import Feeds from '@/components/Feeds/Feeds';
+import { TodayList } from '@/components/Today';
+import { Notifications } from '@/components/Notifications';
+import Chating from '@/components/Chat';
+
+
 function Router() {
   const {
     ROOT_PATH,
@@ -39,14 +44,10 @@ function Router() {
     VIEW_TRANSACTIONS_PATH,
     TRANSACTION_DETAILS_PATH,
     DONATE_NOW_PATH,
-    FEEDS_PATH // Add this to useRoutePaths hook
+    FEEDS_PATH,
+    KANBAN_PATH,
+    USER_OVERVIEW_PATH
   } = useRoutePaths();
-import { TodayList } from '@/components/Today';
-import { Notifications } from '@/components/Notifications';
-import Chating from '@/components/Chat';
-
-function Router() {
-  const { ROOT_PATH, PROJECT_OVERVIEW_PATH, SCHEDULER_PATH, TABLE_PATH, LOGIN_PATH, SIGNUP_PATH, MY_NETWORK_PATH, MESSAGES_PATH, DASHBOARD_PATH, PROJECTS_PATH, KANBAN_PATH, USER_OVERVIEW_PATH } = useRoutePaths();
 
   return (
     <Routes>
@@ -125,7 +126,7 @@ function Router() {
       <Route path={LOGIN_PATH} element={<Login />} />
       <Route path={SIGNUP_PATH} element={<Signup />} />
       <Route path={MESSAGES_PATH} element={<ChatScreen />} />
-
+      <Route
         path={PROJECT_OVERVIEW_PATH}
         element={
           <Layout>
@@ -154,7 +155,7 @@ function Router() {
       <Route path={VIEW_TRANSACTIONS_PATH} element={<Layout><ViewTransactions /></Layout>} />
       <Route path={TRANSACTION_DETAILS_PATH} element={<Layout><TransactionDetails /></Layout>} />
       <Route path={DONATE_NOW_PATH} element={<Layout><DonateNow /></Layout>} />
-
+      <Route
         path="/today"
         element={
           <Layout>
