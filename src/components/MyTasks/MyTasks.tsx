@@ -22,7 +22,9 @@ const MyTasks: React.FC = () => {
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
-  const [data, setData] = React.useState<Task[]>([]);
+  const [data,
+    // setData
+  ] = React.useState<Task[]>([]);
 
   const columns: ColumnDef<Task>[] = [
     {
@@ -60,7 +62,7 @@ const MyTasks: React.FC = () => {
     {
       id: 'actions',
       enableHiding: false,
-      cell: ({ row }) => (
+      cell: () => (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-8 w-8 p-0">
