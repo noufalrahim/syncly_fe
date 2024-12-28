@@ -13,12 +13,16 @@ import { useState, useEffect } from 'react';
 import { Modal } from '../Modal';
 import { getProjects } from './api/getProjects';
 import { FaSearch, FaTachometerAlt } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
+import { AppState } from '@/redux/store';
 
 export default function AppSidebar() {
   const { open } = useSidebar();
   const [openProject, setOpenProject] = useState<string | null>('1');
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [projectsData, setProjectsData] = useState<ProjectType[]>([]);
+
+  const authUser = useSelector((state: AppState) => state.authUser);
 
   const today = new Date().getDate();
   console.log(setOpenProject);
@@ -34,11 +38,6 @@ export default function AppSidebar() {
       url: '/dashboard',
       icon: <FaTachometerAlt size={20} />,
     },
-    // {
-    //   title: 'Inbox',
-    //   url: '/inbox',
-    //   icon: <MdInbox size={20} />,
-    // },
     {
       title: 'My Networks',
       url: '/my-network',
@@ -54,16 +53,6 @@ export default function AppSidebar() {
       url: '/today',
       icon: <div className="rounded-md border-2 border-black p-[2px] text-2xs font-semibold">{today.toString().length === 1 ? `0${today}` : today}</div>,
     },
-    // {
-    //   title: 'Upcoming',
-    //   url: '/upcoming',
-    //   icon: <Calendar size={20} />,
-    // },
-    // {
-    //   title: 'Filters & Tags',
-    //   url: '/filters',
-    //   icon: <TagIcon size={20} />,
-    // },
     {
       title: 'Notifications',
       url: '/notifications',
@@ -83,10 +72,14 @@ export default function AppSidebar() {
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const projects = await getProjects();
-      setProjectsData(projects);
+      try {
+        const response = await getProjeckts(authUser._id);
+        setProjectsData(response);
+      }
+      catch (err) {
+        console.log("error", err);
+      }
     };
-
     fetchProjects();
   }, []);
 
