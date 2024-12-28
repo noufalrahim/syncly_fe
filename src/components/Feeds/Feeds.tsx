@@ -1,4 +1,4 @@
-
+import { AppBar } from '../AppBar';
 
 const feeds = [
   {
@@ -32,11 +32,8 @@ const Feeds = () => {
     <div className="bg-gray-100 min-h-screen py-10 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Page Header */}
-        <div className="mb-10 text-center">
-          <h1 className="text-3xl font-bold text-primary-dark">Project Feeds</h1>
-          <p className="text-gray-700 mt-4">
-            Stay updated on the latest activities, announcements, and progress from our projects.
-          </p>
+        <div>
+          <AppBar title="Feeds" description="Stay connected on the latest updates on your projects here" />
         </div>
 
         {/* Feeds List */}

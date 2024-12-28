@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Navbar } from '../Navbar';
 
 
+
 const StartCampaigns: React.FC = () => {
   const [currentTab, setCurrentTab] = useState(0);
   const [campaignTitle, setCampaignTitle] = useState("");
@@ -247,6 +248,7 @@ const StartCampaigns: React.FC = () => {
           </form>
         </div>
       </div>
+
     </>
   );
 };

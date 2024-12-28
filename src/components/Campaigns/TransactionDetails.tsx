@@ -1,6 +1,7 @@
 import React from 'react';
-
+// import { useNavigate } from "react-router-dom";
 const TransactionDetails: React.FC = () => {
+  // const navigate = useNavigate()
   const transactions = [
     {
       id: "TXN12345",
