@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Grid, Card, CardContent, CardActions, Typography, Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField, Chip, Stack, Box } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 interface Request {
   id: string;
@@ -75,6 +76,8 @@ const Requests: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState<Request | null>(null);
   const [rejectionReason, setRejectionReason] = useState<string>('');
+  const [viewModalOpen, setViewModalOpen] = useState(false);
+  const navigate = useNavigate(); // Initialize navigate
 
   const handleApprove = (request: Request) => {
     console.log('Approved:', request.name);
@@ -94,6 +97,16 @@ const Requests: React.FC = () => {
     console.log('Rejection reason for', selectedRequest?.name, ':', rejectionReason);
     setIsModalOpen(false);
     setRejectionReason('');
+  };
+
+  const handleViewRequest = () => {
+    // Navigate to /admin/requests/:organizationid
+    navigate(`/admin/requests/:organizationid`);
+  };
+
+  const handleViewModalClose = () => {
+    setViewModalOpen(false);
+    setSelectedRequest(null);
   };
 
   return (
@@ -198,12 +211,55 @@ const Requests: React.FC = () => {
                   <Button variant="contained" color="error" sx={{ borderRadius: '15px', px: 3 }} onClick={() => handleDecline(request)}>
                     Decline
                   </Button>
+                  <Button variant="contained" color="primary" sx={{ borderRadius: '15px', px: 3 }} onClick={() => handleViewRequest(request)}>
+                    View
+                  </Button>
                 </CardActions>
               </Card>
             </Grid>
           ))}
         </Grid>
 
+        {/* View Modal */}
+        <Dialog open={viewModalOpen} onClose={handleViewModalClose}>
+          <DialogTitle>Request Details for {selectedRequest?.name}</DialogTitle>
+          <DialogContent>
+            <Typography variant="body2">
+              <strong>ID:</strong> {selectedRequest?.id}
+            </Typography>
+            <Typography variant="body2">
+              <strong>License Number:</strong> {selectedRequest?.licenseNumber}
+            </Typography>
+            <Typography variant="body2">
+              <strong>Website:</strong>{' '}
+              <a href={selectedRequest?.website} target="_blank" rel="noopener noreferrer">
+                {selectedRequest?.website}
+              </a>
+            </Typography>
+            <Typography variant="body2">
+              <strong>Feature:</strong> {selectedRequest?.feature}
+            </Typography>
+            <Typography variant="body2">
+              <strong>Registration Link:</strong>{' '}
+              <a href={selectedRequest?.registrationLink} target="_blank" rel="noopener noreferrer">
+                {selectedRequest?.registrationLink}
+              </a>
+            </Typography>
+            <Typography variant="body2">
+              <strong>Verification:</strong>{' '}
+              <a href={selectedRequest?.verificationWebsite} target="_blank" rel="noopener noreferrer">
+                Verify Registration
+              </a>
+            </Typography>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleViewModalClose} color="secondary">
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+        {/* Decline Modal */}
         <Dialog open={isModalOpen} onClose={handleModalClose}>
           <DialogTitle>Rejection Reason</DialogTitle>
           <DialogContent>
