@@ -25,29 +25,10 @@ import Feeds from '@/components/Feeds/Feeds';
 import { TodayList } from '@/components/Today';
 import { Notifications } from '@/components/Notifications';
 import Chating from '@/components/Chat';
-
+import { Disasters } from '@/components/Disasters';
 
 function Router() {
-  const {
-    ROOT_PATH,
-    PROJECT_OVERVIEW_PATH,
-    SCHEDULER_PATH,
-    TABLE_PATH,
-    LOGIN_PATH,
-    SIGNUP_PATH,
-    MY_NETWORK_PATH,
-    MESSAGES_PATH,
-    DASHBOARD_PATH,
-    PROJECTS_PATH,
-    CAMPAIGNS_PATH,
-    START_CAMPAIGNS_PATH,
-    VIEW_TRANSACTIONS_PATH,
-    TRANSACTION_DETAILS_PATH,
-    DONATE_NOW_PATH,
-    FEEDS_PATH,
-    KANBAN_PATH,
-    USER_OVERVIEW_PATH
-  } = useRoutePaths();
+  const { ROOT_PATH, PROJECT_OVERVIEW_PATH, SCHEDULER_PATH, TABLE_PATH, LOGIN_PATH, SIGNUP_PATH, MY_NETWORK_PATH, MESSAGES_PATH, DASHBOARD_PATH, PROJECTS_PATH, CAMPAIGNS_PATH, START_CAMPAIGNS_PATH, VIEW_TRANSACTIONS_PATH, TRANSACTION_DETAILS_PATH, DONATE_NOW_PATH, FEEDS_PATH, KANBAN_PATH, USER_OVERVIEW_PATH } = useRoutePaths();
 
   return (
     <Routes>
@@ -87,7 +68,6 @@ function Router() {
       {/* <Route path={MIND_MAP_PATH} element={<MindMap />} /> */}
       <Route
         path={MY_NETWORK_PATH}
-       
         element={
           <Layout>
             <MyNetwork />
@@ -150,11 +130,38 @@ function Router() {
           </Layout>
         }
       />
-
-      <Route path={START_CAMPAIGNS_PATH} element={<Layout><StartCampaigns /></Layout>} />
-      <Route path={VIEW_TRANSACTIONS_PATH} element={<Layout><ViewTransactions /></Layout>} />
-      <Route path={TRANSACTION_DETAILS_PATH} element={<Layout><TransactionDetails /></Layout>} />
-      <Route path={DONATE_NOW_PATH} element={<Layout><DonateNow /></Layout>} />
+      <Route
+        path={START_CAMPAIGNS_PATH}
+        element={
+          <Layout>
+            <StartCampaigns />
+          </Layout>
+        }
+      />
+      <Route
+        path={VIEW_TRANSACTIONS_PATH}
+        element={
+          <Layout>
+            <ViewTransactions />
+          </Layout>
+        }
+      />
+      <Route
+        path={TRANSACTION_DETAILS_PATH}
+        element={
+          <Layout>
+            <TransactionDetails />
+          </Layout>
+        }
+      />
+      <Route
+        path={DONATE_NOW_PATH}
+        element={
+          <Layout>
+            <DonateNow />
+          </Layout>
+        }
+      />
       <Route
         path="/today"
         element={
@@ -168,6 +175,14 @@ function Router() {
         element={
           <Layout>
             <Notifications />
+          </Layout>
+        }
+      />
+      <Route
+        path="/disasters"
+        element={
+          <Layout>
+            <Disasters />
           </Layout>
         }
       />

@@ -31,7 +31,7 @@ export default function AppSidebar() {
       url: '/',
       icon: <FaSearch size={20} />,
     },
-   {
+    {
       title: 'Feeds',
       url: '/feeds',
       icon: <FaRss size={20} />,
@@ -90,6 +90,11 @@ export default function AppSidebar() {
       title: 'Projects',
       url: '/projects',
       icon: <BrainCircuitIcon size={20} />,
+    },
+    {
+      title: 'Disasters',
+      url: '/disasters',
+      icon: <MessageCircle size={20} />,
     },
   ];
 
