@@ -11,6 +11,7 @@ export interface CollapsibleContentsProps {
 export type ProjectType = {
   id: string | number;
   _id: string;
+  name: string;
   title: string;
   showTable: boolean;
   showKanban: boolean;

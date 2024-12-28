@@ -3,20 +3,20 @@ import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGrou
 import { MdTask } from 'react-icons/md';
 import { useSidebar } from '../ui/sidebar';
 import { useState, useEffect } from 'react';
-import { Modal } from '../Modal';
 import { getProjects } from './api/getProjects';
 import { ProjectType } from './components/types';
 import SideBarHeader from './components/SideBarHeader';
 import SideBarFooter from './components/SideBarFooter';
+import { useSelector } from 'react-redux';
+import { AppState } from '@/redux/store';
 
 export default function AdminSidebar() {
   const { open } = useSidebar();
-  const [openModal, setOpenModal] = useState<boolean>(false);
   const [projectsData, setProjectsData] = useState<ProjectType[]>([]);
-
+  const authUser = useSelector((state: AppState) => state.authUser);
   useEffect(() => {
     const fetchProjects = async () => {
-      const projects = await getProjects();
+      const projects = await getProjects(authUser._id);
       setProjectsData(projects);
     };
 
