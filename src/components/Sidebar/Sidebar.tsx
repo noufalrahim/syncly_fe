@@ -13,6 +13,8 @@ import { useState, useEffect } from 'react';
 import { Modal } from '../Modal';
 import { getProjects } from './api/getProjects';
 import { FaSearch, FaTachometerAlt, FaBullhorn,FaRss } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
+import { AppState } from '@/redux/store';
 
 
 
@@ -23,6 +25,8 @@ export default function AppSidebar() {
   ] = useState<string | null>('1');
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [projectsData, setProjectsData] = useState<ProjectType[]>([]);
+
+  const authUser = useSelector((state: AppState) => state.authUser);
 
   const today = new Date().getDate();
   const menuItems: MenuItemsData[] = [
@@ -100,7 +104,7 @@ export default function AppSidebar() {
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const projects = await getProjects();
+      const projects = await getProjects(authUser._id);
       setProjectsData(projects);
     };
 

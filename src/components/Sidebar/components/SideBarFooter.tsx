@@ -1,11 +1,15 @@
+
 /* eslint-disable react/react-in-jsx-scope */
 import { SidebarFooter, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '../../ui/sidebar';
-import { DropdownMenu } from '../../ui/dropdown-menu';
-import { User2 } from 'lucide-react';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../../ui/dropdown-menu';
+import { ChevronUp, User2 } from 'lucide-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppState } from '@/redux/store';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 // import { createUser, UserType } from '../api/createUser';
 const SideBarFooter = () => {
-  const user = false;
-
+  const navigate = useNavigate();
   // const handleSignOut = async () => {
   //   try {
   //     await signOut();
@@ -45,7 +49,25 @@ const SideBarFooter = () => {
   //   }
   // }, [user]);
 
-  if (!user) {
+  const authUser = useSelector((state: AppState) => state.authUser);
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    const authUserFromLocalStorage = localStorage.getItem('authUser')
+    if (authUserFromLocalStorage) {
+      const parsedData = JSON.parse(authUserFromLocalStorage);
+      dispatch({
+        type: 'auth/user',
+        payload: {
+          _id: parsedData._id,
+          username: parsedData.username,
+          name: parsedData.name,
+          image: parsedData.image,
+        },
+      });
+    }
+  }, [])
+  if (!authUser) {
     return (
       <SidebarFooter>
         <SidebarMenu>
@@ -67,21 +89,18 @@ const SideBarFooter = () => {
       <SidebarMenu>
         <SidebarMenuItem>
           <DropdownMenu>
-            {/* <DropdownMenuTrigger asChild>
+            <DropdownMenuTrigger asChild>
               <SidebarMenuButton>
-                {user.imageUrl ? <img src={user.imageUrl} alt={user.firstName || ''} className="h-6 w-6 rounded-full" /> : <User2 className="h-8 w-8 rounded-full" />}
-                {user.fullName || 'Anonymous'}
+                {authUser.image ? <img src={authUser.image} alt={authUser.name || ''} className="h-6 w-6 rounded-full" /> : <User2 className="h-8 w-8 rounded-full" />}
+                {authUser.name || 'Anonymous'}
                 <ChevronUp className="ml-auto" />
               </SidebarMenuButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent side="top" className="w-[--radix-popper-anchor-width]">
-              <DropdownMenuItem onClick={() => console.log('Account')}>
-                <span>Account</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={handleSignOut}>
+              <DropdownMenuItem onClick={() => navigate('/login')}>
                 <span>Sign out</span>
               </DropdownMenuItem>
-            </DropdownMenuContent> */}
+            </DropdownMenuContent>
           </DropdownMenu>
         </SidebarMenuItem>
       </SidebarMenu>

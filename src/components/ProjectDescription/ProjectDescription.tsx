@@ -124,8 +124,6 @@ const ProjectDescription = () => {
     };
 
     const handleSubmitFeedback = () => {
-      console.log('Feedback submitted for:', selectedUser);
-      console.log('Feedback:', feedback);
       setShowFeedbackModal(false);
       setFeedback({
         communication: '',
