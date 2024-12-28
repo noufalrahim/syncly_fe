@@ -50,3 +50,4 @@ const Navbar: React.FC<NavbarProps> = ({ className }: NavbarProps) => {
 };
 
 export default Navbar;
+/* eslint-disable react/react-in-jsx-scope */

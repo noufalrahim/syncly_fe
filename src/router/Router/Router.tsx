@@ -16,12 +16,38 @@ import { ProjectDescription } from '../../components/ProjectDescription';
 import { Layout } from '@/components/Layout';
 import Dashboard from '@/components/Sidebar/components/Dashboard/Dashboard';
 import { Projects } from '@/components/Projects';
+import Campaigns  from '@/components/Campaigns/Campaigns'; // Import the Campaigns component
+import StartCampaigns from '@/components/Campaigns/StartCampaigns';
+import ViewTransactions from '@/components/Campaigns/ViewTransactions';
+import TransactionDetails from '@/components/Campaigns/TransactionDetails';
+import DonateNow from '@/components/Campaigns/DonateNow';
+import Feeds from '@/components/Feeds/Feeds';
 import { TodayList } from '@/components/Today';
 import { Notifications } from '@/components/Notifications';
 import Chating from '@/components/Chat';
 
+
 function Router() {
-  const { ROOT_PATH, PROJECT_OVERVIEW_PATH, SCHEDULER_PATH, TABLE_PATH, LOGIN_PATH, SIGNUP_PATH, MY_NETWORK_PATH, MESSAGES_PATH, DASHBOARD_PATH, PROJECTS_PATH, KANBAN_PATH, USER_OVERVIEW_PATH } = useRoutePaths();
+  const {
+    ROOT_PATH,
+    PROJECT_OVERVIEW_PATH,
+    SCHEDULER_PATH,
+    TABLE_PATH,
+    LOGIN_PATH,
+    SIGNUP_PATH,
+    MY_NETWORK_PATH,
+    MESSAGES_PATH,
+    DASHBOARD_PATH,
+    PROJECTS_PATH,
+    CAMPAIGNS_PATH,
+    START_CAMPAIGNS_PATH,
+    VIEW_TRANSACTIONS_PATH,
+    TRANSACTION_DETAILS_PATH,
+    DONATE_NOW_PATH,
+    FEEDS_PATH,
+    KANBAN_PATH,
+    USER_OVERVIEW_PATH
+  } = useRoutePaths();
 
   return (
     <Routes>
@@ -61,6 +87,7 @@ function Router() {
       {/* <Route path={MIND_MAP_PATH} element={<MindMap />} /> */}
       <Route
         path={MY_NETWORK_PATH}
+       
         element={
           <Layout>
             <MyNetwork />
@@ -89,6 +116,17 @@ function Router() {
         }
       />
       <Route
+        path={FEEDS_PATH}
+        element={
+          <Layout>
+            <Feeds />
+          </Layout>
+        }
+      />
+      <Route path={LOGIN_PATH} element={<Login />} />
+      <Route path={SIGNUP_PATH} element={<Signup />} />
+      <Route path={MESSAGES_PATH} element={<ChatScreen />} />
+      <Route
         path={PROJECT_OVERVIEW_PATH}
         element={
           <Layout>
@@ -104,6 +142,19 @@ function Router() {
           </Layout>
         }
       />
+      <Route
+        path={CAMPAIGNS_PATH} // Add this route for /campaigns
+        element={
+          <Layout>
+            <Campaigns />
+          </Layout>
+        }
+      />
+
+      <Route path={START_CAMPAIGNS_PATH} element={<Layout><StartCampaigns /></Layout>} />
+      <Route path={VIEW_TRANSACTIONS_PATH} element={<Layout><ViewTransactions /></Layout>} />
+      <Route path={TRANSACTION_DETAILS_PATH} element={<Layout><TransactionDetails /></Layout>} />
+      <Route path={DONATE_NOW_PATH} element={<Layout><DonateNow /></Layout>} />
       <Route
         path="/today"
         element={
