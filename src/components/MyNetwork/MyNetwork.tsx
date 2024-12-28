@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/react-in-jsx-scope */
 import { FilterIcon, SearchIcon } from 'lucide-react';
 import { AppBar } from '../AppBar';
@@ -51,7 +52,7 @@ const MyNetwork = () => {
   console.log("Initital fileterd: ", filteredPeople);
 
   // Handle search input change
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e: any) => {
     setSearchTerm(e.target.value);
   };
 

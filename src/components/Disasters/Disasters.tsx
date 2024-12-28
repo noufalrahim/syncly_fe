@@ -1,6 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { AppBar } from '../AppBar';
-import { DisastersCard } from './components/DisastersCard';
 import { LoadingSpinner } from '../LoadingSpinner';
 import { useEffect, useState } from 'react';
 import { getDisaster } from './api/getDisaster';
@@ -39,7 +38,11 @@ const Disasters = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {disastersData && disastersData.map((disaster, index) => (
+          {disastersData && disastersData.map((disaster: {
+            disasterType: string;
+            description: string;
+            imageUrl: string;
+          }, index) => (
             <GeneralCard
               key={index}
               header={{

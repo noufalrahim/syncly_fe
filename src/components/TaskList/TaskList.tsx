@@ -41,7 +41,8 @@ const TaskList: React.FC = () => {
   const [openModal, setOpenModal] = React.useState(false);
   const [data, setData] = React.useState<Task[]>([]);
   const [selectedTask, setSelectedTask] = React.useState<Task | null>(null);
-
+  console.log("Selected Task: ", selectedTask);
+  console.log("openModal: ", openModal);
   const projectId = useSelector((state: AppState) => state.selectedProjectId);
 
   const fetchData = async () => {
