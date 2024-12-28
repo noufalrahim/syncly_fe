@@ -12,23 +12,28 @@ import { DateFormater } from '@/lib/DateFormater';
 import { jsPDF } from 'jspdf';
 
 // Dummy data for tasks
-const initialTasks: Task[] = [
-  { id: '1', title: 'Task 1', status: 'In Progress', dueDate: '2024-12-28', assignee: 'John Doe', priority: 'High' },
-  { id: '2', title: 'Task 2', status: 'Completed', dueDate: '2024-12-25', assignee: 'Jane Doe', priority: 'Low' },
-  { id: '3', title: 'Task 3', status: 'Pending', dueDate: '2024-12-30', assignee: 'Alice Smith', priority: 'Medium' },
-];
+// const initialTasks: Task[] = [
+//   { id: '1', title: 'Task 1', status: 'In Progress', dueDate: '2024-12-28', assignee: 'John Doe', priority: 'High' },
+//   { id: '2', title: 'Task 2', status: 'Completed', dueDate: '2024-12-25', assignee: 'Jane Doe', priority: 'Low' },
+//   { id: '3', title: 'Task 3', status: 'Pending', dueDate: '2024-12-30', assignee: 'Alice Smith', priority: 'Medium' },
+// ];
 
 const TodaysList: React.FC = () => {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
-  const [openModal, setOpenModal] = React.useState(false);
-  const [data, setData] = React.useState<Task[]>(initialTasks);
-  const [selectedTask, setSelectedTask] = React.useState<Task | null>(null);
-
+  const [
+    openModal, 
+    setOpenModal] = React.useState(false);
+  const [data, setData] = React.useState<Task[]>([]);
+  const [
+    selectedTask, 
+    setSelectedTask] = React.useState<Task | null>(null);
+    console.log("Selected Task: ", selectedTask);
+    console.log("openModal: ", openModal);
   // Handle delete task
-  const handleDelete = (taskId: string) => {
+  const handleDelete = (taskId: string | undefined) => {
     setData((prevData) => prevData.filter((task) => task.id !== taskId));
   };
 
@@ -40,13 +45,14 @@ const TodaysList: React.FC = () => {
 
   // Handle adding a new task
   const handleAddTask = () => {
-    const newTask = {
+    const newTask: Task = {
       id: String(data.length + 1),
       title: 'New Task',
-      status: 'Pending',
+      status: 'backlog',
       dueDate: '2024-12-31',
       assignee: 'New Assignee',
-      priority: 'Medium',
+      priority: 'medium',
+      columnKey: 'default', // Add the missing property
     };
     setData((prevData) => [...prevData, newTask]);
   };
@@ -62,6 +68,8 @@ const TodaysList: React.FC = () => {
     }));
     return csvData;
   };
+
+  console.log("Data: ", handleDownloadCSV);
 
   // Handle downloading tasks as PDF
   const handleDownloadPDF = () => {
@@ -123,7 +131,7 @@ const TodaysList: React.FC = () => {
               <DropdownMenuLabel className="text-indigo-800">Actions</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={() => handleEditTask(task)}>Edit Task</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleDelete(task.id)}>Delete Task</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleDelete(String(task.id))}>Delete Task</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         );

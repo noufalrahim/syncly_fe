@@ -52,13 +52,10 @@ const SideBarFooter = () => {
   const authUser = useSelector((state: AppState) => state.authUser);
   const dispatch = useDispatch();
 
-  console.log("Authuse", authUser);
   React.useEffect(() => {
     const authUserFromLocalStorage = localStorage.getItem('authUser')
     if (authUserFromLocalStorage) {
-      console.log(authUserFromLocalStorage);
       const parsedData = JSON.parse(authUserFromLocalStorage);
-      console.log(parsedData);
       dispatch({
         type: 'auth/user',
         payload: {

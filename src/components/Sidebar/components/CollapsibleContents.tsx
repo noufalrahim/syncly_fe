@@ -49,10 +49,11 @@ const CollapsibleContents: React.FC<CollapsibleContentsProps> = ({ project, defa
                           to={item.url}
                           className="flex w-full flex-row items-center gap-2"
                           onClick={() => {
+                            console.log("PRoject:: ",project);
                             dispatch({
                               type: 'project/selected',
                               payload: {
-                                id: project.id,
+                                id: project._id,
                                 name: project.title,
                               },
                             });

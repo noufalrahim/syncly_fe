@@ -1,30 +1,33 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { useEffect, useState } from 'react';
 import { AppBar } from '../AppBar';
-import { DisastersCard } from './components/DisastersCard';
-import { getDisasters } from './api/getDisasters';
 import { LoadingSpinner } from '../LoadingSpinner';
+import { useEffect, useState } from 'react';
+import { getDisaster } from './api/getDisaster';
+import GeneralCard from '../GeneralCard/GeneralCard';
 
 const Disasters = () => {
   const [disastersData, setDisastersData] = useState([]);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchDisasters = async () => {
       try {
         setLoading(true);
-        const resp = await getDisasters();
-        if (resp.data) {
-          console.log('Projects data', resp);
-          setDisastersData(resp.data);
+        const fetchDisasters = await getDisaster();
+        if (fetchDisasters.status === 200) {
+          console.log(fetchDisasters.data);
+          setDisastersData(fetchDisasters.data);
         }
-      } catch (error) {
-        console.log('Error fetching projects', error);
+      }
+      catch (e) {
+        console.log(e);
       } finally {
         setLoading(false);
       }
-    };
-    fetchData();
-  }, []);
+    }
+
+    fetchDisasters();
+  }, [])
 
   return (
     <div className="mx-5">
@@ -35,8 +38,32 @@ const Disasters = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {disastersData.map((disaster, index) => (
-            <DisastersCard key={index} disaster={disaster} />
+          {disastersData && disastersData.map((disaster: {
+            disasterType: string;
+            description: string;
+            imageUrl: string;
+          }, index) => (
+            <GeneralCard
+              key={index}
+              header={{
+                title: disaster.disasterType,
+                description: disaster.description,
+                image: disaster.imageUrl,
+                isImageBanner: true
+              }}
+              buttons={[
+                {
+                  title: 'View',
+                  onClick: () => console.log('View')
+                },
+                {
+                  title: 'Request Volunteering',
+                  onClick: () => console.log('Request Volunteering')
+                }
+              ]}
+            >
+              <></>
+            </GeneralCard>
           ))}
         </div>
       )}
