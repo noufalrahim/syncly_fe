@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import { getFeeds } from './api/getFeeds';
+import { AppBar } from '../AppBar';
+import { useEffect, useState } from "react";
+import { getFeeds } from "./api/getFeeds";
 
 const Feeds = () => {
   const [feeds, setFeeds] = useState<
@@ -35,9 +38,9 @@ const Feeds = () => {
     <div className="min-h-screen bg-gradient-to-r from-blue-50 to-indigo-100 px-8 py-12">
       <div className="mx-auto max-w-7xl">
         {/* Page Header */}
-        <div className="mb-12 text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight text-indigo-900 sm:text-5xl">Project Feeds</h1>
-          <p className="mt-4 text-lg text-gray-700">Stay updated on the latest activities, announcements, and progress from our projects.</p>
+
+        <div>
+          <AppBar title="Feeds" description="Stay connected on the latest updates on your projects here" />
         </div>
 
         {/* Feeds List */}

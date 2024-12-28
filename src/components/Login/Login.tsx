@@ -45,6 +45,7 @@ const Login = () => {
             image: response.data.data.image,
           },
         });
+        localStorage.setItem('authUser', JSON.stringify(response.data.data));
         navigate('/dashboard');
       }
       setIsLoading(false);

@@ -39,7 +39,18 @@ const MyNetwork = () => {
   const [selectedProject, setSelectedProject] = useState('');
 
   useEffect(() => {
-    setLoading(false); // Set loading to false, as we're using hardcoded data
+    const fetchNetworks = async () => {
+      setLoading(true);
+      try {
+        const response = await getNetworks(authUser._id);
+        console.log("Networks: ", response);
+        setNetworks(response.data.networks);
+      } catch (error) {
+        console.log(error);
+      }
+      setLoading(false);
+    };
+    fetchNetworks();
   }, []);
 
   // Handle search input change

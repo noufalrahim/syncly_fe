@@ -60,7 +60,7 @@ const TaskListForm: React.FC<TaskListFormProps> = ({ task, fetchTasks, onClose }
 
   React.useEffect(() => {
     const fetchProjects = async () => {
-      const projectsData: ProjectType[] = await getProjects();
+      const projectsData: ProjectType[] = await getProjects("undefined");
       setProjects(projectsData);
     };
 
