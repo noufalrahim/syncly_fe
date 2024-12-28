@@ -1,5 +1,4 @@
-
-import { Button } from '../ui/button';  // Import the Button component
+import { Button } from '../ui/button'; // Import the Button component
 
 // Define an interface for the sidebar options
 interface SidebarOption {
@@ -16,39 +15,35 @@ const Campaigns: React.FC = () => {
   ];
 
   return (
-    <div className="my-5 flex min-h-screen">
+    <div className="my-6 flex min-h-screen">
       {/* Main Content Area */}
-      <div className="flex-1 p-6">
+      <div className="flex-1 bg-gray-50 p-8">
         <div>
-          <h1 className="text-3xl font-bold">Campaigns for SDG Projects</h1>
-          <p className="text-md italic text-mutedDark mt-2">
-            Welcome to the Campaigns section! These campaigns are focused on the Sustainable Development Goals (SDGs),
-            where we connect volunteers with the right skills to projects that need support.
-          </p>
-          <p className="text-md italic text-mutedDark mt-2">
-            Whether you want to launch a campaign to fund a project, track ongoing fundraising activities, or donate to a cause
-            that needs your help, you've come to the right place! These projects aim to solve global challenges while empowering
-            people like you to get involved and make a difference.
-          </p>
-          <ul className="mt-4 space-y-4 text-sm italic text-mutedDark">
-            <li>🚀 <strong>Start a Campaign</strong> - Start a campaign for an SDG project, rally volunteers, and fund a cause that’s making a real impact!</li>
-            <li>💸 <strong>View Transactions</strong> - Monitor how funds are flowing into SDG projects and see how contributions are supporting sustainable development.</li>
-            <li>🎁 <strong>Donate Now</strong> - Support SDG projects by contributing your resources to campaigns that are working towards building a better future.</li>
+          <h1 className="text-primary-dark text-4xl font-extrabold">Campaigns for SDG Projects</h1>
+          <p className="mt-4 text-lg text-gray-600">Welcome to the Campaigns section! These campaigns focus on the Sustainable Development Goals (SDGs), where we connect volunteers with the right skills to projects that need support.</p>
+          <p className="mt-4 text-lg text-gray-600">Whether you want to launch a campaign to fund a project, track ongoing fundraising activities, or donate to a cause, you've come to the right place! These projects aim to solve global challenges while empowering people like you to make a difference.</p>
+          <ul className="mt-6 space-y-4 text-md text-gray-600">
+            <li>
+              🚀 <strong>Start a Campaign</strong> - Rally volunteers and fund causes making an impact!
+            </li>
+            <li>
+              💸 <strong>View Transactions</strong> - Monitor funds flowing into SDG projects and support sustainable development.
+            </li>
+            <li>
+              🎁 <strong>Donate Now</strong> - Contribute your resources to projects aiming to build a better future.
+            </li>
           </ul>
         </div>
       </div>
 
       {/* Right Sidebar */}
-      <div className="w-1/4 bg-white shadow-lg border-l border-gray-200 p-6">
-        <h2 className="font-bold text-xl text-gray-800 mb-4">Campaign Options</h2>
-        <ul className="space-y-4">
+      <div className="w-1/3 rounded-lg border-l border-gray-200 bg-white p-8 shadow-xl">
+        <h2 className="text-primary-dark mb-6 text-2xl font-semibold">Campaign Options</h2>
+        <ul className="space-y-6">
           {sidebarOptions.map((option, index) => (
             <li key={index}>
-              <Button
-                onClick={option.onClick}
-                className="w-full flex items-center justify-between gap-2 rounded-md bg-black px-4 py-2 text-white hover:bg-gray-500 transition duration-200"
-              >
-                <span className="text-lg font-medium">{option.label}</span>
+              <Button onClick={option.onClick} className="hover:bg-primary-light flex w-full items-center justify-between gap-3 rounded-lg bg-primary-dark px-6 py-3 text-white transition duration-200">
+                <span className="text-lg font-semibold">{option.label}</span>
               </Button>
             </li>
           ))}
@@ -59,4 +54,3 @@ const Campaigns: React.FC = () => {
 };
 
 export default Campaigns;
-
