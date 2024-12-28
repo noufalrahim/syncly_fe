@@ -13,6 +13,7 @@ function App() {
   return (
     <Provider store={store}>
       <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+        <div className="elfsight-app-05786466-288c-4330-b208-c5e1a302dcc4" data-elfsight-app-lazy></div>
         <BrowserRouter>
           <Router />
         </BrowserRouter>

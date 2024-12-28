@@ -18,13 +18,13 @@ import { FaSearch, FaTachometerAlt, FaBullhorn,FaRss } from 'react-icons/fa';
 
 export default function AppSidebar() {
   const { open } = useSidebar();
-  const [openProject, setOpenProject] = useState<string | null>('1');
+  const [openProject,
+    // setOpenProject
+  ] = useState<string | null>('1');
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [projectsData, setProjectsData] = useState<ProjectType[]>([]);
 
   const today = new Date().getDate();
-  console.log(setOpenProject);
-
   const menuItems: MenuItemsData[] = [
     {
       title: 'Search',
