@@ -11,8 +11,9 @@ import { ChatScreen } from '@/components/ChatScreen';
 import { Landing } from '@/components/Landing';
 import Login from '../../components/Login/Login';
 import Signup from '../../components/Signup/Signup';
+import UserProfile from '../../components/UserProfile/UserProfile';
+import { ProjectDescription } from '../../components/ProjectDescription';
 import { Layout } from '@/components/Layout';
-// import { LoadingScreen } from '@/components/LoadingScreen';
 import Dashboard from '@/components/Sidebar/components/Dashboard/Dashboard';
 import { Projects } from '@/components/Projects';
 import Campaigns  from '@/components/Campaigns/Campaigns'; // Import the Campaigns component
@@ -40,6 +41,12 @@ function Router() {
     DONATE_NOW_PATH,
     FEEDS_PATH // Add this to useRoutePaths hook
   } = useRoutePaths();
+import { TodayList } from '@/components/Today';
+import { Notifications } from '@/components/Notifications';
+import Chating from '@/components/Chat';
+
+function Router() {
+  const { ROOT_PATH, PROJECT_OVERVIEW_PATH, SCHEDULER_PATH, TABLE_PATH, LOGIN_PATH, SIGNUP_PATH, MY_NETWORK_PATH, MESSAGES_PATH, DASHBOARD_PATH, PROJECTS_PATH, KANBAN_PATH, USER_OVERVIEW_PATH } = useRoutePaths();
 
   return (
     <Routes>
@@ -53,7 +60,7 @@ function Router() {
         }
       />
       <Route
-        path={PROJECT_OVERVIEW_PATH}
+        path={KANBAN_PATH}
         element={
           <Layout>
             <KanbanBoard />
@@ -76,11 +83,34 @@ function Router() {
           </Layout>
         }
       />
+      {/* <Route path={MIND_MAP_PATH} element={<MindMap />} /> */}
       <Route
         path={MY_NETWORK_PATH}
+       
         element={
           <Layout>
             <MyNetwork />
+          </Layout>
+        }
+      />
+      <Route path={LOGIN_PATH} element={<Login />} />
+      <Route path={SIGNUP_PATH} element={<Signup />} /> {/* Add this */}
+      <Route path={MESSAGES_PATH} element={<ChatScreen />} />
+      <Route path={SIGNUP_PATH} element={<Signup />} />
+      <Route path="/project-description" element={<ProjectDescription />} />
+      <Route
+        path={USER_OVERVIEW_PATH}
+        element={
+          <Layout>
+            <UserProfile />
+          </Layout>
+        }
+      />
+      <Route
+        path={MESSAGES_PATH}
+        element={
+          <Layout>
+            <ChatScreen />
           </Layout>
         }
       />
@@ -95,6 +125,14 @@ function Router() {
       <Route path={LOGIN_PATH} element={<Login />} />
       <Route path={SIGNUP_PATH} element={<Signup />} />
       <Route path={MESSAGES_PATH} element={<ChatScreen />} />
+
+        path={PROJECT_OVERVIEW_PATH}
+        element={
+          <Layout>
+            <ProjectDescription />
+          </Layout>
+        }
+      />
       <Route
         path={PROJECTS_PATH}
         element={
@@ -116,6 +154,23 @@ function Router() {
       <Route path={VIEW_TRANSACTIONS_PATH} element={<Layout><ViewTransactions /></Layout>} />
       <Route path={TRANSACTION_DETAILS_PATH} element={<Layout><TransactionDetails /></Layout>} />
       <Route path={DONATE_NOW_PATH} element={<Layout><DonateNow /></Layout>} />
+
+        path="/today"
+        element={
+          <Layout>
+            <TodayList />
+          </Layout>
+        }
+      />
+      <Route
+        path="/notifications"
+        element={
+          <Layout>
+            <Notifications />
+          </Layout>
+        }
+      />
+      <Route path="/chats" element={<Chating />} />
       <Route path="*" element={<h1>404</h1>} />
     </Routes>
   );

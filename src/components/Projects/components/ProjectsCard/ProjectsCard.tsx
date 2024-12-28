@@ -3,8 +3,10 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { ProjectCardsProp } from './types';
 import { Avatar, AvatarImage } from '../../../ui/avatar';
 import { Button } from '../../../ui/button';
-
+import { useNavigate } from 'react-router-dom';
 const ProjectsCard = ({ project }: ProjectCardsProp) => {
+  const navigation = useNavigate();
+
   return (
     <Card>
       <CardHeader>
@@ -28,7 +30,9 @@ const ProjectsCard = ({ project }: ProjectCardsProp) => {
         </div>
       </CardContent>
       <CardFooter className="flex flex-row gap-2">
-        <Button className="w-full rounded bg-black px-4 py-2 font-semibold text-white hover:bg-gray-700">View Project</Button>
+        <Button className="w-full rounded bg-black px-4 py-2 font-semibold text-white hover:bg-gray-700" onClick={() => navigation('/projects/project123')}>
+          View Project
+        </Button>
         <Button className="w-full rounded bg-black px-4 py-2 font-semibold text-white hover:bg-gray-700">Request Enrollment</Button>
       </CardFooter>
     </Card>
