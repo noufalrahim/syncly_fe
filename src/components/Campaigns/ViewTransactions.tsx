@@ -1,8 +1,10 @@
 
 // https://th.bing.com/th/id/R.94f883d49a5f38ad2fbc232440e14c3d?rik=oyH07hFlPuRRrw&riu=http%3a%2f%2f2.bp.blogspot.com%2f-yhGCLPvc3KQ%2fUU-9bS0TbnI%2fAAAAAAAAHYY%2ffKzprfwrswU%2fs1600%2fSAVE-OUR-FOREST.png&ehk=fS%2bkEdezoi8CZFFL8zV6kw%2feT%2bk2%2b9Gg76IInF6FlKU%3d&risl=&pid=ImgRaw&r=0
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 
 const ViewTransactions: React.FC = () => {
+  const navigate = useNavigate()
   const campaigns = [
     {
       id: 1,
@@ -12,8 +14,8 @@ const ViewTransactions: React.FC = () => {
     },
   ];
 
-  const handleCampaignClick = (campaignName: string) => {
-    alert(`Redirecting to campaign: ${campaignName}`);
+  const handleCampaignClick = () => {
+   navigate('/campaigns/viewtransactions/transactiondetails');
   };
 
   return (
@@ -28,7 +30,7 @@ const ViewTransactions: React.FC = () => {
             <div
               key={campaign.id}
               className="cursor-pointer bg-gray-100 p-4 rounded-lg border-2 border-black shadow-lg w-[300px] mb-6 hover:shadow-xl transition-shadow"
-              onClick={() => handleCampaignClick(campaign.name)}
+              onClick={() => handleCampaignClick()}
             >
               <img
                 src={campaign.poster}
