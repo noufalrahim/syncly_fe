@@ -21,8 +21,8 @@ const MyNetwork = () => {
       setLoading(true);
       try {
         const response = await getNetworks(authUser._id);
-        console.log(response.data);
-        setNetworks(response.data);
+        console.log("Networks: ", response);
+        setNetworks(response.data.networks);
       } catch (error) {
         console.log(error);
       }

@@ -10,16 +10,33 @@ export type AppState = {
   };
 };
 
-const initialState = {
+const authUserFromLocalStorage = localStorage.getItem('authUser')
+let initialState = {
   selectedProjectId: 0,
   selectedProjectName: '',
   authUser: {
+    _id: '',
     username: '',
     name: '',
     image: '',
   },
 };
+if (authUserFromLocalStorage) {
+  console.log(authUserFromLocalStorage);
+  const parsedData = JSON.parse(authUserFromLocalStorage);
+  console.log(parsedData);
 
+  initialState = {
+    selectedProjectId: 0,
+    selectedProjectName: '',
+    authUser: {
+      _id: parsedData._id,
+      username: parsedData.username,
+      name: parsedData.name,
+      image: parsedData.image,
+    },
+  };
+}
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function AppReducer(prevState = initialState, action: { type: string; payload: any }) {
   switch (action.type) {
