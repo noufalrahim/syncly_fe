@@ -31,6 +31,7 @@ const trendingCampaigns = [
 const Campaigns: React.FC = () => {
   const navigate = useNavigate()
   return (
+
     <div className="h-full w-full px-5">
       {/* AppBar with buttons */}
       <AppBar
