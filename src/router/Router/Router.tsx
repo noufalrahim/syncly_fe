@@ -27,6 +27,8 @@ import { Notifications } from '@/components/Notifications';
 import Chating from '@/components/Chat';
 import { Disasters } from '@/components/Disasters';
 import { MyTasks } from '@/components/MyTasks';
+import { SidebarComponent } from '@/components/Admin/components/Sidebar';
+import { Requests } from '@/components/Admin/components/Requests';
 
 function Router() {
   const { ROOT_PATH, PROJECT_OVERVIEW_PATH, SCHEDULER_PATH, TABLE_PATH, LOGIN_PATH, SIGNUP_PATH, MY_NETWORK_PATH, MESSAGES_PATH, DASHBOARD_PATH, PROJECTS_PATH, CAMPAIGNS_PATH, START_CAMPAIGNS_PATH, VIEW_TRANSACTIONS_PATH, TRANSACTION_DETAILS_PATH, DONATE_NOW_PATH, FEEDS_PATH, KANBAN_PATH, USER_OVERVIEW_PATH } = useRoutePaths();
@@ -195,6 +197,15 @@ function Router() {
           </Layout>
         }
       />
+      <Route
+        path="/admin"
+        element={
+          <Layout>
+            <SidebarComponent></SidebarComponent>
+          </Layout>
+        }
+      />
+      <Route path="/admin/requests" element={<Requests></Requests>} />
       <Route path="/chats" element={<Chating />} />
       <Route path="*" element={<h1>404</h1>} />
     </Routes>
