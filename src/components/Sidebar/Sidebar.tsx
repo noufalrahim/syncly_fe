@@ -12,7 +12,9 @@ import { ProjectType } from './components/types';
 import { useState, useEffect } from 'react';
 import { Modal } from '../Modal';
 import { getProjects } from './api/getProjects';
-import { FaSearch, FaTachometerAlt } from 'react-icons/fa';
+import { FaSearch, FaTachometerAlt, FaBullhorn,FaRss } from 'react-icons/fa';
+
+
 
 export default function AppSidebar() {
   const { open } = useSidebar();
@@ -29,10 +31,20 @@ export default function AppSidebar() {
       url: '/',
       icon: <FaSearch size={20} />,
     },
+   {
+      title: 'Feeds',
+      url: '/feeds',
+      icon: <FaRss size={20} />,
+    },
     {
       title: 'Dashboard',
       url: '/dashboard',
       icon: <FaTachometerAlt size={20} />,
+    },
+    {
+      title: 'Campaigns',
+      url: '/Campaigns',
+      icon: <FaBullhorn size={20} />,
     },
     // {
     //   title: 'Inbox',

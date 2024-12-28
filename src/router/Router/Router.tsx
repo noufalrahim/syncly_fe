@@ -15,9 +15,31 @@ import { Layout } from '@/components/Layout';
 // import { LoadingScreen } from '@/components/LoadingScreen';
 import Dashboard from '@/components/Sidebar/components/Dashboard/Dashboard';
 import { Projects } from '@/components/Projects';
-
+import Campaigns  from '@/components/Campaigns/Campaigns'; // Import the Campaigns component
+import StartCampaigns from '@/components/Campaigns/StartCampaigns';
+import ViewTransactions from '@/components/Campaigns/ViewTransactions';
+import TransactionDetails from '@/components/Campaigns/TransactionDetails';
+import DonateNow from '@/components/Campaigns/DonateNow';
+import Feeds from '@/components/Feeds/Feeds';
 function Router() {
-  const { ROOT_PATH, PROJECT_OVERVIEW_PATH, SCHEDULER_PATH, TABLE_PATH, LOGIN_PATH, SIGNUP_PATH, MY_NETWORK_PATH, MESSAGES_PATH, DASHBOARD_PATH, PROJECTS_PATH } = useRoutePaths();
+  const {
+    ROOT_PATH,
+    PROJECT_OVERVIEW_PATH,
+    SCHEDULER_PATH,
+    TABLE_PATH,
+    LOGIN_PATH,
+    SIGNUP_PATH,
+    MY_NETWORK_PATH,
+    MESSAGES_PATH,
+    DASHBOARD_PATH,
+    PROJECTS_PATH,
+    CAMPAIGNS_PATH,
+    START_CAMPAIGNS_PATH,
+    VIEW_TRANSACTIONS_PATH,
+    TRANSACTION_DETAILS_PATH,
+    DONATE_NOW_PATH,
+    FEEDS_PATH // Add this to useRoutePaths hook
+  } = useRoutePaths();
 
   return (
     <Routes>
@@ -30,7 +52,6 @@ function Router() {
           </Layout>
         }
       />
-      {/* There is a root for landing loading screen. After doing backend, create another route path and add because i am doing dashboard  */}
       <Route
         path={PROJECT_OVERVIEW_PATH}
         element={
@@ -55,39 +76,6 @@ function Router() {
           </Layout>
         }
       />
-      <Route
-        path={DASHBOARD_PATH}
-        element={
-          <Layout>
-            <h1>Dashboard</h1>
-          </Layout>
-        }
-      />
-      <Route
-        path={PROJECT_OVERVIEW_PATH}
-        element={
-          <Layout>
-            <KanbanBoard />
-          </Layout>
-        }
-      />
-      <Route
-        path={SCHEDULER_PATH}
-        element={
-          <Layout>
-            <Scheduler />
-          </Layout>
-        }
-      />
-      <Route
-        path={TABLE_PATH}
-        element={
-          <Layout>
-            <TaskList />
-          </Layout>
-        }
-      />
-      {/* <Route path={MIND_MAP_PATH} element={<MindMap />} /> */}
       <Route
         path={MY_NETWORK_PATH}
         element={
@@ -96,8 +84,16 @@ function Router() {
           </Layout>
         }
       />
+      <Route
+        path={FEEDS_PATH}
+        element={
+          <Layout>
+            <Feeds />
+          </Layout>
+        }
+      />
       <Route path={LOGIN_PATH} element={<Login />} />
-      <Route path={SIGNUP_PATH} element={<Signup />} /> {/* Add this */}
+      <Route path={SIGNUP_PATH} element={<Signup />} />
       <Route path={MESSAGES_PATH} element={<ChatScreen />} />
       <Route
         path={PROJECTS_PATH}
@@ -107,6 +103,19 @@ function Router() {
           </Layout>
         }
       />
+      <Route
+        path={CAMPAIGNS_PATH} // Add this route for /campaigns
+        element={
+          <Layout>
+            <Campaigns />
+          </Layout>
+        }
+      />
+
+      <Route path={START_CAMPAIGNS_PATH} element={<Layout><StartCampaigns /></Layout>} />
+      <Route path={VIEW_TRANSACTIONS_PATH} element={<Layout><ViewTransactions /></Layout>} />
+      <Route path={TRANSACTION_DETAILS_PATH} element={<Layout><TransactionDetails /></Layout>} />
+      <Route path={DONATE_NOW_PATH} element={<Layout><DonateNow /></Layout>} />
       <Route path="*" element={<h1>404</h1>} />
     </Routes>
   );
