@@ -22,10 +22,7 @@ let initialState = {
   },
 };
 if (authUserFromLocalStorage) {
-  console.log(authUserFromLocalStorage);
   const parsedData = JSON.parse(authUserFromLocalStorage);
-  console.log(parsedData);
-
   initialState = {
     selectedProjectId: 0,
     selectedProjectName: '',

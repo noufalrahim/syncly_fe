@@ -1,15 +1,32 @@
 import * as React from 'react';
-import { ColumnDef, ColumnFiltersState, SortingState, VisibilityState, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
+import {
+  ColumnDef,
+  ColumnFiltersState,
+  SortingState,
+  VisibilityState,
+  flexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from '@tanstack/react-table';
 import { ChevronDown, Download, MoreHorizontal, PlusIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Task } from './types';
 import { AppBar } from '../AppBar';
-import { Modal } from '../Modal';
-import { TaskListForm } from './components/TaskListForm';
 import { getTasks } from './api/getTasks';
 import { useSelector } from 'react-redux';
 import { AppState } from '@/redux/store';
@@ -25,14 +42,34 @@ const TaskList: React.FC = () => {
   const [data, setData] = React.useState<Task[]>([]);
   const [selectedTask, setSelectedTask] = React.useState<Task | null>(null);
 
-  const projectId = useSelector((state: AppState) => {
-    return state.selectedProjectId;
-  });
+  const projectId = useSelector((state: AppState) => state.selectedProjectId);
+
+  const fetchData = async () => {
+    if (!projectId) return;
+
+    try {
+      const tasks = await getTasks(projectId);
+      if (tasks.status === 200) {
+        setData(tasks.data.data);
+      }
+    } catch (error) {
+      console.error('Failed to fetch tasks:', error);
+    }
+  };
+
+  React.useEffect(() => {
+    fetchData();
+  }, [projectId]);
 
   const handleDelete = async (task: Task) => {
-    const deleteResponse = await deleteTask(projectId, parseInt(task.id!.toString()));
-    console.log(deleteResponse);
-    fetchData();
+    if (!confirm(`Are you sure you want to delete the task "${task.title}"?`)) return;
+
+    try {
+      await deleteTask(projectId, parseInt(task.id!.toString()));
+      fetchData();
+    } catch (error) {
+      console.error('Failed to delete task:', error);
+    }
   };
 
   const handleEditTask = (task: Task) => {
@@ -43,8 +80,20 @@ const TaskList: React.FC = () => {
   const columns: ColumnDef<Task>[] = [
     {
       id: 'select',
-      header: ({ table }) => <Checkbox checked={table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && 'indeterminate')} onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)} aria-label="Select all" />,
-      cell: ({ row }) => <Checkbox checked={row.getIsSelected()} onCheckedChange={(value) => row.toggleSelected(!!value)} aria-label="Select row" />,
+      header: ({ table }) => (
+        <Checkbox
+          checked={!!table.getIsAllPageRowsSelected() || !!table.getIsSomePageRowsSelected()}
+          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+          aria-label="Select all"
+        />
+      ),
+      cell: ({ row }) => (
+        <Checkbox
+          checked={!!row.getIsSelected()}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          aria-label="Select row"
+        />
+      ),
       enableSorting: false,
       enableHiding: false,
     },
@@ -61,7 +110,7 @@ const TaskList: React.FC = () => {
     {
       accessorKey: 'dueDate',
       header: 'Due Date',
-      cell: ({ row }) => <div className="capitalize">{DateFormater({ dateString: row.getValue('dueDate') })}</div>,
+      cell: ({ row }) => <div>{DateFormater({ dateString: row.getValue('dueDate') })}</div>,
     },
     {
       accessorKey: 'assignee',
@@ -89,18 +138,10 @@ const TaskList: React.FC = () => {
             <DropdownMenuContent align="end" className="bg-white">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem
-                onClick={() => {
-                  handleEditTask(task);
-                }}
-              >
+              <DropdownMenuItem onClick={() => handleEditTask(task)}>
                 Edit Task
               </DropdownMenuItem>
-              <DropdownMenuItem
-                onClick={() => {
-                  handleDelete(task);
-                }}
-              >
+              <DropdownMenuItem onClick={() => handleDelete(task)}>
                 Delete Task
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -109,15 +150,6 @@ const TaskList: React.FC = () => {
       },
     },
   ];
-
-  const fetchData = async () => {
-    const tasks = await getTasks(projectId);
-    setData(tasks);
-  };
-
-  React.useEffect(() => {
-    fetchData();
-  }, [projectId]);
 
   const table = useReactTable({
     data,
@@ -157,7 +189,12 @@ const TaskList: React.FC = () => {
           ]}
         />
         <div className="flex items-center py-4">
-          <Input placeholder="Filter tasks..." value={(table.getColumn('title')?.getFilterValue() as string) ?? ''} onChange={(event) => table.getColumn('title')?.setFilterValue(event.target.value)} className="max-w-sm" />
+          <Input
+            placeholder="Filter tasks..."
+            value={(table.getColumn('title')?.getFilterValue() as string) ?? ''}
+            onChange={(event) => table.getColumn('title')?.setFilterValue(event.target.value)}
+            className="max-w-sm"
+          />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" className="ml-auto">
@@ -168,13 +205,16 @@ const TaskList: React.FC = () => {
               {table
                 .getAllColumns()
                 .filter((column) => column.getCanHide())
-                .map((column) => {
-                  return (
-                    <DropdownMenuCheckboxItem key={column.id} className="capitalize" checked={column.getIsVisible()} onCheckedChange={(value) => column.toggleVisibility(!!value)}>
-                      {column.id}
-                    </DropdownMenuCheckboxItem>
-                  );
-                })}
+                .map((column) => (
+                  <DropdownMenuCheckboxItem
+                    key={column.id}
+                    className="capitalize"
+                    checked={column.getIsVisible()}
+                    onCheckedChange={(value) => column.toggleVisibility(!!value)}
+                  >
+                    {column.id}
+                  </DropdownMenuCheckboxItem>
+                ))}
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
@@ -183,54 +223,38 @@ const TaskList: React.FC = () => {
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
                 <TableRow key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => {
-                    return <TableHead key={header.id}>{header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}</TableHead>;
-                  })}
+                  {headerGroup.headers.map((header) => (
+                    <TableHead key={header.id}>
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(header.column.columnDef.header, header.getContext())}
+                    </TableHead>
+                  ))}
                 </TableRow>
               ))}
             </TableHeader>
             <TableBody>
               {table.getRowModel().rows?.length ? (
                 table.getRowModel().rows.map((row) => (
-                  <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'} className="cursor-pointer border border-2 border-l-0 border-r-0 border-t-0 border-dashed">
+                  <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
                     {row.getVisibleCells().map((cell) => (
-                      <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+                      <TableCell key={cell.id}>
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      </TableCell>
                     ))}
                   </TableRow>
                 ))
               ) : (
                 <TableRow>
-                  <TableCell colSpan={columns.length} className="h-24 text-center">
-                    No results.
+                  <TableCell colSpan={columns.length} className="text-center">
+                    No tasks available.
                   </TableCell>
                 </TableRow>
               )}
             </TableBody>
           </Table>
         </div>
-        <div className="flex items-center justify-end space-x-2 py-4">
-          <div className="text-muted-foreground flex-1 text-sm">
-            {table.getFilteredSelectedRowModel().rows.length} of {table.getFilteredRowModel().rows.length} row(s) selected.
-          </div>
-          <div className="space-x-2">
-            <Button variant="outline" size="sm" onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
-              Previous
-            </Button>
-            <Button variant="outline" size="sm" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
-              Next
-            </Button>
-          </div>
-        </div>
       </div>
-      <Modal
-        isOpen={openModal}
-        onClose={() => {
-          setOpenModal(false);
-        }}
-        title={`${selectedTask ? 'Edit' : 'Create'} Task`}
-      >
-        <TaskListForm task={selectedTask} fetchTasks={fetchData} onClose={() => setOpenModal(false)} />
-      </Modal>
     </>
   );
 };

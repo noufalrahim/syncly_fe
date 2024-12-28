@@ -1,8 +1,7 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { useEffect, useState } from 'react';
 import { getFeeds } from './api/getFeeds';
 import { AppBar } from '../AppBar';
-import { useEffect, useState } from "react";
-import { getFeeds } from "./api/getFeeds";
 
 const Feeds = () => {
   const [feeds, setFeeds] = useState<

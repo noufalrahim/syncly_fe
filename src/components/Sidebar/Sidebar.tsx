@@ -105,7 +105,6 @@ export default function AppSidebar() {
   useEffect(() => {
     const fetchProjects = async () => {
       const projects = await getProjects(authUser._id);
-      console.log("pro", projects);
       setProjectsData(projects);
     };
 
