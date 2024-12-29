@@ -24,7 +24,7 @@ export default function GeneralCard({
     buttons,
 }: GeneralCardProps) {
     return (
-        <Card>
+        <Card className="min-h-64 justify-between flex flex-col">
             <CardHeader>
                 {
                     header.isImageBanner ?
