@@ -6,7 +6,7 @@ const Layout: React.FC<LayoutProps> = ({ children, isAdmin = false }) => {
   console.log(isAdmin); 
   return (
     <SidebarProvider>
-      <AppSidebar></AppSidebar>
+      <AppSidebar isAdmin={isAdmin}/>
       <main className="w-full">{children}</main>
     </SidebarProvider>
   );

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState } from 'react';
 import { Navbar } from '../../../Navbar';
 
 const Login = () => {
@@ -6,7 +8,7 @@ const Login = () => {
   const [orgIdOrLicense, setOrgIdOrLicense] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
 
     // Validation checks
@@ -49,7 +51,7 @@ const Login = () => {
             </button>
           </form>
           <p className="text-secondary-dark mt-4 text-center text-sm">
-            Don't have an account?{' '}
+            Don&apos;t have an account?{' '}
             <a href="/signup" className="text-[#00df9a] underline">
               Sign Up
             </a>

@@ -12,13 +12,13 @@ import { ProjectType } from './components/types';
 import { useState, useEffect } from 'react';
 import { Modal } from '../Modal';
 import { getProjects } from './api/getProjects';
-import { FaSearch, FaTachometerAlt, FaBullhorn,FaRss } from 'react-icons/fa';
+import { FaSearch, FaTachometerAlt, FaBullhorn, FaRss } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { AppState } from '@/redux/store';
 
 
 
-export default function AppSidebar() {
+export default function AppSidebar({ isAdmin = false }: { isAdmin?: boolean }) {
   const { open } = useSidebar();
   const [openProject,
     // setOpenProject
@@ -102,6 +102,14 @@ export default function AppSidebar() {
     },
   ];
 
+  const adminMenuItems = [
+    {
+      title: 'Requests', // Only "Requests" item
+      url: '/admin/requests', // URL for the Requests page
+      icon: <MdTask size={20} />, // Icon for the Requests item
+    },
+  ];
+
   useEffect(() => {
     const fetchProjects = async () => {
       const projects = await getProjects(authUser._id);
@@ -111,6 +119,7 @@ export default function AppSidebar() {
     fetchProjects();
   }, []);
 
+
   return (
     <>
       <Sidebar collapsible="icon" className="bg-white">
@@ -119,7 +128,7 @@ export default function AppSidebar() {
           <SidebarGroup>
             <SidebarGroupLabel>Menu</SidebarGroupLabel>
             <SidebarGroupContent>
-              {menuItems.map((item, index) => (
+              {!isAdmin ? menuItems.map((item, index) => (
                 <SidebarMenuItem className="list-none rounded-md hover:bg-gray-200" key={index}>
                   <SidebarMenuButton variant={'default'}>
                     <a href={item.url} className="flex w-full flex-row items-center gap-5">
@@ -128,22 +137,33 @@ export default function AppSidebar() {
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
-              ))}
+              )) : (
+                adminMenuItems.map((item, index) => (
+                  <SidebarMenuItem className="list-none rounded-md hover:bg-gray-200" key={index}>
+                    <SidebarMenuButton variant={'default'}>
+                      <a href={item.url} className="flex w-full flex-row items-center gap-5">
+                        {item.icon}
+                        {open && <span className="text-md">{item.title}</span>}
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))
+              )}
             </SidebarGroupContent>
           </SidebarGroup>
-          <SidebarGroup>
+          {!isAdmin && <SidebarGroup>
             <SidebarGroupLabel className="flex items-center justify-between">
               <p>Projects</p>
               <PlusIcon onClick={() => setOpenModal(true)} size={20} className="rounded-md transition-colors hover:bg-gray-300" />
             </SidebarGroupLabel>
             <SidebarGroupContent>
-              {projectsData.map((project, index) => (
+              {!isAdmin && projectsData.map((project, index) => (
                 <CollapsibleContents key={index} project={project} defaultOpen={openProject === project.id} />
               ))}
             </SidebarGroupContent>
-          </SidebarGroup>
+          </SidebarGroup>}
         </SidebarContent>
-        <SideBarFooter />
+        {!isAdmin && <SideBarFooter />}
       </Sidebar>
       <Modal isOpen={openModal} onClose={() => setOpenModal(false)} title="Create Project">
         <ProjectForm />
