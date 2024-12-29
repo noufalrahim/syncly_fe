@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { ColumnDef, ColumnFiltersState, SortingState, VisibilityState, flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
-import { ChevronDown, Download, MoreHorizontal, PlusIcon } from 'lucide-react';
+import { ChevronDown, MoreHorizontal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
@@ -23,8 +24,55 @@ const MyTasks: React.FC = () => {
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
   const [data,
-    // setData
-  ] = React.useState<Task[]>([]);
+    setData
+  ] = React.useState<any[]>([]);
+
+  React.useEffect(() => {
+    const datas = [
+      {
+        'id': '1',
+        'title': 'Task 1',
+        'status': 'In Progress',
+        'dueDate': '2024-12-24',
+        'assignee': 'John Doe',
+        'priority': 'High',
+      },
+      {
+        'id': '2',
+        'title': 'Task 2',
+        'status': 'In Progress',
+        'dueDate': '2024-12-24',
+        'assignee': 'John Doe',
+        'priority': 'High',
+      },
+      {
+        'id': '3',
+        'title': 'Task 3',
+        'status': 'In Progress',
+        'dueDate': '2024-12-24',
+        'assignee': 'John Doe',
+        'priority': 'High',
+      },
+      {
+        'id': '4',
+        'title': 'Task 4',
+        'status': 'In Progress',
+        'dueDate': '2024-12-24',
+        'assignee': 'John Doe',
+        'priority': 'High',
+      },
+      {
+        'id': '5',
+        'title': 'Task 5',
+        'status': 'In Progress',
+        'dueDate': '2024-12-24',
+        'assignee': 'John Doe',
+        'priority': 'High',
+      },
+    ];
+
+    setData(datas);
+  }, [])
 
   const columns: ColumnDef<Task>[] = [
     {
@@ -105,14 +153,14 @@ const MyTasks: React.FC = () => {
       <AppBar
         title="My Tasks"
         description="View all your tasks."
-        buttons={[
-          {
-            title: 'Create Task',
-            onClick: () => {},
-            icon: <PlusIcon size={15} />,
-          },
-          { title: 'Download', onClick: () => {}, icon: <Download size={15} /> },
-        ]}
+        // buttons={[
+        //   {
+        //     title: 'Create Task',
+        //     onClick: () => {},
+        //     icon: <PlusIcon size={15} />,
+        //   },
+        //   { title: 'Download', onClick: () => {}, icon: <Download size={15} /> },
+        // ]}
       />
       <div className="flex items-center py-4">
         <Input placeholder="Filter tasks..." value={(table.getColumn('title')?.getFilterValue() as string) ?? ''} onChange={(event) => table.getColumn('title')?.setFilterValue(event.target.value)} className="max-w-sm" />

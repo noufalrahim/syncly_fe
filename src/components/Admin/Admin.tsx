@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '../ui/button';
 import { LoadingSpinner } from '../LoadingSpinner';
+import { useNavigate } from 'react-router-dom';
 
 const AdminLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,6 +11,7 @@ const AdminLogin = () => {
     username: '',
     password: '',
   });
+  const navigate = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -24,10 +26,7 @@ const AdminLogin = () => {
     setIsLoading(true);
 
     // Simulating a login process for admin
-    setTimeout(() => {
-      setIsLoading(false);
-      alert('Admin login submitted');
-    }, 1000);
+    navigate('/admin');
   };
 
   return (

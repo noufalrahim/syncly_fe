@@ -29,7 +29,7 @@ const CollapsibleContents: React.FC<CollapsibleContentsProps> = ({ project, defa
               <TooltipTrigger className="w-full">
                 <CollapsibleTrigger className="flex w-full items-center justify-center rounded px-2 py-1 hover:bg-gray-200">
                   <FileCode size={15} className="mr-2" />
-                  {open && (project.title.length > 15 ? `${project.title.substring(0, 15)}...` : project.title)}
+                  {open && (project && project.title && project.title.length > 15 ? `${project.title.substring(0, 15)}...` : project.title)}
                   <ChevronDown size={15} className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
                 </CollapsibleTrigger>
               </TooltipTrigger>

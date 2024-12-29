@@ -119,6 +119,7 @@ export default function AppSidebar({ isAdmin = false }: { isAdmin?: boolean }) {
     fetchProjects();
   }, []);
 
+  console.log('projectsData', projectsData);
 
   return (
     <>
@@ -157,7 +158,7 @@ export default function AppSidebar({ isAdmin = false }: { isAdmin?: boolean }) {
               <PlusIcon onClick={() => setOpenModal(true)} size={20} className="rounded-md transition-colors hover:bg-gray-300" />
             </SidebarGroupLabel>
             <SidebarGroupContent>
-              {!isAdmin && projectsData.map((project, index) => (
+              {projectsData && projectsData.length > 0 && projectsData.map((project, index) => (
                 <CollapsibleContents key={index} project={project} defaultOpen={openProject === project.id} />
               ))}
             </SidebarGroupContent>

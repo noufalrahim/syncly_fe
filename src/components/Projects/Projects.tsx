@@ -33,11 +33,23 @@ const Projects = () => {
           <LoadingSpinner />
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {projectsData.map((project, index) => (
-            <ProjectsCard key={index} project={project} />
-          ))}
-        </div>
+        <>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {projectsData.map((project, index) => (
+              <ProjectsCard key={index} project={project} />
+            ))}
+
+          </div>
+          <div>
+            {
+              projectsData.length === 0 && (
+                <div className="flex min-h-screen items-center justify-center">
+                  <p>No projects available</p>
+                </div>
+              )
+            }
+          </div>
+        </>
       )}
     </div>
   );

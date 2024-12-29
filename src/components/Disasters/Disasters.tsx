@@ -8,6 +8,10 @@ import GeneralCard from '../GeneralCard/GeneralCard';
 const Disasters = () => {
   const [disastersData, setDisastersData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [request, setRequest] = useState({
+    id: '',
+    mode: false,
+  });
 
   useEffect(() => {
     const fetchDisasters = async () => {
@@ -28,7 +32,6 @@ const Disasters = () => {
 
     fetchDisasters();
   }, [])
-
   return (
     <div className="mx-5">
       <AppBar title="Disasters" description="View all disaster volunteering opportunities here" />
@@ -39,6 +42,7 @@ const Disasters = () => {
       ) : (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {disastersData && disastersData.map((disaster: {
+            _id: string;
             disasterType: string;
             description: string;
             imageUrl: string;
@@ -57,8 +61,11 @@ const Disasters = () => {
                   onClick: () => console.log('View')
                 },
                 {
-                  title: 'Request Volunteering',
-                  onClick: () => console.log('Request Volunteering')
+                  title: disaster._id === request.id && request.mode ? 'Cancel Request' : 'Request',
+                  onClick: () => setRequest({
+                    id: disaster._id,
+                    mode: !request.mode
+                  })
                 }
               ]}
             >
