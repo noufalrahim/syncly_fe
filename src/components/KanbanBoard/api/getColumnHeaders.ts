@@ -1,21 +1,31 @@
-import { BASE_URL } from '@/constants';
-import axios from 'axios';
-import { ColumnDataTypes } from '../components/types';
-
 export const getColumnHeaders = async () => {
+  const kanbanHeaders = [
+    {
+      "id": "1123",
+      "key": "backlog",
+      "title": "Backlog"
+    },
+    {
+      "id": "2321",
+      "key": "todo",
+      "title": "To Do"
+    },
+    {
+      "id": "3312",
+      "key": "in-progress",
+      "title": "In Progress"
+    },
+    {
+      "id": "4123",
+      "key": "done",
+      "title": "Done"
+    }
+  ]
   try {
-    const response = await axios.get(`${BASE_URL}/kanbanHeaders`);
-    const resp = response.data;
-    const columnData = resp.map((column: ColumnDataTypes) => {
-      return {
-        id: column.id.toString(),
-        title: column.title,
-        key: column.key,
-      };
-    });
-    return columnData;
+ 
+    return kanbanHeaders;
   } catch (error) {
     console.error(error);
-    return [];
+    return kanbanHeaders
   }
 };

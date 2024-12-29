@@ -8,7 +8,7 @@ import { Newsletter } from '../Newsletter';
 
 const Landing = () => {
   return (
-    <div className="bg-black">
+    <div className="bg-white">
       <Navbar />
       <Hero />
       <Analytics />

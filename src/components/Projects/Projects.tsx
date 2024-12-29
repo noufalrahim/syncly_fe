@@ -14,7 +14,6 @@ const Projects = () => {
         setLoading(true);
         const resp = await getProjects();
         if (resp.data) {
-          console.log('Projects data', resp);
           setProjectsData(resp.data);
         }
       } catch (error) {

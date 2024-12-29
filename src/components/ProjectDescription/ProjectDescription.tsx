@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/react-in-jsx-scope */
-import { useState } from 'react';
+import React, { useState } from 'react';
+
+declare global {
+  interface Window {
+    Calendly: any;
+  }
+}
 
 const ProjectDescription = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -66,42 +72,6 @@ const ProjectDescription = () => {
       { title: 'Volunteer Guidelines', img: 'https://via.placeholder.com/150' },
     ];
 
-    const meetings = [
-      {
-        title: 'Project Kickoff Meeting',
-        organizedBy: 'Green Earth Organization',
-        time: '10:00 AM',
-        date: 'March 1, 2024',
-      },
-      {
-        title: 'Volunteer Training Session',
-        organizedBy: 'Green Earth Training Team',
-        time: '2:00 PM',
-        date: 'March 5, 2024',
-      },
-      {
-        title: 'Community Awareness Discussion',
-        organizedBy: 'Local Leaders',
-        time: '11:00 AM',
-        date: 'March 10, 2024',
-      },
-      {
-        title: 'Progress Review Meeting',
-        organizedBy: 'Project Manager',
-        time: '3:00 PM',
-        date: 'March 15, 2024',
-      },
-      {
-        title: 'Final Wrap-Up Meeting',
-        organizedBy: 'Green Earth Organization',
-        time: '4:00 PM',
-        date: 'March 20, 2024',
-      },
-    ];
-
-    const totalReceived = 5000;
-    const totalRequested = 10000;
-
     const handleApprove = (user: any) => {
       alert(`Approved ${user.name}`);
     };
@@ -124,8 +94,6 @@ const ProjectDescription = () => {
     };
 
     const handleSubmitFeedback = () => {
-      console.log('Feedback submitted for:', selectedUser);
-      console.log('Feedback:', feedback);
       setShowFeedbackModal(false);
       setFeedback({
         communication: '',
@@ -137,6 +105,28 @@ const ProjectDescription = () => {
       });
     };
 
+    const handleCalendlyClick = () => {
+      const Calendly = window.Calendly;
+      Calendly.initPopupWidget({ url: "https://calendly.com/devunofficial2000/30min" });
+    };
+  
+    React.useEffect(() => {
+      const script = document.createElement("script");
+      script.src = "https://assets.calendly.com/assets/external/widget.js";
+      script.async = true;
+      document.body.appendChild(script);
+  
+      const link = document.createElement("link");
+      link.href = "https://assets.calendly.com/assets/external/widget.css";
+      link.rel = "stylesheet";
+      document.head.appendChild(link);
+  
+      return () => {
+        document.body.removeChild(script);
+        document.head.removeChild(link);
+      };
+    }, []);
+
     return (
       <div className="min-h-screen bg-gray-100 p-8">
         {/* Header Section */}
@@ -147,10 +137,11 @@ const ProjectDescription = () => {
           {/* Funding Section */}
           <div className="flex items-center space-x-4">
             <div className="text-right">
-              <p className="text-lg text-gray-600">Total Received: ${totalReceived}</p>
-              <p className="text-lg text-gray-600">Total Requested: ${totalRequested}</p>
             </div>
-            <button className="rounded-md bg-green-500 px-4 py-2 text-white shadow-md hover:bg-green-600">Donate</button>
+            
+            <button className="rounded-md bg-green-500 px-4 py-2 text-white shadow-md hover:bg-green-600"> <a href="#" onClick={(e) => { e.preventDefault(); handleCalendlyClick(); }}>
+      Create Meeting
+    </a></button>
           </div>
         </div>
 
@@ -167,9 +158,6 @@ const ProjectDescription = () => {
             </button>
             <button className={`px-6 py-2 text-lg font-medium ${activeTab === 'resources' ? 'border-b-4 border-green-500 text-green-600' : 'text-gray-600'}`} onClick={() => setActiveTab('resources')}>
               Resources
-            </button>
-            <button className={`px-6 py-2 text-lg font-medium ${activeTab === 'meetings' ? 'border-b-4 border-green-500 text-green-600' : 'text-gray-600'}`} onClick={() => setActiveTab('meetings')}>
-              Meetings
             </button>
             <button className={`px-6 py-2 text-lg font-medium ${activeTab === 'feedback' ? 'border-b-4 border-green-500 text-green-600' : 'text-gray-600'}`} onClick={() => setActiveTab('feedback')}>
               Feedback
@@ -335,40 +323,6 @@ const ProjectDescription = () => {
             )}
 
             {/* Meetings Tab Content */}
-            {activeTab === 'meetings' && (
-              <div>
-                <h2 className="mb-4 text-2xl font-semibold text-gray-800">Upcoming Meetings</h2>
-
-                {/* Create Meeting Button */}
-                <button
-                  className="mb-4 rounded-md bg-green-500 px-4 py-2 text-sm text-white shadow-md hover:bg-green-600"
-                  onClick={() => {
-                    // Add functionality to open a modal or redirect to a "Create Meeting" page
-                    console.log('Create Meeting button clicked');
-                  }}
-                >
-                  Create Meeting
-                </button>
-
-                <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                  {meetings.map((meeting, index) => (
-                    <div key={index} className="rounded-md border border-gray-200 bg-white p-4 shadow-md">
-                      <h3 className="text-lg font-semibold text-gray-800">{meeting.title}</h3>
-                      <p className="mt-2 text-sm text-gray-600">
-                        <strong>Organized By:</strong> {meeting.organizedBy}
-                      </p>
-                      <p className="mt-2 text-sm text-gray-600">
-                        <strong>Time:</strong> {meeting.time}
-                      </p>
-                      <p className="mt-2 text-sm text-gray-600">
-                        <strong>Date:</strong> {meeting.date}
-                      </p>
-                      <button className="mt-4 rounded-md bg-green-500 px-4 py-2 text-sm text-white shadow-md hover:bg-green-600">Notify</button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
 
             {/* Feedback Tab Content */}
             {activeTab === 'feedback' && (

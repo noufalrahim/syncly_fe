@@ -212,6 +212,7 @@ function Router() {
       <Route path="/admin/requests/:organizationid" element={<OrganizationProfile></OrganizationProfile>} />
       <Route path="/organization/signup" element={<OrganizationSignup></OrganizationSignup>} />
       <Route path="/organization/login" element={<OrganizationLogin></OrganizationLogin>} />
+
       <Route path="/chats" element={<Chating />} />
       <Route path="*" element={<h1>404</h1>} />
     </Routes>

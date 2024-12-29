@@ -22,7 +22,7 @@ const statusColorMap: Record<TaskStatus, string> = {
   [TaskStatus.CANCELED]: 'border-l-gray-500',
 };
 
-const Card = ({ title, id, columnKey, handleDragStart, handleDelete, assignee, handleOnClick, status }: CardProps) => {
+const Card = ({ title, _id, columnKey, handleDragStart, handleDelete, assignee, handleOnClick, status }: CardProps) => {
   const color = statusColorMap[status as TaskStatus] || 'border-l-gray-500';
 
   const projectName = useSelector((state: AppState) => state.selectedProjectName);
@@ -40,11 +40,11 @@ const Card = ({ title, id, columnKey, handleDragStart, handleDelete, assignee, h
   return (
     <>
       <TooltipProvider>
-        <DropIndicator beforeId={id!.toString()} column={columnKey} />
-        <motion.div onClick={handleOnClick} layout layoutId={id!.toString()} draggable="true" onDragStart={(e) => handleDragStart(e, { title, id, columnKey })} className={cn('flex cursor-grab flex-col gap-3 rounded border border-l-4 border-black bg-secondary p-3 active:cursor-grabbing', color)}>
+        <DropIndicator beforeId={_id!.toString()} column={columnKey} />
+        <motion.div onClick={handleOnClick} layout layoutId={_id!.toString()} draggable="true" onDragStart={(e) => handleDragStart(e, { title, _id, columnKey })} className={cn('flex cursor-grab flex-col gap-3 rounded border border-l-4 border-black bg-secondary p-3 active:cursor-grabbing', color)}>
           <div className="flex items-center justify-between gap-1">
             <p className="max-w-[90%] text-sm">{title}</p>
-            <TrashIcon className="cursor-pointer" size={20} color="gray" onClick={() => handleDelete(id!)} />
+            <TrashIcon className="cursor-pointer" size={20} color="gray" onClick={() => handleDelete(_id!)} />
           </div>
           <div className="flex items-center justify-between gap-1">
             <span className="text-sm">{projectName}</span>

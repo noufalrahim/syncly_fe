@@ -15,8 +15,8 @@ const Navbar: React.FC<NavbarProps> = ({ className }: NavbarProps) => {
   };
 
   return (
-    <div className="bg-black">
-      <div className={`mx-auto flex h-24 max-w-[1240px] items-center justify-between px-4 text-white ${className}`}>
+    <div className="bg-white text-black">
+      <div className={`mx-auto flex h-24 max-w-[1240px] items-center justify-between px-4 text-black ${className}`}>
         <h1 className="w-full text-3xl font-bold text-[#00df9a]">SustainLink</h1>
         <ul className="hidden md:flex">
           <li className="p-4">
@@ -29,7 +29,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }: NavbarProps) => {
             <Link to="/signup">SignUp</Link>
           </li>
         </ul>
-        <div onClick={handleNav} className="block md:hidden">
+        <div onClick={handleNav} className="block md:hidden text-black">
           {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
         </div>
         <ul className={nav ? 'fixed left-0 top-0 h-full w-[60%] border-r border-r-gray-900 bg-[#000300] duration-500 ease-in-out' : 'fixed left-[-100%] duration-500 ease-in-out'}>

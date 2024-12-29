@@ -126,7 +126,8 @@ const Column = ({ title, cards, column, setCards, handleOnClick, projectId }: Co
         </div>
         <div onDrop={handleDragEnd} onDragOver={handleDragOver} onDragLeave={handleDragLeave} className={`w-full transition-colors ${active ? 'opacity-50' : 'bg-primary'}`}>
           {filteredCards.map((c) => {
-            return <Card key={c.id} {...c} handleDragStart={handleDragStart} handleDelete={handleDelete} handleOnClick={() => handleOnClick(c)} />;
+            console.log("CC:", c);
+            return <Card key={c._id} {...c} handleDragStart={handleDragStart} handleDelete={handleDelete} handleOnClick={() => handleOnClick(c)} />;
           })}
           <DropIndicator beforeId={null} column={column} />
           <AddCard column={column} setCards={setCards} />
