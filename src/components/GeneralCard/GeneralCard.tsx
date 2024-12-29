@@ -28,7 +28,7 @@ export default function GeneralCard({
             <CardHeader>
                 {
                     header.isImageBanner ?
-                        <Avatar className="h-36 w-full rounded-none">
+                        <Avatar className="h-48 w-full rounded-none">
                             <AvatarImage src={header.image} />
                         </Avatar>
                         :

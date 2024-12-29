@@ -30,6 +30,8 @@ import { MyTasks } from '@/components/MyTasks';
 import { SidebarComponent } from '@/components/Admin/components/Sidebar';
 import { Requests } from '@/components/Admin/components/Requests';
 import { OrganizationProfile } from '@/components/Admin/components/OrganizationProfile';
+import { OrganizationSignup } from '@/components/Organization/components/Signup';
+import { Login as OrganizationLogin } from '@/components/Organization/components/Login';
 
 function Router() {
   const { ROOT_PATH, PROJECT_OVERVIEW_PATH, SCHEDULER_PATH, TABLE_PATH, LOGIN_PATH, SIGNUP_PATH, MY_NETWORK_PATH, MESSAGES_PATH, DASHBOARD_PATH, PROJECTS_PATH, CAMPAIGNS_PATH, START_CAMPAIGNS_PATH, VIEW_TRANSACTIONS_PATH, TRANSACTION_DETAILS_PATH, DONATE_NOW_PATH, FEEDS_PATH, KANBAN_PATH, USER_OVERVIEW_PATH } = useRoutePaths();
@@ -80,7 +82,6 @@ function Router() {
       />
       <Route path={LOGIN_PATH} element={<Login />} />
       <Route path={SIGNUP_PATH} element={<Signup />} /> {/* Add this */}
-      <Route path={MESSAGES_PATH} element={<ChatScreen />} />
       <Route path={SIGNUP_PATH} element={<Signup />} />
       <Route path="/project-description" element={<ProjectDescription />} />
       <Route
@@ -88,14 +89,6 @@ function Router() {
         element={
           <Layout>
             <UserProfile />
-          </Layout>
-        }
-      />
-      <Route
-        path={MESSAGES_PATH}
-        element={
-          <Layout>
-            <ChatScreen />
           </Layout>
         }
       />
@@ -109,7 +102,9 @@ function Router() {
       />
       <Route path={LOGIN_PATH} element={<Login />} />
       <Route path={SIGNUP_PATH} element={<Signup />} />
-      <Route path={MESSAGES_PATH} element={<ChatScreen />} />
+      <Route path={MESSAGES_PATH} element={<Layout>
+        <ChatScreen />
+      </Layout>} />
       <Route
         path={PROJECT_OVERVIEW_PATH}
         element={
@@ -206,8 +201,10 @@ function Router() {
           </Layout>
         }
       />
-      <Route path="/admin/requests" element={<Requests></Requests>} />
-      <Route path="/admin/requests/:organizationid" element={<OrganizationProfile></OrganizationProfile>} />
+      <Route path="/admin/requests" element={<Layout isAdmin={true}><Requests /></Layout>} />
+      <Route path="/admin/requests/:organizationid" element={<Layout isAdmin={true}><OrganizationProfile /></Layout>} />
+      <Route path="/organization/signup" element={<Layout isAdmin={true}><OrganizationSignup /></Layout>} />
+      <Route path="/organization/login" element={<Layout isAdmin={true}><OrganizationLogin /></Layout>} />
 
       <Route path="/chats" element={<Chating />} />
       <Route path="*" element={<h1>404</h1>} />
