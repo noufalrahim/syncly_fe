@@ -3,16 +3,20 @@ import { Navbar } from "../Navbar";
 import axios from "axios";
 import { BASE_URL } from "@/constants";
 import { postUser } from "./api/postUser";
+interface Skill {
+  _id: string;
+  title: string;
+}
 
 const Signup = () => {
   const [currentTab, setCurrentTab] = useState(0);
-  const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
+  const [selectedSkills, setSelectedSkills] = useState<Skill[]>([]);
   const [username, setUserName] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const image = "https://randomuser.me/api/portraits/men/83.jpg";
   
-  const [primarySkills, setPrimarySkills] = useState<string[]>([]);
+  const [primarySkills, setPrimarySkills] = useState<Skill[]>([]);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -102,8 +106,8 @@ const Signup = () => {
                       type="button"
                       onClick={() =>
                         setSelectedSkills((prev) =>
-                          prev.includes(skill)
-                            ? prev.filter((s) => s !== skill)
+                          prev.some((s) => s._id === skill._id)
+                            ? prev.filter((s) => s._id !== skill._id)
                             : [...prev, skill]
                         )
                       }
@@ -112,7 +116,7 @@ const Signup = () => {
                         : "bg-gray-300 text-black hover:bg-gray-400"
                         }`}
                     >
-                      {skill.title}
+                      {skill && skill.title}
                     </button>
                   ))}
                 </div>

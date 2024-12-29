@@ -2,6 +2,7 @@ import { Task } from '@/components/TaskList/types';
 import { Dispatch, SetStateAction } from 'react';
 
 export type CardType = {
+  _id?: string;
   id: string;
   title: string;
   description?: string;
