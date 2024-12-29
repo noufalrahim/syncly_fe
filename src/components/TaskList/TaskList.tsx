@@ -52,6 +52,7 @@ const TaskList: React.FC = () => {
       const tasks = await getTasks(projectId);
       if (tasks.status === 200) {
         setData(tasks.data.data);
+        console.log("Tasks",tasks.data.data);
       }
     } catch (error) {
       console.error('Failed to fetch tasks:', error);

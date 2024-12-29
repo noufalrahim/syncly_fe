@@ -23,14 +23,15 @@ let initialState = {
 };
 if (authUserFromLocalStorage) {
   const parsedData = JSON.parse(authUserFromLocalStorage);
+  console.log(parsedData);  
   initialState = {
     selectedProjectId: 0,
     selectedProjectName: '',
     authUser: {
-      _id: parsedData._id,
-      username: parsedData.username,
-      name: parsedData.name,
-      image: parsedData.image,
+      _id: parsedData.user._id,
+      username: parsedData.user.username,
+      name: parsedData.user.name,
+      image: parsedData.user.image,
     },
   };
 }
@@ -44,6 +45,7 @@ function AppReducer(prevState = initialState, action: { type: string; payload: a
         selectedProjectName: action.payload.name,
       };
     case 'auth/user':
+      console.log(action.payload);
       localStorage.setItem('authUser', JSON.stringify(action.payload));
       return {
         ...prevState,

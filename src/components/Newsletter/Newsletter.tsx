@@ -1,10 +1,10 @@
 /* eslint-disable react/react-in-jsx-scope */
 const Newsletter = () => {
   return (
-    <div className="w-full px-4 py-16 text-white">
-      <div className="mx-auto grid max-w-[1240px] lg:grid-cols-3">
-        <div className="my-4 lg:col-span-2">
-          <h1 className="py-2 text-2xl font-bold sm:text-3xl md:text-4xl">Stay Updated on SDG Projects</h1>
+    <div className="w-full px-4 py-16 text-black">
+      <div className="mx-auto grid max-w-[1240px] lg:grid-cols-3 text-black">
+        <div className="my-4 lg:col-span-2 text-black">
+          <h1 className="py-2 text-2xl font-bold text-black sm:text-3xl md:text-4xl">Stay Updated on SDG Projects</h1>
           <p>Sign up to receive insights, tips, and updates on global SDG efforts.</p>
         </div>
         <div className="my-4">
