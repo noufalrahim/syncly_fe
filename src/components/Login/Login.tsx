@@ -36,13 +36,14 @@ const Login = () => {
       if (response.status === 204) {
         console.log('Login failed');
       } else if (response.status === 200) {
+        console.log(response.data.data);
         dispatch({
           type: 'auth/user',
           payload: {
-            _id: response.data.data._id,
-            username: response.data.data.username,
-            name: response.data.data.name,
-            image: response.data.data.image,
+            _id: response.data.data.user._id,
+            username: response.data.data.user.username,
+            name: response.data.data.user.name,
+            image: response.data.data.user.image,
           },
         });
         localStorage.setItem('authUser', JSON.stringify(response.data.data));
@@ -57,9 +58,9 @@ const Login = () => {
 
   return (
     <>
-      <Navbar className="bg-black" />
-      <div className="flex h-[calc(100vh-5rem)] items-center justify-center bg-black">
-        <div className="w-[400px] rounded-lg bg-white p-8 shadow-lg">
+      <Navbar className="bg-white" />
+      <div className="flex h-[calc(100vh-5rem)] items-center justify-center bg-white">
+        <div className="w-[400px] rounded-lg bg-white p-8 shadow-lg border border-gray-600">
           <h2 className="text-primary-dark mb-4 text-center text-2xl font-bold">Login</h2>
           <form onSubmit={handleLogin}>
             <div className="mb-4">

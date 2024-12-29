@@ -5,10 +5,10 @@ const Footer = () => {
   return (
     <div className="mx-auto grid max-w-[1240px] gap-8 px-4 py-16 text-gray-300 lg:grid-cols-3">
       {/* First Column: About SustainLink */}
-      <div>
+      <div className='text-black'>
         <h1 className="w-full text-3xl font-bold text-[#00df9a]">SustainLink</h1>
         <p className="py-4 text-sm">SustainLink is an innovative platform designed to accelerate the achievement of the United Nations Sustainable Development Goals (SDGs) by connecting skilled professionals, volunteers, and impactful projects globally. Using AI-driven algorithms, SustainLink matches volunteers to SDG projects based on expertise and interests, fostering global collaboration.</p>
-        <div className="my-6 flex justify-between md:w-[75%]">
+        <div className="my-6 flex justify-between md:w-[75%] text-black">
           <FaFacebookSquare size={30} />
           <FaInstagram size={30} />
           <FaTwitterSquare size={30} />
@@ -18,7 +18,7 @@ const Footer = () => {
       </div>
 
       {/* Second Column: Solutions */}
-      <div>
+      <div className='text-black'>
         <h6 className="font-medium text-gray-400">Solutions</h6>
         <ul>
           <li className="py-2 text-sm">AI-Driven Skill Matching</li>
@@ -31,7 +31,7 @@ const Footer = () => {
       </div>
 
       {/* Third Column: SDG Alignment & Legal */}
-      <div>
+      <div className='text-black'>
         <h6 className="font-medium text-gray-400">SDG Alignment</h6>
         <ul>
           <li className="py-2 text-sm">SDG 8 – Decent Work & Economic Growth</li>

@@ -29,8 +29,15 @@ const Board = () => {
   };
 
   const fetchCards = async () => {
-    const cards = await getTasks(projectId);
-    setCards(cards);
+    try {
+      const tasks = await getTasks(projectId);
+      if (tasks.status === 200) {
+        setCards(tasks.data.data);
+        console.log("Tasks", tasks.data.data);
+      }
+    } catch (error) {
+      console.error('Failed to fetch tasks:', error);
+    }
   };
 
   useEffect(() => {
